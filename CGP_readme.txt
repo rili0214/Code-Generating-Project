@@ -10,7 +10,7 @@ The backend server will be deployed on an Azure VM.
 │   ├── llm_manager.py                      # Core handler for LLM interactions and feedback loops
 │   ├── feedback_manager.py                 # Manages the feedback loop process
 │   └── utils.py                            # Utility functions for formatting, logging, etc.
-├── llms/                                   # Directory for LLM handling
+├── LLMs/                                   # Directory for LLM handling
 │   ├── base_llm.py                         # Base class for LLM interactions
 │   ├── llama/                              # Subdirectory for Llama-3.1-70B-Instruct
 │   │   ├── llama_generate.py               # Specific generation logic

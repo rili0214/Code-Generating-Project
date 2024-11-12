@@ -33,3 +33,12 @@ def generate_code_with_llms(code_input, model_name):
     except Exception as e:
         logger.error(f"Error generating code with {model_name}: {e}")
         raise
+
+def generate_dafny_with_LLM(code_input):
+    try:
+        dafny_generate_code(code_input)
+        logger.info(f"Successfully generated Dafny")
+        return generated_code
+    except Exception as e:
+        logger.error(f"Error generating Dafny: {e}")
+        raise

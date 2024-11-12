@@ -1,7 +1,7 @@
 # llm_manager.py
 import logging
 from pathlib import Path
-from LLMs.azure_openai.openai_generate import azure_openai_generate_code
+from LLMs.azure_openai.openai_generate import azure_openai_generate_code as openai_generate_code
 from LLMs.llama.generate import generate_code as llama_generate_code
 from LLMs.qwen.generate import generate_code as qwen_generate_code
 from LLMs.dafny_generator.dafny_generate import generate_code as dafny_generate_code
@@ -13,9 +13,9 @@ logger = logging.getLogger(__name__)
 
 # Dictionary to map model names to their generate functions
 llm_generators = {
-    'llama_3_1_70B_Inst': llama_generate_code,
-    'qwen2_5_72B_instruct': qwen_generate_code,
-    'openai_gpt4o_mini': azure_openai_generate_code
+    'llama_3_1_70b_inst': llama_generate_code,
+    'qwen2.5-coder-32b-inst': qwen_generate_code,
+    'openai_gpt4o_mini': openai_generate_code
 }
 
 def generate_code_with_llms(code_input, model_name):

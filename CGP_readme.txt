@@ -12,18 +12,17 @@ The backend server will be deployed on an Azure VM.
 │   └── utils.py                            # Utility functions for formatting, logging, etc.
 ├── llms/                                   # Directory for LLM handling
 │   ├── base_llm.py                         # Base class for LLM interactions
-│   ├── llama_31_nemotron_70b/              # Subdirectory for Llama-3.1-Nemotron-70B
-│   │   ├── generate.py                     # Specific generation logic
-│   │   └── format_output.py                # Output formatting
-│   ├── deepseek_coder_v2/                  # Subdirectory for DeepSeek-Coder-V2
-│   │   ├── generate.py                     # Specific generation logic
-│   │   └── format_output.py                # Output formatting
-│   ├── qwen2_5_72b_instruct/               # Subdirectory for Qwen2.5-72B
-│   │   ├── generate.py                     # Specific generation logic
-│   │   └── format_output.py                # Output formatting
+│   ├── llama/                              # Subdirectory for Llama-3.1-70B-Instruct
+│   │   ├── llama_generate.py               # Specific generation logic
+│   │   └── llama_format_output.py          # Output formatting
+│   ├── azure_openai/                       # Subdirectory for OpenAI-GPT4o-mini
+│   │   ├── openai_generate.py              # Specific generation logic
+│   │   └── openai_format_output.py         # Output formatting
+│   ├── qwen/                               # Subdirectory for Qwen2.5-Coder-32B-Instruct
+│   │   ├── qwen_generate.py                # Specific generation logic
+│   │   └── qwen_format_output.py           # Output formatting
 │   └── dafny_generator/                    # Directory for Dafny code generation
 │       ├── dafny_generate.py               # Dafny code generation logic
-│       └── format_output.py                # Output formatting
 ├── feedback/                               # Directory for handling feedback
 │   ├── __init__.py
 │   └── feedback_loop.py                    # Core feedback loop logic

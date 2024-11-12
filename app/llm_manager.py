@@ -1,25 +1,36 @@
-# app/llm_manager.py
-from llms.llama_31_nemotron_70b.generate import generate_code as llama_generate
-from llms.deepseek_coder_v2.generate import generate_code as deepseek_generate
-from llms.qwen2_5_72b_instruct.generate import generate_code as qwen_generate
-from llms.dafny_generator.dafny_generate import generate_dafny_code
+# llm_manager.py
+import logging
+from pathlib import Path
+from generator import azure_openai_generate_code
+from LLMs.llama_31_nemotron_70b.generate import generate_code as llama_generate_code
+from LLMs.deepseek_coder_v2.generate import generate_code as deepseek_generate_code
+from LLMs.qwen2_5_72b_instruct.generate import generate_code as qwen_generate_code
 
-class LLMManager:
-    def __init__(self):
-        self.llms = {
-            "Llama-3.1-Nemotron-70B": llama_generate,
-            "DeepSeek-Coder-V2": deepseek_generate,
-            "Qwen2.5-72B": qwen_generate
-        }
+# Set up logging
+log_file_path = Path(__file__).parent.parent / 'logs' / 'logs.txt'
+logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
-    def generate_initial(self, code, language):
-        results = {}
-        for name, generate_fn in self.llms.items():
-            debugged_code = generate_fn(code)
-            dafny_code = generate_dafny_code(debugged_code)
-            results[name] = {
-                "code": debugged_code,
-                "language": language,
-                "dafny_code": dafny_code
-            }
-        return results
+# Define a dictionary to map model names to their generate functions
+llm_generators = {
+    'llama_31_nemotron_70b': llama_generate_code,
+    'deepseek_coder_v2': deepseek_generate_code,
+    'qwen2_5_72b_instruct': qwen_generate_code,
+    'azure_openai_gpt4': azure_openai_generate_code  # New option for Azure's GPT-4 model
+}
+
+def generate_code_with_llms(code_input, model_name):
+    try:
+        if model_name == 'azure_openai_gpt4':
+            generated_code = azure_openai_generate_code(code_input)
+        else:
+            generate_function = llm_generators[model_name]
+            generated_code = generate_function(code_input)
+        logger.info(f"Successfully generated code with {model_name}")
+        return generated_code
+    except KeyError:
+        logger.error(f"Unsupported LLM model: {model_name}")
+        raise
+    except Exception as e:
+        logger.error(f"Error generating code with {model_name}: {e}")
+        raise

@@ -1,0 +1,5 @@
+2024-11-13 11:35:27,895 - INFO - Messages prepared successfully.
+2024-11-13 11:35:28,202 - ERROR - Error in Hugging Face API call: 'dict' object has no attribute 'delta'
+2024-11-13 11:37:02,966 - INFO - Messages prepared successfully.
+2024-11-13 11:37:09,356 - INFO - Completed Hugging Face API call with response.
+2024-11-13 11:37:09,357 - INFO - Script execution completed.

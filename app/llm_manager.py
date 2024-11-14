@@ -70,7 +70,7 @@ def generate_feedback_code(code_input, chosen_mode):
             feedback_generate_function = llm_feedback_generators[model_name]
             feedback_generated_code = feedback_generate_function(code_input)
             if feedback_generated_code:
-                logger.info(f"Successfully generated code with {model_name} in {mode}")
+                logger.info(f"Successfully generated code with {model_name} in {chosen_mode}")
                 return feedback_generated_code
             else:
                 logger.warning(f"{model_name} in {chosen_mode} generated an empty or non-functional solution.")

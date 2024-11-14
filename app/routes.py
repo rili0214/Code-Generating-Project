@@ -7,10 +7,14 @@ feedback_manager = FeedbackManager()
 
 def initialize_routes(app):
     @app.route("/generate", methods=["POST"])
-    def generate_code():
+    def generate_ini_code():
         data = request.json
-        initial_results = llm_manager.generate_initial(data["code"], data["language"])
-        return jsonify(initial_results)
+        language = data["language"]
+        chosen_mode, initial_results = llm_manager.generate_initial_code(data["code"], data["mode"])
+        return chosen_mode, jsonify(initial_results)
+    
+    def generate_fdbk_code(chosen_mode):
+
     
     @app.route("/feedback", methods=["POST"])
     def feedback_loop():

@@ -34,9 +34,9 @@ llm_feedback_generators = {
     'phi-3-mini-128k-inst': phi_feedback_call
 }
 
-def generate_code_with_llms(code_input, mode="mode_1"):
+def generate_initial_code(code_input, mode="mode_1"):
     """
-    Generates code based on the selected mode.
+    Generates initial code based on the selected mode.
     Mode 1: Fast and straightforward using Qwen and Llama.
     Mode 2: Slower but more functional using Phi and Qwen.
     """
@@ -46,20 +46,36 @@ def generate_code_with_llms(code_input, mode="mode_1"):
 
     for model_name in modes[mode]:
         try:
-            generate_function = llm_generators[model_name]
-            generated_code = generate_function(code_input)
-            if generated_code:  # Check for a non-empty result
+            initial_generate_function = llm_initial_generators[model_name]
+            initial_generated_code = initial_generate_function(code_input)
+            if initial_generated_code:
                 logger.info(f"Successfully generated code with {model_name} in {mode}")
-                return generated_code
+                return mode, initial_generated_code
             else:
                 logger.warning(f"{model_name} in {mode} generated an empty or non-functional solution.")
         except Exception as e:
             logger.error(f"Error generating code with {model_name} in {mode}: {e}")
 
-    # Fallback to OpenAI only if mode_2 fails to produce a functional solution
-    if mode == "mode_2":
-        logger.info("Mode 2: Switching to OpenAI Azure GPT-4 as fallback for a robust solution.")
-        return openai_generate_code(code_input)
+    logger.error("All models in the selected mode failed to generate code.")
+    raise RuntimeError("Failed to generate code with the selected models in mode.")
+
+def generate_feedback_code(code_input, chosen_mode):
+    """
+    Generates feedback code based on the selected mode and the results from checking phase.
+    Mode 1: Fast and straightforward using Qwen and Llama.
+    Mode 2: Slower but more functional using Phi and Qwen.
+    """
+    for model_name in modes[chosen_mode]:
+        try:
+            feedback_generate_function = llm_feedback_generators[model_name]
+            feedback_generated_code = feedback_generate_function(code_input)
+            if feedback_generated_code:
+                logger.info(f"Successfully generated code with {model_name} in {mode}")
+                return feedback_generated_code
+            else:
+                logger.warning(f"{model_name} in {chosen_mode} generated an empty or non-functional solution.")
+        except Exception as e:
+            logger.error(f"Error generating code with {model_name} in {chosen_mode}: {e}")
 
     logger.error("All models in the selected mode failed to generate code.")
     raise RuntimeError("Failed to generate code with the selected models in mode.")

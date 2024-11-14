@@ -2,23 +2,17 @@ import json
 import logging
 from huggingface_hub import InferenceClient
 from pathlib import Path
-from LLMs.base_llm import API_TOKEN_llama, load_json_data, prepare_messages, call_huggingface_chat, save_response_to_json
+from LLMs.base_llm import API_TOKEN_phi, load_json_data, prepare_messages, call_huggingface_chat, save_response_to_json
+from logs import setup_logger
 
 json_file_path = Path(__file__).parent.parent.parent / 'results' / 'intermediate' / 'phi_analysis.json'
 
-# Logging Configuration
-log_file_path = Path(__file__).parent.parent / 'logs' / 'app.log'
-logging.basicConfig(
-    filename=log_file_path,
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+logger = setup_logger()
 
 # Configuration Constants
-client = InferenceClient(api_key=API_TOKEN_llama)
+client = InferenceClient(api_key=API_TOKEN_phi)
 
-model = "meta-llama/Llama-3.2-3B-Instruct"
+model = "microsoft/Phi-3-mini-128k-instruct"
 
 def initial_call(code_):
     #Initial call without JSON data.
@@ -51,6 +45,6 @@ def feedback_call(code_, json_path):
 if __name__ == "__main__":
     initial_call("def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\nif nums[i] + nums[j] == target:\n                return [j, i]\n    return []")
     
-    feedback_call("def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            if nums[i] + nums[j] == target:\n                return [j, i]\n    return []", json_file_path)
+    #feedback_call("def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            if nums[i] + nums[j] == target:\n                return [j, i]\n    return []", json_file_path)
 
     logger.info("Phi execution completed.")

@@ -2,8 +2,9 @@
 import logging
 from pathlib import Path
 from LLMs.azure_openai.openai_generate import azure_openai_generate_code as openai_generate_code
-from LLMs.llama.generate import generate_code as llama_generate_code
-from LLMs.qwen.generate import generate_code as qwen_generate_code
+from LLMs.llama.llama_generate import generate_code as llama_generate_code
+from LLMs.qwen.qwen_generate import generate_code as qwen_generate_code
+from LLMs.phi.phi_generate import generate_code as phi_generate_code
 from LLMs.dafny_generator.dafny_generate import generate_code as dafny_generate_code
 
 # Set up logging
@@ -11,34 +12,57 @@ log_file_path = Path(__file__).parent.parent / 'logs' / 'logs.txt'
 logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+# Mode-specific LLM sequences
+modes = {
+    "mode_1": ["qwen2.5-coder-32b-inst", "llama_3_1_70b_inst"],  # Fast, straightforward
+    "mode_2": ["phi", "qwen2.5-coder-32b-inst"],  # Slower, more functional
+}
+
 # Dictionary to map model names to their generate functions
 llm_generators = {
     'llama_3_1_70b_inst': llama_generate_code,
     'qwen2.5-coder-32b-inst': qwen_generate_code,
-    'openai_gpt4o_mini': openai_generate_code
+    'phi': phi_generate_code,
 }
 
-def generate_code_with_llms(code_input, model_name):
-    try:
-        if model_name == 'azure_openai_gpt4':
-            generated_code = azure_openai_generate_code(code_input)
-        else:
+def generate_code_with_llms(code_input, mode="mode_1"):
+    """
+    Generates code based on the selected mode.
+    Mode 1: Fast and straightforward using Qwen and Llama.
+    Mode 2: Slower but more functional using Phi and Qwen.
+    """
+    if mode not in modes:
+        logger.error(f"Invalid mode selected: {mode}. Choose either 'mode_1' or 'mode_2'.")
+        raise ValueError("Invalid mode. Choose either 'mode_1' or 'mode_2'.")
+
+    for model_name in modes[mode]:
+        try:
             generate_function = llm_generators[model_name]
             generated_code = generate_function(code_input)
-        logger.info(f"Successfully generated code with {model_name}")
-        return generated_code
-    except KeyError:
-        logger.error(f"Unsupported LLM model: {model_name}")
-        raise
-    except Exception as e:
-        logger.error(f"Error generating code with {model_name}: {e}")
-        raise
+            if generated_code:  # Check for a non-empty result
+                logger.info(f"Successfully generated code with {model_name} in {mode}")
+                return generated_code
+            else:
+                logger.warning(f"{model_name} in {mode} generated an empty or non-functional solution.")
+        except Exception as e:
+            logger.error(f"Error generating code with {model_name} in {mode}: {e}")
+
+    # Fallback to OpenAI only if mode_2 fails to produce a functional solution
+    if mode == "mode_2":
+        logger.info("Mode 2: Switching to OpenAI Azure GPT-4 as fallback for a robust solution.")
+        return openai_generate_code(code_input)
+
+    logger.error("All models in the selected mode failed to generate code.")
+    raise RuntimeError("Failed to generate code with the selected models in mode.")
 
 def generate_dafny_with_LLM(code_input):
+    """
+    Specifically generates Dafny code using OpenAI, as per requirement.
+    """
     try:
-        dafny_generate_code(code_input)
-        logger.info(f"Successfully generated Dafny")
+        generated_code = dafny_generate_code(code_input)
+        logger.info("Successfully generated Dafny code using OpenAI.")
         return generated_code
     except Exception as e:
-        logger.error(f"Error generating Dafny: {e}")
+        logger.error(f"Error generating Dafny code: {e}")
         raise

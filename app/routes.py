@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from .llm_manager import LLMManager
-from .feedback_manager import FeedbackManager
+from .feedback_manager import FeedbackLoop
 
 llm_manager = LLMManager()
 feedback_manager = FeedbackManager()
@@ -13,11 +13,9 @@ def initialize_routes(app):
         chosen_mode, initial_results = llm_manager.generate_initial_code(data["code"], data["mode"])
         return chosen_mode, jsonify(initial_results)
     
-    def generate_fdbk_code(chosen_mode):
-
-    
     @app.route("/feedback", methods=["POST"])
-    def feedback_loop():
+    def feedback_loop(chosen_mode):
         data = request.json
-        feedback_results = feedback_manager.run_feedback(data["initial_results"], data["analysis_results"])
+        fdbk = FeedbackLoop(llm_manager, chosen_mode)
+        feedback_results = fdbk.run_feedback(data["initial_results"], data["analysis_results"])
         return jsonify(feedback_results)

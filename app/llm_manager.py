@@ -2,7 +2,7 @@
 import logging
 import threading
 from pathlib import Path
-from LLMs.azure_openai.openai_generate import azure_openai_generate_code as openai_generate_code
+#from LLMs.azure_openai.openai_generate import azure_openai_generate_code as openai_generate_code
 from LLMs.llama.llama_generate import initial_call as llama_initial_call
 from LLMs.llama.llama_generate import feedback_call as llama_feedback_call
 from LLMs.qwen.qwen_generate import initial_call as qwen_initial_call

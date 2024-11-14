@@ -1,7 +1,7 @@
-
 class FeedbackLoop:
-    def __init__(self, llm_manager, max_loops=3):
+    def __init__(self, llm_manager, chosen_mode, max_loops=3):
         self.llm_manager = llm_manager
+        self.mode = chosen_mode
         self.max_loops = max_loops
 
     def run_feedback(self, initial_results, analysis_results):

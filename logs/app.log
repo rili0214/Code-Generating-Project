@@ -1,5 +1,62 @@
-2024-11-13 11:35:27,895 - INFO - Messages prepared successfully.
-2024-11-13 11:35:28,202 - ERROR - Error in Hugging Face API call: 'dict' object has no attribute 'delta'
-2024-11-13 11:37:02,966 - INFO - Messages prepared successfully.
-2024-11-13 11:37:09,356 - INFO - Completed Hugging Face API call with response.
-2024-11-13 11:37:09,357 - INFO - Script execution completed.
+2024-11-13 17:07:46,757 - INFO - Messages prepared successfully.
+2024-11-13 17:07:46,989 - INFO - Completed Hugging Face API call with response.
+2024-11-13 17:07:47,000 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
+2024-11-13 17:07:47,005 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/qwen_analysis.json
+2024-11-13 17:07:47,005 - INFO - Messages prepared successfully.
+2024-11-13 17:07:47,064 - INFO - Completed Hugging Face API call with response.
+2024-11-13 17:07:47,069 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
+2024-11-13 17:07:47,069 - INFO - Qwen execution completed.
+2024-11-13 17:15:41,923 - INFO - Messages prepared successfully.
+2024-11-13 17:15:42,088 - ERROR - Error in Hugging Face API call: (Request ID: JeoY0XEsJqEx1_iBHAJbc)
+
+Bad request:
+Model requires a Pro subscription; check out hf.co/pricing to learn more. Make sure to include your HF token in your query.
+2024-11-13 17:18:58,661 - INFO - Messages prepared successfully.
+2024-11-13 17:18:58,813 - ERROR - Error in Hugging Face API call: (Request ID: NYkQNKcOvbWIp7qYkI15E)
+
+Bad request:
+Model requires a Pro subscription; check out hf.co/pricing to learn more. Make sure to include your HF token in your query.
+2024-11-13 17:25:22,065 - INFO - Messages prepared successfully.
+2024-11-13 17:25:22,176 - ERROR - Error in Hugging Face API call: (Request ID: gr7nAFvXuXYfu_gp759YV)
+
+Bad request:
+Model requires a Pro subscription; check out hf.co/pricing to learn more. Make sure to include your HF token in your query.
+2024-11-13 17:25:49,167 - INFO - Messages prepared successfully.
+2024-11-13 17:25:49,355 - ERROR - Error in Hugging Face API call: (Request ID: _V66fnrDt8JwQMwJ0cVV9)
+
+Bad request:
+Model requires a Pro subscription; check out hf.co/pricing to learn more. Make sure to include your HF token in your query.
+2024-11-13 17:36:17,619 - INFO - Messages prepared successfully.
+2024-11-13 17:38:55,199 - INFO - Completed Hugging Face API call with response.
+2024-11-13 17:38:55,210 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
+2024-11-13 17:38:55,222 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/llama_analysis.json
+2024-11-13 17:38:55,222 - INFO - Messages prepared successfully.
+2024-11-13 17:38:55,375 - INFO - Completed Hugging Face API call with response.
+2024-11-13 17:38:55,390 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_feedback_results.json
+2024-11-13 17:38:55,391 - INFO - LLaMa execution completed.
+2024-11-13 17:57:08,782 - INFO - Messages prepared successfully.
+2024-11-13 17:57:09,017 - INFO - Completed Hugging Face API call with response.
+2024-11-13 17:57:09,028 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
+2024-11-13 17:57:09,038 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/llama_analysis.json
+2024-11-13 17:57:09,038 - INFO - Messages prepared successfully.
+2024-11-13 17:57:09,068 - INFO - Completed Hugging Face API call with response.
+2024-11-13 17:57:09,084 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_feedback_results.json
+2024-11-13 17:57:09,084 - INFO - LLaMa execution completed.
+2024-11-13 17:57:17,068 - INFO - Messages prepared successfully.
+2024-11-13 17:57:17,172 - INFO - Completed Hugging Face API call with response.
+2024-11-13 17:57:17,192 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
+2024-11-13 17:57:17,198 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/llama_analysis.json
+2024-11-13 17:57:17,198 - INFO - Messages prepared successfully.
+2024-11-13 17:57:17,224 - INFO - Completed Hugging Face API call with response.
+2024-11-13 17:57:17,234 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_feedback_results.json
+2024-11-13 17:57:17,234 - INFO - LLaMa execution completed.
+2024-11-13 17:57:48,240 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/llama_analysis.json
+2024-11-13 17:57:48,241 - INFO - Messages prepared successfully.
+2024-11-13 17:57:48,345 - INFO - Completed Hugging Face API call with response.
+2024-11-13 17:57:48,358 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_feedback_results.json
+2024-11-13 17:57:48,359 - INFO - LLaMa execution completed.
+2024-11-13 18:34:28,054 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/llama_analysis.json
+2024-11-13 18:34:28,056 - INFO - Messages prepared successfully.
+2024-11-13 18:37:09,457 - INFO - Completed Hugging Face API call with response.
+2024-11-13 18:37:09,514 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_feedback_results.json
+2024-11-13 18:37:09,515 - INFO - LLaMa execution completed.

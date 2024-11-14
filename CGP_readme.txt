@@ -12,9 +12,9 @@ The backend server will be deployed on an Azure VM.
 │   └── utils.py                            # Utility functions for formatting, logging, etc.
 ├── LLMs/                                   # Directory for LLM handling
 │   ├── base_llm.py                         # Base class for LLM interactions
-│   ├── llama/                              # Subdirectory for Llama-3.1-70B-Instruct
-│   │   ├── llama_generate.py               # Specific generation logic
-│   │   └── llama_format_output.py          # Output formatting
+│   ├── phi/                                # Subdirectory for Llama-3.1-70B-Instruct
+│   │   ├── phi_generate.py                 # Specific generation logic
+│   │   └── phi_format_output.py            # Output formatting
 │   ├── azure_openai/                       # Subdirectory for OpenAI-GPT4o-mini
 │   │   ├── openai_generate.py              # Specific generation logic
 │   │   └── openai_format_output.py         # Output formatting
@@ -27,12 +27,23 @@ The backend server will be deployed on an Azure VM.
 │   ├── __init__.py
 │   └── feedback_loop.py                    # Core feedback loop logic
 ├── results/                                # Directory to save results
-│   ├── initial_results.json                # Initial outputs from LLMs
-│   ├── feedback_results.json               # Feedback results for debugging
 │   └── intermediate/                       # Directory for intermediate results from each feedback loop iteration
+│   │   ├── __init__.py                     # Just empty file
+│   │   ├── phi_analysis.json               # Analysis report on Phi's code from checking phase
+│   │   ├── qwen_analysis.json              # Analysis report on Qwen's code from checking phase
+│   └── phi_results
+│   │   ├── phi_initial_results.json        # Initial outputs from LLMs
+│   │   ├── phi_feedback_results.json       # Feedback results for debugging
+│   └── phi_results
+│   │   ├── phi_initial_results.json        # Initial outputs from LLMs
+│   │   ├── phi_feedback_results.json       # Feedback results for debugging
+│   └── phi_results
+│   │   ├── phi_initial_results.json        # Initial outputs from LLMs
+│   │   ├── phi_feedback_results.json       # Feedback results for debugging
 ├── logs/                                   # Directory for logging and error handling
 │   ├── __init__.py
-│   └── logs.txt                            # Log file
+│   └── logs.txt                            # Log file for general execution
+│   └── app.logging                         # Log file for LLMs execution
 ├── tests/                                  # Directory for tests
 │   ├── __init__.py
 │   └── test_cases.py                       # Unit and integration tests

@@ -1,12 +1,10 @@
-"""
-
 import json
 import logging
 from huggingface_hub import InferenceClient
 from pathlib import Path
 from LLMs.base_llm import API_TOKEN_llama, load_json_data, prepare_messages, call_huggingface_chat, save_response_to_json
 
-json_file_path = Path(__file__).parent.parent.parent / 'results' / 'intermediate' / 'llama_analysis.json'
+json_file_path = Path(__file__).parent.parent.parent / 'results' / 'intermediate' / 'phi_analysis.json'
 
 # Logging Configuration
 log_file_path = Path(__file__).parent.parent / 'logs' / 'app.log'
@@ -31,7 +29,7 @@ def initial_call(code_):
     messages = prepare_messages(system_prompt, user_prompt, code_snippet=code_input)
     response = call_huggingface_chat(model, messages)
 
-    save_response_to_json(response, "llama", "llama_initial")
+    save_response_to_json(response, "phi", "phi_initial")
 
 def feedback_call(code_, json_path):
     #Feedback call that includes additional JSON data.
@@ -48,35 +46,11 @@ def feedback_call(code_, json_path):
     print(messages)
     response = call_huggingface_chat(model, messages)
 
-    save_response_to_json(response, "llama", "llama_feedback")
+    save_response_to_json(response, "phi", "phi_feedback")
 
 if __name__ == "__main__":
-    #initial_call("def add(a, b): return a + b")
+    initial_call("def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\nif nums[i] + nums[j] == target:\n                return [j, i]\n    return []")
     
-    feedback_call("def binary_search(arr, target):\n left = 0\n right = len(arr) - 1\n\n while left < right:\n mid = (left + right) <<1\n if arr[mid] == target:\n return mid\n elif arr[mid] < target:\n left = mid + 1\n else:\n right = mid - 1\n\n return -1", json_file_path)
+    #feedback_call("def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            if nums[i] + nums[j] == target:\n                return [j, i]\n    return []", json_file_path)
 
-    logger.info("LLaMa execution completed.")
-
-
-"""
-from huggingface_hub import InferenceClient
-
-client = InferenceClient(api_key="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")
-
-messages = [
-	{
-		"role": "user",
-		"content": "You are a code debugging assistant. Just give the debugged code. No need to explain your code! Here is the code: def sum_of_squares(n):\n    total = 0\n    for i in range(1, n+1):\n        total += i ** 2\n    return total"
-	}
-]
-
-stream = client.chat.completions.create(
-    model="microsoft/Phi-3-mini-128k-instruct", 
-    #model="meta-llama/Llama-3.2-3B-Instruct",
-	messages=messages, 
-	max_tokens=500,
-	stream=True
-)
-
-for chunk in stream:
-    print(chunk.choices[0].delta.content, end="")
+    logger.info("Phi execution completed.")

@@ -4,7 +4,7 @@ from huggingface_hub import InferenceClient
 from pathlib import Path
 from LLMs.base_llm import API_TOKEN_llama, load_json_data, prepare_messages, call_huggingface_chat, save_response_to_json
 
-json_file_path = Path(__file__).parent.parent.parent / 'results' / 'intermediate' / 'phi_analysis.json'
+json_file_path = Path(__file__).parent.parent.parent / 'results' / 'intermediate' / 'llama_analysis.json'
 
 # Logging Configuration
 log_file_path = Path(__file__).parent.parent / 'logs' / 'app.log'
@@ -29,7 +29,7 @@ def initial_call(code_):
     messages = prepare_messages(system_prompt, user_prompt, code_snippet=code_input)
     response = call_huggingface_chat(model, messages)
 
-    save_response_to_json(response, "phi", "phi_initial")
+    save_response_to_json(response, "llama", "llama_initial")
 
 def feedback_call(code_, json_path):
     #Feedback call that includes additional JSON data.
@@ -46,7 +46,7 @@ def feedback_call(code_, json_path):
     print(messages)
     response = call_huggingface_chat(model, messages)
 
-    save_response_to_json(response, "phi", "phi_feedback")
+    save_response_to_json(response, "llama", "llama_feedback")
 
 if __name__ == "__main__":
     initial_call("def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\nif nums[i] + nums[j] == target:\n                return [j, i]\n    return []")

@@ -50,7 +50,8 @@ def call_huggingface_chat(model_name, messages):
         stream = client.chat.completions.create(
             model=model_name,
             messages=messages,
-            max_tokens=10000, 
+            #max_tokens=10000,
+            max_tokens=3000, 
             stream=True
         )
 

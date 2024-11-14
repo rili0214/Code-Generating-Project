@@ -1,1 +1,14 @@
 
+2024-11-13 23:48:12,583 - INFO - Messages prepared successfully.
+2024-11-13 23:48:12,812 - ERROR - Error in Hugging Face API call: Input validation error: `inputs` tokens + `max_new_tokens` must be <= 4096. Given: 130 `inputs` tokens and 10000 `max_new_tokens`
+2024-11-13 23:49:44,922 - INFO - Messages prepared successfully.
+2024-11-13 23:49:45,106 - ERROR - Error in Hugging Face API call: Input validation error: `inputs` tokens + `max_new_tokens` must be <= 4096. Given: 130 `inputs` tokens and 4096 `max_new_tokens`
+2024-11-13 23:50:10,927 - INFO - Messages prepared successfully.
+2024-11-13 23:50:12,529 - INFO - Completed Hugging Face API call with response.
+2024-11-13 23:50:12,546 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/phi_results/phi_initial_results.json
+2024-11-13 23:50:12,546 - INFO - Phi execution completed.
+2024-11-13 23:57:40,589 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/phi_analysis.json
+2024-11-13 23:57:40,589 - INFO - Messages prepared successfully.
+2024-11-13 23:57:44,560 - INFO - Completed Hugging Face API call with response.
+2024-11-13 23:57:44,567 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/phi_results/phi_feedback_results.json
+2024-11-13 23:57:44,567 - INFO - Phi execution completed.

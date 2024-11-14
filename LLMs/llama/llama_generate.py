@@ -3,17 +3,12 @@ import logging
 from huggingface_hub import InferenceClient
 from pathlib import Path
 from LLMs.base_llm import API_TOKEN_llama, load_json_data, prepare_messages, call_huggingface_chat, save_response_to_json
+from logs import setup_logger
 
 json_file_path = Path(__file__).parent.parent.parent / 'results' / 'intermediate' / 'llama_analysis.json'
 
 # Logging Configuration
-log_file_path = Path(__file__).parent.parent / 'logs' / 'app.log'
-logging.basicConfig(
-    filename=log_file_path,
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+logger = setup_logger()
 
 # Configuration Constants
 client = InferenceClient(api_key=API_TOKEN_llama)

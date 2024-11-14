@@ -1,9 +1,10 @@
 # generator.py
 import logging
 import openai
+from logs import setup_logger
 
-# Set up logging
-logger = logging.getLogger(__name__)
+# Logging Configuration
+logger = setup_logger()
 
 # Azure OpenAI API setup
 AZURE_OPENAI_API_KEY = "your_azure_openai_api_key"

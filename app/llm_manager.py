@@ -1,28 +1,37 @@
 # llm_manager.py
 import logging
+import threading
 from pathlib import Path
 from LLMs.azure_openai.openai_generate import azure_openai_generate_code as openai_generate_code
-from LLMs.llama.llama_generate import generate_code as llama_generate_code
-from LLMs.qwen.qwen_generate import generate_code as qwen_generate_code
-from LLMs.phi.phi_generate import generate_code as phi_generate_code
+from LLMs.llama.llama_generate import initial_call as llama_initial_call
+from LLMs.llama.llama_generate import feedback_call as llama_feedback_call
+from LLMs.qwen.qwen_generate import initial_call as qwen_initial_call
+from LLMs.qwen.qwen_generate import feedback_call as qwen_feedback_call
+from LLMs.phi.phi_generate import initial_call as phi_initial_call
+from LLMs.phi.phi_generate import feedback_call as phi_feedback_call
 from LLMs.dafny_generator.dafny_generate import generate_code as dafny_generate_code
+from logs import setup_global_logger
 
 # Set up logging
-log_file_path = Path(__file__).parent.parent / 'logs' / 'logs.txt'
-logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+logger = setup_global_logger()
 
 # Mode-specific LLM sequences
 modes = {
-    "mode_1": ["qwen2.5-coder-32b-inst", "llama_3_1_70b_inst"],  # Fast, straightforward
-    "mode_2": ["phi", "qwen2.5-coder-32b-inst"],  # Slower, more functional
+    "mode_1": ["qwen2.5-coder-32b-inst", "llama-3.2-3b-inst"],      # Fast, straightforward
+    "mode_2": ["qwen2.5-coder-32b-inst", "phi-3-mini-128k-inst"],   # Slower, more functional
 }
 
 # Dictionary to map model names to their generate functions
-llm_generators = {
-    'llama_3_1_70b_inst': llama_generate_code,
-    'qwen2.5-coder-32b-inst': qwen_generate_code,
-    'phi': phi_generate_code,
+llm_initial_generators = {
+    'llama-3.2-3b-inst': llama_initial_call,
+    'qwen2.5-coder-32b-inst': qwen_initial_call,
+    'phi-3-mini-128k-inst': phi_initial_call
+}
+
+llm_feedback_generators = {
+    'llama-3.2-3b-inst': llama_feedback_call,
+    'qwen2.5-coder-32b-inst': qwen_feedback_call,
+    'phi-3-mini-128k-inst': phi_feedback_call
 }
 
 def generate_code_with_llms(code_input, mode="mode_1"):

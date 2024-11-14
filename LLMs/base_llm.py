@@ -2,15 +2,10 @@ import json
 import logging
 from huggingface_hub import InferenceClient
 from pathlib import Path
+from logs import setup_logger
 
 # Logging Configuration
-log_file_path = Path(__file__).parent.parent / 'logs' / 'app.log'
-logging.basicConfig(
-    filename=log_file_path,
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+logger = setup_logger()
 
 # Configuration Constants
 API_TOKEN_qwen = "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" 

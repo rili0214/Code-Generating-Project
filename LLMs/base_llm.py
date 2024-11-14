@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 # Configuration Constants
 API_TOKEN_qwen = "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" 
 API_TOKEN_llama = "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"
-API_TOKEN_phi = "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"
+API_TOKEN_phi = "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"
 client = InferenceClient(api_key=API_TOKEN_qwen)
 
 def load_json_data(json_path):

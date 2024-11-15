@@ -10,7 +10,7 @@ def setup_logger():
     )
     return logging.getLogger(__name__)
 
-def setou_global_loger():
+def setup_global_logger():
     log_file_path = Path(__file__).parent.parent / 'logs' / 'logs.txt'
     logging.basicConfig(
         filename=log_file_path, 

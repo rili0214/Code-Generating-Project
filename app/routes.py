@@ -1,21 +1,33 @@
-from flask import request, jsonify
-from .llm_manager import LLMManager
-from .feedback_manager import FeedbackLoop
+from flask import Flask, request, jsonify
+from app.llm_manager import LLMManager
+from feedback.feedback_loop import FeedbackLoop
 
+app = Flask(__name__)
 llm_manager = LLMManager()
-feedback_manager = FeedbackManager()
+feedback_loop = FeedbackLoop(llm_manager)
 
-def initialize_routes(app):
-    @app.route("/generate", methods=["POST"])
-    def generate_ini_code():
-        data = request.json
-        language = data["language"]
-        chosen_mode, initial_results = llm_manager.generate_initial_code(data["code"], data["mode"])
-        return chosen_mode, jsonify(initial_results)
-    
-    @app.route("/feedback", methods=["POST"])
-    def feedback_loop(chosen_mode):
-        data = request.json
-        fdbk = FeedbackLoop(llm_manager, chosen_mode)
-        feedback_results = fdbk.run_feedback(data["initial_results"], data["analysis_results"])
-        return jsonify(feedback_results)
+@app.route('/generate_initial_output', methods=['POST'])
+def generate_initial_output():
+    data = request.json
+    mode = data.get("mode")
+    code = data.get("buggy_code")
+    language = data.get("language")
+
+    # Generate initial output with the selected LLMs
+    initial_output = llm_manager.generate_initial_output(mode, code, language)
+
+    # Format response for the frontend
+    response = {"initial_output": initial_output}
+    return jsonify(response)
+
+@app.route('/run_feedback_loop', methods=['POST'])
+def run_feedback_loop():
+    data = request.json
+    mode = data.get("mode")
+    initial_results = data.get("initial_results")
+
+    # Run the feedback loop
+    final_results = feedback_loop.run_feedback(initial_results)
+
+    # Return the final output with explanations
+    return jsonify({"final_output": final_results})

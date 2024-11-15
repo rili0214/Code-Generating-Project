@@ -47,6 +47,6 @@ if __name__ == "__main__":
 
     initial_call("def add(a, b): return a + b")
     
-    feedback_call("def add(a, b): return a + b", json_file_path)
+    feedback_call("def add(a, b): return a + b")
 
     logger.info("Qwen execution completed.")

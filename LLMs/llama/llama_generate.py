@@ -47,6 +47,6 @@ if __name__ == "__main__":
 
     initial_call("def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\nif nums[i] + nums[j] == target:\n                return [j, i]\n    return []")
     
-    feedback_call("def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            if nums[i] + nums[j] == target:\n                return [j, i]\n    return []", json_file_path)
+    feedback_call("def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            if nums[i] + nums[j] == target:\n                return [j, i]\n    return []")
 
     logger.info("LLaMa execution completed.")

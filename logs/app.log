@@ -3,3 +3,10 @@
 2024-11-14 00:23:36,030 - INFO - Completed Hugging Face API call with response.
 2024-11-14 00:23:36,041 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/phi_results/phi_initial_results.json
 2024-11-14 00:23:36,042 - INFO - Phi execution completed.
+2024-11-14 07:36:39,065 - INFO - Phi execution started.
+2024-11-14 07:37:08,369 - INFO - Phi execution started.
+2024-11-14 07:37:08,371 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/phi_analysis.json
+2024-11-14 07:37:08,372 - INFO - Messages prepared successfully.
+2024-11-14 07:39:53,733 - INFO - Completed Hugging Face API call with response.
+2024-11-14 07:39:53,742 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/phi_results/phi_feedback_results.json
+2024-11-14 07:39:53,742 - INFO - Phi execution completed.

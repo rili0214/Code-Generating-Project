@@ -1,7 +1,7 @@
 import json
 from LLMs.qwen.qwen_generate import initial_call as qwen_initial_call, feedback_call as qwen_feedback_call
-from LLMs.llama.llama_generate import initial_call as llama_initial_call, feedback_call as llama_feedback_call
-from LLMs.phi.phi_generate import initial_call as phi_initial_call, feedback_call as phi_feedback_call
+from LLMs.llama.llama_generate import initial_call as llama_initial_call
+from LLMs.phi.phi_generate import initial_call as phi_initial_call
 from LLMs.dafny_generator.dafny_generate import generate_code as dafny_generate_code
 from logs import setup_global_logger
 
@@ -21,15 +21,15 @@ llm_initial_generators = {
     'phi-3-mini-128k-inst': phi_initial_call,
 }
 
-llm_feedback_generators = {
-    'llama-3.2-3b-inst': llama_feedback_call,
-    'qwen2.5-coder-32b-inst': qwen_feedback_call,
-    'phi-3-mini-128k-inst': phi_feedback_call,
-}
-
 dafny_lang = ["C#", "Go", "Python", "Java", "JavaScript"]
 
 class LLMManager:
+    def __init__(self):
+        self.modes = modes
+        self.llm_initial_generators = llm_initial_generators
+        self.llm_feedback_generators = llm_feedback_generators
+        self.dafny_lang = dafny_lang
+
     def save_intermediate_results(model_name, analysis_result, phase):
         filename = f"results/intermediate/{model_name}_{phase}_analysis.json"
         with open(filename, 'w') as f:
@@ -42,7 +42,7 @@ class LLMManager:
 
         for model_name in modes[mode]:
             try:
-                initial_generate_function = llm_initial_generators[model_name]
+                initial_generate_function = self.llm_initial_generators[model_name]
                 initial_generated_code = initial_generate_function(code_input)
                 if initial_generated_code:
                     logger.info(f"Code generated with {model_name} in {mode}")
@@ -56,7 +56,7 @@ class LLMManager:
     def generate_feedback_code(self, code_input, chosen_mode, better_model):
         for model_name in modes[chosen_mode]:
             try:
-                feedback_generate_function = llm_feedback_generators[model_name]
+                feedback_generate_function = self.llm_feedback_generators[model_name]
                 feedback_generated_code = feedback_generate_function(code_input, better_model)
                 if feedback_generated_code:
                     logger.info(f"Feedback generated with {model_name} in {chosen_mode}")
@@ -67,8 +67,8 @@ class LLMManager:
 
         raise RuntimeError("Feedback generation failed with selected models.")
 
-    def generate_dafny_code(language, code_input):
-        if language in dafny_lang:
+    def generate_dafny_code(self, language, code_input):
+        if language in self.dafny_lang:
             try:
                 generated_code = dafny_generate_code(code_input)
                 logger.info("Successfully generated Dafny code using OpenAI.")

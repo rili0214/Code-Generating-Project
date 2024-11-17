@@ -18,7 +18,7 @@ def generate_output():
     llm_manager.generate_initial_output(mode, code, language)
 
     # Run the feedback loop
-    feedback_loop.run_feedback(initial_results)
+    final_results = feedback_loop.run_feedback_LLM()
 
     # Return the final output with explanations
     return jsonify({"final_output": final_results})

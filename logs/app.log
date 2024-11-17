@@ -10,3 +10,10 @@
 2024-11-14 07:39:53,733 - INFO - Completed Hugging Face API call with response.
 2024-11-14 07:39:53,742 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/phi_results/phi_feedback_results.json
 2024-11-14 07:39:53,742 - INFO - Phi execution completed.
+2024-11-15 17:27:24,072 - INFO - Messages prepared successfully.
+2024-11-15 17:27:24,073 - INFO - LLaMa execution started.
+2024-11-15 17:27:25,863 - INFO - Completed Hugging Face API call with response.
+2024-11-15 17:27:25,901 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
+2024-11-15 17:27:25,915 - INFO - LLaMa execution completed.
+2024-11-15 17:32:43,274 - INFO - Messages prepared successfully.
+2024-11-15 17:32:43,274 - INFO - Phi execution started.

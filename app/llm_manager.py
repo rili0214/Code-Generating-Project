@@ -27,6 +27,8 @@ llm_feedback_generators = {
     'phi-3-mini-128k-inst': phi_feedback_call,
 }
 
+dafny_lang = ["C#", "Go", "Python", "Java", "JavaScript"]
+
 class LLMManager:
     def generate_initial_code(self, code_input, mode="mode_1"):
         if mode not in modes:
@@ -58,14 +60,14 @@ class LLMManager:
 
         raise RuntimeError("Feedback generation failed with selected models.")
 
-    def generate_dafny_code(code_input):
-        """
-        Specifically generates Dafny code using OpenAI, as per requirement.
-        """
-        try:
-            generated_code = dafny_generate_code(code_input)
-            logger.info("Successfully generated Dafny code using OpenAI.")
-            return generated_code
-        except Exception as e:
-            logger.error(f"Error generating Dafny code: {e}")
-            raise
+    def generate_dafny_code(language, code_input):
+        if language in dafny_lang:
+            try:
+                generated_code = dafny_generate_code(code_input)
+                logger.info("Successfully generated Dafny code using OpenAI.")
+                return generated_code
+            except Exception as e:
+                logger.error(f"Error generating Dafny code: {e}")
+                raise
+        else:
+            return ""

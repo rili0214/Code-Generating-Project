@@ -1,8 +1,8 @@
 import json
-from app.utils import calculate_mode1_score, calculate_mode2_score, save_combined_json
+from app.utils import calculate_model_score, save_combined_json
 
 class FeedbackLoop:
-    def __init__(self, llm_manager, max_loops=2):
+    def __init__(self, llm_manager, max_loops = 2):
         self.llm_manager = llm_manager
         self.max_loops = max_loops
 
@@ -39,18 +39,4 @@ class FeedbackLoop:
         best_model = max(final_analysis_results, key=lambda x: final_analysis_results[x]["score"])
         return self.format_final_output(results[best_model]["code"], final_analysis_results)
 
-    def evaluate(self, results):
-        analysis_results = {}
-        for model_name, model_result in results.items():
-            scores = model_result["analysis"]
-            total_score = calculate_mode2_score(scores) if self.mode == "mode2" else calculate_mode1_score(scores)
-            analysis_results[model_name] = {
-                "errors": total_score < 0.8,
-                "score": total_score
-            }
-        return analysis_results
-
-    def format_final_output(self, code, analysis_results):
-        explanation = "Summarization of analysis results: " + str(analysis_results)
-        return {"code": code, "explanation": explanation}
 

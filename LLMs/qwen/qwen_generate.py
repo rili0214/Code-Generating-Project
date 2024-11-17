@@ -26,7 +26,7 @@ def initial_call(code_):
 
     save_response_to_json(response, "qwen", "qwen_initial")
 
-def feedback_call(code_):
+def feedback_call(code_, better_model_):
     """Feedback call that includes additional JSON data."""
     system_prompt = "You are a code debugging assistant with additional analysis results. Just give the debugged code. No need to explain your code!"
     user_prompt = "Please enhance and debug the code with the given static, dynamic, and formal analysis results."

@@ -50,9 +50,9 @@ class FeedbackLoop:
 
         higher_score_model = model_1 if score_1 > score_2 else model_2
 
-        # Generate combined JSON for next feedback cycle
+        # Generate combined JSON
         self.save_combined_json(result_1, result_2)
 
         # Run feedback loop to the both LLMs and using the new combined JSON and prompts
-
+        
 

@@ -1,4 +1,4 @@
-import logging
+import json
 from LLMs.qwen.qwen_generate import initial_call as qwen_initial_call, feedback_call as qwen_feedback_call
 from LLMs.llama.llama_generate import initial_call as llama_initial_call, feedback_call as llama_feedback_call
 from LLMs.phi.phi_generate import initial_call as phi_initial_call, feedback_call as phi_feedback_call
@@ -30,6 +30,11 @@ llm_feedback_generators = {
 dafny_lang = ["C#", "Go", "Python", "Java", "JavaScript"]
 
 class LLMManager:
+    def save_intermediate_results(model_name, analysis_result, phase):
+        filename = f"results/intermediate/{model_name}_{phase}_analysis.json"
+        with open(filename, 'w') as f:
+            json.dump(analysis_result, f)
+
     def generate_initial_code(self, code_input, mode="mode_1"):
         if mode not in modes:
             logger.error(f"Invalid mode selected: {mode}. Choose either 'mode_1' or 'mode_2'.")
@@ -41,20 +46,22 @@ class LLMManager:
                 initial_generated_code = initial_generate_function(code_input)
                 if initial_generated_code:
                     logger.info(f"Code generated with {model_name} in {mode}")
-                    return mode, initial_generated_code
+                    self.save_intermediate_results(model_name, initial_generated_code, "initial")
+                    logger.info(f"Intermediate initial results saved for {model_name} in {mode}")
             except Exception as e:
                 logger.error(f"Error generating code with {model_name} in {mode}: {e}")
 
         raise RuntimeError("Failed to generate code with selected models in mode.")
 
-    def generate_feedback_code(self, code_input, chosen_mode):
+    def generate_feedback_code(self, code_input, chosen_mode, better_model):
         for model_name in modes[chosen_mode]:
             try:
                 feedback_generate_function = llm_feedback_generators[model_name]
-                feedback_generated_code = feedback_generate_function(code_input)
+                feedback_generated_code = feedback_generate_function(code_input, better_model)
                 if feedback_generated_code:
                     logger.info(f"Feedback generated with {model_name} in {chosen_mode}")
-                    return feedback_generated_code
+                    self.save_intermediate_results(model_name, feedback_generated_code, "feedback")
+                    logger.info(f"Intermediate feedback results saved for {model_name} in {chosen_mode}")
             except Exception as e:
                 logger.error(f"Error in feedback generation with {model_name} in {chosen_mode}: {e}")
 

@@ -6,6 +6,11 @@ app = Flask(__name__)
 llm_manager = LLMManager()
 feedback_loop = FeedbackLoop(llm_manager)
 
+# Generate Dafny code
+language = "C#"
+code = "..."
+dafny_code = llm_manager.generate_dafny_code(language, code)
+
 @app.route('/generate_initial_output', methods=['POST'])
 def generate_initial_output():
     data = request.json

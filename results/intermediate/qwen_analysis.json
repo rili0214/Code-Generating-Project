@@ -1,49 +1,247 @@
 {
-    "python static analysis": [
+    "models": [
         {
-            "tool": "mypy",
-            "output": "Success: no issues found in 1 source file\n"
+            "model": "llama",
+            "generated_code": "public class ListFlattener {\n    public static List<Integer> flattenList(Object inputList) {\n        List<Integer> result = new ArrayList<>();\n        if (inputList instanceof List) {\n            for (Object item : (List<?>) inputList) {\n                if (item instanceof List) {\n                    result.addAll(flattenList(item));\n                } else {\n                    result.add((Integer) item);\n                }\n            }\n        }\n        return result;\n    }\n    public static void main(String[] args) {\n        List<List<Integer>> nestedList = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(3, 4), Arrays.asList(5));\n        System.out.println(flattenList(nestedList));\n    }\n}",
+            "sonarqube": {
+                "components": [
+                    {
+                        "key": "static-debugging",
+                        "name": "Static Analysis Sonarqube",
+                        "qualifier": "TRK",
+                        "project": "static-debugging"
+                    }
+                ],
+                "measures": [
+                    {
+                        "metric": "duplicated_blocks",
+                        "value": "0",
+                        "bestValue": true
+                    },
+                    {
+                        "metric": "code_smells",
+                        "value": "1",
+                        "bestValue": false
+                    },
+                    {
+                        "metric": "files",
+                        "value": "2"
+                    },
+                    {
+                        "metric": "statements",
+                        "value": "0"
+                    },
+                    {
+                        "metric": "reliability_rating",
+                        "value": "1.0",
+                        "bestValue": true
+                    },
+                    {
+                        "metric": "functions",
+                        "value": "0"
+                    },
+                    {
+                        "metric": "vulnerabilities",
+                        "value": "1",
+                        "bestValue": false
+                    },
+                    {
+                        "metric": "duplicated_lines_density",
+                        "value": "0.0",
+                        "bestValue": true
+                    },
+                    {
+                        "metric": "ncloc",
+                        "value": "0"
+                    },
+                    {
+                        "metric": "security_rating",
+                        "value": "5.0",
+                        "bestValue": false
+                    },
+                    {
+                        "metric": "classes",
+                        "value": "0"
+                    },
+                    {
+                        "metric": "alert_status",
+                        "value": "ERROR"
+                    },
+                    {
+                        "metric": "bugs",
+                        "value": "0",
+                        "bestValue": true
+                    },
+                    {
+                        "metric": "comment_lines",
+                        "value": "0"
+                    },
+                    {
+                        "metric": "complexity",
+                        "value": "0"
+                    }
+                ]
+            },
+            "valgrind": {
+                "memory_issues": {
+                    "uninitialized_value_errors": [],
+                    "invalid_read_errors": [
+                        "==12087== Invalid read of size 8"
+                    ],
+                    "invalid_write_errors": [
+                        "==12087== Invalid write of size 4"
+                    ],
+                    "definitely_lost": [
+                        "==12087==    definitely lost: 626 bytes in 7 blocks"
+                    ],
+                    "indirectly_lost": [
+                        "==12087==    indirectly lost: 3,001 bytes in 13 blocks"
+                    ],
+                    "possibly_lost": [
+                        "==12087==      possibly lost: 194,150 bytes in 79 blocks"
+                    ],
+                    "still_reachable": [
+                        "==12087==    still reachable: 51,742,265 bytes in 4,869 blocks"
+                    ]
+                },
+                "error_count": {
+                    "uninitialized_value_errors": 0,
+                    "invalid_read_errors": 1,
+                    "invalid_write_errors": 1,
+                    "definitely_lost": 1,
+                    "indirectly_lost": 1,
+                    "possibly_lost": 1,
+                    "still_reachable": 1
+                }
+            },
+            "dafny": {
+                "stdout": "temp/code_files/temp_code_786f6035-1ce7-49f7-80be-3b3e9ca1f4a6.dfy(1,0): Error: this symbol not expected in Dafny\n  |\n1 | if input_list == [] {\n  | ^\n\ntemp/code_files/temp_code_786f6035-1ce7-49f7-80be-3b3e9ca1f4a6.dfy(1,0): Warning: File contains no code\n  |\n1 | if input_list == [] {\n  | ^\n\n1 parse errors detected in temp_code_786f6035-1ce7-49f7-80be-3b3e9ca1f4a6.dfy",
+                "stderr": "",
+                "verification_status": "failure"
+            },
+            "evaluation_score": {
+                "stsatic_analysis_score": 6.0,
+                "dynamic_analysis_score": 10,
+                "formal_veriofication_score": 0,
+                "rankme_score": 11.824203054098712,
+                "final_score": 6.5824203054098716
+            }
         },
         {
-            "tool": "pylint",
-            "output": "************* Module code_files.temp_code_4cc4999d-780c-496c-a56f-602f41c9788b\ntemp/code_files/temp_code_4cc4999d-780c-496c-a56f-602f41c9788b.py:1:5: C0303: Trailing whitespace (trailing-whitespace)\ntemp/code_files/temp_code_4cc4999d-780c-496c-a56f-602f41c9788b.py:2:5: C0303: Trailing whitespace (trailing-whitespace)\ntemp/code_files/temp_code_4cc4999d-780c-496c-a56f-602f41c9788b.py:3:0: C0304: Final newline missing (missing-final-newline)\ntemp/code_files/temp_code_4cc4999d-780c-496c-a56f-602f41c9788b.py:1:0: C0114: Missing module docstring (missing-module-docstring)\ntemp/code_files/temp_code_4cc4999d-780c-496c-a56f-602f41c9788b.py:1:0: C0103: Module name \"temp_code_4cc4999d-780c-496c-a56f-602f41c9788b\" doesn't conform to snake_case naming style (invalid-name)\ntemp/code_files/temp_code_4cc4999d-780c-496c-a56f-602f41c9788b.py:1:0: C0103: Constant name \"a\" doesn't conform to UPPER_CASE naming style (invalid-name)\ntemp/code_files/temp_code_4cc4999d-780c-496c-a56f-602f41c9788b.py:2:0: C0103: Constant name \"b\" doesn't conform to UPPER_CASE naming style (invalid-name)\ntemp/code_files/temp_code_4cc4999d-780c-496c-a56f-602f41c9788b.py:3:0: C0103: Constant name \"c\" doesn't conform to UPPER_CASE naming style (invalid-name)\n\n-----------------------------------\nYour code has been rated at 0.00/10\n\n"
-        },
-        {
-            "tool": "bandit",
-            "output": "Run started:2024-11-10 14:39:20.161979\n\nTest results:\n\tNo issues identified.\n\nCode scanned:\n\tTotal lines of code: 3\n\tTotal lines skipped (#nosec): 0\n\tTotal potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0\n\nRun metrics:\n\tTotal issues (by severity):\n\t\tUndefined: 0\n\t\tLow: 0\n\t\tMedium: 0\n\t\tHigh: 0\n\tTotal issues (by confidence):\n\t\tUndefined: 0\n\t\tLow: 0\n\t\tMedium: 0\n\t\tHigh: 0\nFiles skipped (0):\n"
+            "model": "qwen",
+            "generated_code": "public class NestedListFlattener {\n    public static List<Integer> flatten(Object nestedList) {\n        List<Integer> flatList = new ArrayList<>();\n        if (nestedList instanceof List) {\n            for (Object element : (List<?>) nestedList) {\n                if (element instanceof List) {\n                    flatList.addAll(flatten(element));\n                } else if (element instanceof Integer) {\n                    flatList.add((Integer) element);\n                }\n            }\n        }\n        return flatList;\n    }\n    public static void main(String[] args) {\n        List<?> input = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(3, 4), 5);\n        System.out.println(flatten(input));\n    }\n}",
+            "sonarqube": {
+                "components": [
+                    {
+                        "key": "static-debugging-qwen",
+                        "name": "Static Analysis Sonarqube Qwen",
+                        "qualifier": "TRK",
+                        "project": "static-debugging-qwen"
+                    }
+                ],
+                "measures": [
+                    {
+                        "metric": "duplicated_blocks",
+                        "value": "1",
+                        "bestValue": false
+                    },
+                    {
+                        "metric": "code_smells",
+                        "value": "2",
+                        "bestValue": false
+                    },
+                    {
+                        "metric": "files",
+                        "value": "1"
+                    },
+                    {
+                        "metric": "statements",
+                        "value": "15"
+                    },
+                    {
+                        "metric": "reliability_rating",
+                        "value": "2.0",
+                        "bestValue": false
+                    },
+                    {
+                        "metric": "functions",
+                        "value": "2"
+                    },
+                    {
+                        "metric": "vulnerabilities",
+                        "value": "0",
+                        "bestValue": true
+                    },
+                    {
+                        "metric": "duplicated_lines_density",
+                        "value": "5.0",
+                        "bestValue": false
+                    },
+                    {
+                        "metric": "ncloc",
+                        "value": "20"
+                    },
+                    {
+                        "metric": "security_rating",
+                        "value": "3.0",
+                        "bestValue": false
+                    },
+                    {
+                        "metric": "classes",
+                        "value": "1"
+                    },
+                    {
+                        "metric": "alert_status",
+                        "value": "OK"
+                    },
+                    {
+                        "metric": "bugs",
+                        "value": "1",
+                        "bestValue": false
+                    },
+                    {
+                        "metric": "comment_lines",
+                        "value": "2"
+                    },
+                    {
+                        "metric": "complexity",
+                        "value": "5"
+                    }
+                ]
+            },
+            "valgrind": {
+                "memory_issues": {
+                    "uninitialized_value_errors": [],
+                    "invalid_read_errors": [],
+                    "invalid_write_errors": [],
+                    "definitely_lost": [],
+                    "indirectly_lost": [],
+                    "possibly_lost": [],
+                    "still_reachable": []
+                },
+                "error_count": {
+                    "uninitialized_value_errors": 0,
+                    "invalid_read_errors": 0,
+                    "invalid_write_errors": 0,
+                    "definitely_lost": 0,
+                    "indirectly_lost": 0,
+                    "possibly_lost": 0,
+                    "still_reachable": 0
+                }
+            },
+            "dafny": {
+                "stdout": "",
+                "stderr": "temp/code_files/temp_code_qwen.dfy(1,0): Error: method flatten is ambiguous\n  |\n1 | List flatten(Object nestedList) {\n  | ^\n",
+                "verification_status": "failure"
+            },
+            "evaluation_score": {
+                "static_analysis_score": 5.5,
+                "dynamic_analysis_score": 9,
+                "formal_verification_score": 0,
+                "rankme_score": 10.324512540987654,
+                "final_score": 6.024512540987654
+            }
         }
-    ],
-    "valgrind": {
-        "memory_issues": {
-            "uninitialized_value_errors": [],
-            "invalid_read_errors": [],
-            "invalid_write_errors": [],
-            "definitely_lost": [
-                "==6695==    definitely lost: 0 bytes in 0 blocks"
-            ],
-            "indirectly_lost": [
-                "==6695==    indirectly lost: 0 bytes in 0 blocks"
-            ],
-            "possibly_lost": [
-                "==6695==      possibly lost: 0 bytes in 0 blocks"
-            ],
-            "still_reachable": [
-                "==6695==    still reachable: 480,330 bytes in 87 blocks"
-            ]
-        },
-        "error_count": {
-            "uninitialized_value_errors": 0,
-            "invalid_read_errors": 0,
-            "invalid_write_errors": 0,
-            "definitely_lost": 1,
-            "indirectly_lost": 1,
-            "possibly_lost": 1,
-            "still_reachable": 1
-        }
-    },
-    "dafny": {
-        "stdout": "Dafny program verifier finished with 1 verified, 0 errors",
-        "stderr": "",
-        "verification_status": "success"
-    }
+        
+    ]
 }

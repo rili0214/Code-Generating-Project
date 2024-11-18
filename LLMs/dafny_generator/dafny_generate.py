@@ -10,7 +10,7 @@ openai.api_base = AZURE_OPENAI_ENDPOINT
 openai.api_type = "azure"
 openai.api_version = AZURE_API_VERSION
 
-txt_file_path = Path(__file__).parent.parent.parent / 'results' / 'openai_results' / 'dafny_output.txt'
+dafny_path = Path(__file__).parent.parent / 'results' / 'openai_results' / 'dafny_output.txt'
 
 def generate_dafny_code(code_input):
     """
@@ -48,7 +48,7 @@ def generate_dafny_code(code_input):
         generated_text = response.choices[0].text.strip()
 
         if response:
-            save_response_to_txt(response, txt_file_path)
+            save_response_to_txt(response, dafny_path)
             return response
         logger.info("Successfully generated Dafny code from OpenAI.")
 
@@ -62,21 +62,10 @@ def generate_dafny_code(code_input):
 if __name__ == "__main__":
     # Example input code
     example_code = """
-    public class ListFlattener {
-        public static List<Integer> flattenList(Object inputList) {
-            List<Integer> result = new ArrayList<>();
-            if (inputList instanceof List) {
-                for (Object item : (List<?>) inputList) {
-                    if (item instanceof List) {
-                        result.addAll(flattenList(item));
-                    } else {
-                        result.add((Integer) item);
-                    }
-                }
-            }
-            return result;
-        }
-    }
+    def fibonacci(n):
+        if n < 0:
+            return n
+        return fibonacci(n - 1) + fibonacci(n - 2)
     """
 
     logger.info("Starting Dafny code generation...")

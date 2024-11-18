@@ -1,3 +1,7 @@
 {
-    "response": "```python\ndef twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\n            if nums[i] + nums[j] == target:\n                return [i, j]\n    return []\n```"
+    "mode": "mode_1",
+    "model": "qwen",
+    "generated_code": "```python\ndef fibonacci(n):\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        return fibonacci(n - 1) + fibonacci(n - 2)\n```",
+    "language": "Python",
+    "dafny_text": ""
 }

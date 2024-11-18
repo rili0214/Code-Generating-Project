@@ -102,9 +102,9 @@ Explnations
 dafny_system_prompt = """You are an expert in formal verification and Dafny programming."""
 
 dafny_user_prompt = """
-Convert the following code into Dafny for formal verification. Ensure that the Dafny code includes contracts 
-such as preconditions, postconditions, and invariants to verify the correctness of the program. Provide only 
-valid Dafny code without explanations.
+Convert the following buggy code into correct code first, then generate Dafny for formal verification for the 
+correct code. Ensure that the Dafny code includes contracts such as preconditions, postconditions, and 
+invariants to verify the correctness of the program. Provide only valid Dafny code without explanations.
 """
 
 def load_json_data(json_path):
@@ -158,7 +158,7 @@ def call_huggingface_chat(model_name, messages):
             if 'choices' in chunk and 'delta' in chunk['choices'][0]:
                 content = chunk['choices'][0]['delta'].get('content', '')
                 complete_response += content
-                print(content, end="", flush=True)
+                #print(content, end="", flush=True)
             else:
                 logger.warning(f"Unexpected chunk format: {chunk}")
         
@@ -169,12 +169,18 @@ def call_huggingface_chat(model_name, messages):
         logger.error(f"Error in Hugging Face API call: {e}")
         raise
 
-def save_response_to_json(response, model, call_type):
+def save_response_to_json(mode, model, generated_code, call_type, language):
     """Saves response to a JSON file with a timestamped filename."""
     output_path = Path(__file__).parent.parent / 'results' / f"{model}_results" / f"{call_type}_results.json"
     try:
+        temp = {}
+        temp["mode"] = mode
+        temp["model"] = model
+        temp["generated_code"] = generated_code
+        temp["language"] = language
+        temp["dafny_text"] = ""
         with open(output_path, 'w') as file:
-            json.dump({"response": response}, file, indent=4)
+            json.dump(temp, file, indent=4)
         logger.info(f"Response saved to {output_path}")
     except Exception as e:
         logger.error(f"Error saving response to JSON: {e}")

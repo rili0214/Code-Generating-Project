@@ -2,8 +2,8 @@ import json
 from LLMs.qwen.qwen_generate import initial_call as qwen_initial_call, feedback_call as qwen_feedback_call
 from LLMs.llama.llama_generate import initial_call as llama_initial_call
 from LLMs.phi.phi_generate import initial_call as phi_initial_call
-#from LLMs.dafny_generator.dafny_generate import generate_code as dafny_generate_code
-from app.parse_json import save_intermediate_results, save_combined_json
+from LLMs.dafny_generator.dafny_generate import generate_dafny_code
+from app.parse_json import save_combined_json
 from logs import setup_global_logger
 
 # Setup global logger
@@ -56,11 +56,10 @@ class LLMManager:
         except Exception as e:
             logger.error(f"Error in feedback generation with {model_name} in {chosen_mode}: {e}")
 
-"""
-    def generate_dafny_code(self, language, code_input):
+    def generate_gpt_dafny_code(self, language, code_input):
         if language in self.dafny_lang:
             try:
-                generated_code = dafny_generate_code(code_input)
+                generated_code = generate_dafny_code(code_input)
                 logger.info("Successfully generated Dafny code using OpenAI.")
                 return generated_code
             except Exception as e:
@@ -68,7 +67,7 @@ class LLMManager:
                 raise
         else:
             return ""
-"""
+
         
 if __name__ == "__main__":
     llm_manager = LLMManager()

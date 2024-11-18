@@ -10,6 +10,10 @@ logger = setup_logger()
 API_TOKEN_qwen = "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" 
 API_TOKEN_llama = "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"
 API_TOKEN_phi = "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"
+AZURE_OPENAI_API_KEY = "your_azure_openai_api_key"  
+AZURE_OPENAI_ENDPOINT = "your_azure_openai_endpoint" 
+AZURE_OPENAI_DEPLOYMENT = "gpt-4"  
+AZURE_API_VERSION = "2023-06-01-preview" 
 
 client = InferenceClient(api_key=API_TOKEN_qwen)
 
@@ -95,6 +99,14 @@ In this response, you may include explanations if needed. However, you must adhe
 Explnations  
 """
 
+dafny_system_prompt = """You are an expert in formal verification and Dafny programming."""
+
+dafny_user_prompt = """
+Convert the following code into Dafny for formal verification. Ensure that the Dafny code includes contracts 
+such as preconditions, postconditions, and invariants to verify the correctness of the program. Provide only 
+valid Dafny code without explanations.
+"""
+
 def load_json_data(json_path):
     """Loads additional data from a JSON file."""
     try:
@@ -166,3 +178,12 @@ def save_response_to_json(response, model, call_type):
         logger.info(f"Response saved to {output_path}")
     except Exception as e:
         logger.error(f"Error saving response to JSON: {e}")
+
+def save_response_to_txt(response, path):
+    """Saves response to a text file with a timestamped filename."""
+    try:
+        with open(path, 'w') as file:
+            file.write(response)
+        logger.info(f"Response saved to {path}")
+    except Exception as e:
+        logger.error(f"Error saving response to text file: {e}")

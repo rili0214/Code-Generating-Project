@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from app.llm_manager import LLMManager
-from feedback.feedback_loop import FeedbackLoop
+from app.parse_json import FeedbackLoop
 
 app = Flask(__name__)
 llm_manager = LLMManager()

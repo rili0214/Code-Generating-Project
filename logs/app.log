@@ -1,48 +1,27 @@
 
-2024-11-14 00:16:33,954 - INFO - Messages prepared successfully.
-2024-11-14 00:23:36,030 - INFO - Completed Hugging Face API call with response.
-2024-11-14 00:23:36,041 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/phi_results/phi_initial_results.json
-2024-11-14 00:23:36,042 - INFO - Phi execution completed.
-2024-11-14 07:36:39,065 - INFO - Phi execution started.
-2024-11-14 07:37:08,369 - INFO - Phi execution started.
-2024-11-14 07:37:08,371 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/phi_analysis.json
-2024-11-14 07:37:08,372 - INFO - Messages prepared successfully.
-2024-11-14 07:39:53,733 - INFO - Completed Hugging Face API call with response.
-2024-11-14 07:39:53,742 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/phi_results/phi_feedback_results.json
-2024-11-14 07:39:53,742 - INFO - Phi execution completed.
-2024-11-15 17:27:24,072 - INFO - Messages prepared successfully.
-2024-11-15 17:27:24,073 - INFO - LLaMa execution started.
-2024-11-15 17:27:25,863 - INFO - Completed Hugging Face API call with response.
-2024-11-15 17:27:25,901 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
-2024-11-15 17:27:25,915 - INFO - LLaMa execution completed.
-2024-11-15 17:32:43,274 - INFO - Messages prepared successfully.
-2024-11-15 17:32:43,274 - INFO - Phi execution started.
-2024-11-15 17:53:22,210 - INFO - Completed Hugging Face API call with response.
-2024-11-15 17:53:22,218 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/phi_results/phi_initial_results.json
-2024-11-15 17:53:22,219 - INFO - Phi execution completed.
-2024-11-15 18:01:13,434 - INFO - Messages prepared successfully.
-2024-11-15 18:01:13,435 - INFO - Phi execution started.
-2024-11-15 18:08:12,723 - INFO - Completed Hugging Face API call with response.
-2024-11-15 18:08:12,733 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/phi_results/phi_initial_results.json
-2024-11-15 18:08:12,734 - INFO - Phi execution completed.
-2024-11-15 18:58:08,868 - INFO - Qwen execution started.
-2024-11-15 18:58:08,868 - INFO - Messages prepared successfully.
-2024-11-15 18:58:10,618 - INFO - Completed Hugging Face API call with response.
-2024-11-15 18:58:10,635 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/initial_results.json
-2024-11-15 18:58:10,668 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/qwen_analysis.json
-2024-11-15 18:58:10,668 - INFO - Messages prepared successfully.
-2024-11-15 18:58:13,328 - INFO - Completed Hugging Face API call with response.
-2024-11-15 18:58:13,348 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/feedback_results.json
-2024-11-15 18:58:13,350 - INFO - Qwen execution completed.
-2024-11-15 19:31:27,461 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/qwen_analysis.json
-2024-11-15 19:31:27,461 - INFO - Messages prepared successfully.
-2024-11-15 19:31:27,462 - INFO - Qwen execution started.
-2024-11-15 19:31:37,644 - INFO - Completed Hugging Face API call with response.
-2024-11-15 19:31:37,651 - INFO - Qwen execution completed.
-2024-11-15 19:31:37,662 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/feedback_results.json
-2024-11-15 20:26:20,592 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/qwen_analysis.json
-2024-11-15 20:26:20,593 - INFO - Messages prepared successfully.
-2024-11-15 20:26:20,593 - INFO - Qwen execution started.
-2024-11-15 20:26:27,297 - INFO - Completed Hugging Face API call with response.
-2024-11-15 20:26:27,298 - INFO - Qwen execution completed.
-2024-11-15 20:26:27,311 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/feedback_results.json
+2024-11-15 21:40:22,437 - INFO - Messages prepared successfully.
+2024-11-15 21:40:22,438 - INFO - Qwen execution started.
+2024-11-15 21:40:22,680 - INFO - Completed Hugging Face API call with response.
+2024-11-15 21:40:22,681 - INFO - Qwen execution completed.
+2024-11-15 21:40:22,712 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
+2024-11-15 21:40:22,712 - INFO - Code generated with qwen2.5-coder-32b-inst in mode_1
+2024-11-15 21:40:22,714 - INFO - Messages prepared successfully.
+2024-11-15 21:40:22,715 - INFO - LLaMa execution started.
+2024-11-15 21:40:22,745 - INFO - Completed Hugging Face API call with response.
+2024-11-15 21:40:22,766 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
+2024-11-15 21:40:22,767 - INFO - LLaMa execution completed.
+2024-11-15 21:42:04,156 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/qwen_analysis.json
+2024-11-15 21:42:04,158 - INFO - Messages prepared successfully.
+2024-11-15 21:42:04,161 - INFO - Qwen execution started.
+2024-11-15 21:42:11,852 - INFO - Completed Hugging Face API call with response.
+2024-11-15 21:42:11,853 - INFO - Qwen execution completed.
+2024-11-15 21:42:11,862 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
+2024-11-15 21:42:11,863 - INFO - Feedback generated with qwen2.5-coder-32b-inst in mode_1
+2024-11-15 21:42:11,878 - INFO - Intermediate feedback results saved for qwen2.5-coder-32b-inst in mode_1
+2024-11-15 21:45:47,086 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/combined_analysis.json
+2024-11-15 21:45:47,087 - INFO - Messages prepared successfully.
+2024-11-15 21:45:47,087 - INFO - Qwen execution started.
+2024-11-15 21:45:47,325 - INFO - Completed Hugging Face API call with response.
+2024-11-15 21:45:47,326 - INFO - Qwen execution completed.
+2024-11-15 21:45:47,354 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
+2024-11-15 21:45:47,355 - INFO - Feedback generated with qwen2.5-coder-32b-inst in mode_1

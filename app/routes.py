@@ -97,10 +97,12 @@ def generate_output():
         logger.info(f"Final analysis response from Backend 2 saved to {final_path}")
         
         # Step 5: Wrap up the final output with summaries and validations
-        final_output = llm_manager.finalize_output(path_=final_path)
+        final_output = llm_manager.finalize_output()
 
         # Return the final output to the frontend API
-        return jsonify({"final_output": final_output}), 200
+        final_opt = {}
+        final_opt["final_output"] = final_output
+        return jsonify(final_opt), 200
 
     except Exception as e:
         logger.error(f"Error occurred: {e}")

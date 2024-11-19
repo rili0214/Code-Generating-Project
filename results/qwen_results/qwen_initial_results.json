@@ -1,7 +1,7 @@
 {
     "mode": "mode_2",
     "model": "qwen",
-    "generated_code": "```cpp\n#include <iostream>\nint main() { std::cout << \"Hello, World!\" << std::endl; return 0; }\n```",
+    "generated_code": "```cpp\n#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\";\n    return 0;\n}\n```",
     "language": "C++",
     "dafny_text": ""
 }

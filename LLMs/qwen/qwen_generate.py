@@ -1,11 +1,13 @@
 from huggingface_hub import InferenceClient
 from pathlib import Path
-from LLMs.base_llm import API_TOKEN_qwen, qwen_system_prompt_initial, qwen_system_prompt_feedback, qwen_user_prompt_initial, qwen_user_prompt_feedback, load_json_data, prepare_messages, call_huggingface_chat, save_response_to_json
+import json
+from LLMs.base_llm import API_TOKEN_qwen, qwen_system_prompt_initial, qwen_system_prompt_feedback, qwen_user_prompt_initial, qwen_user_prompt_feedback, qwen_final_report_system_prompt, qwen_final_report_user_prompt, load_json_data, prepare_messages, call_huggingface_chat, save_response_to_json
 from logs import setup_logger
 
 json_file_path = Path(__file__).parent.parent.parent / 'results' / 'intermediate' / 'combined_analysis.json'
-qwen_initial_path = str(Path(__file__).parent.parent / 'results' / 'qwen_results' / 'qwen_initial_results.json')
-qwen_feedback_path = str(Path(__file__).parent.parent / 'results' / 'qwen_results' / 'qwen_feedback_results.json')
+qwen_initial_path = str(Path(__file__).parent.parent.parent / 'results' / 'qwen_results' / 'qwen_initial_results.json')
+qwen_feedback_path = str(Path(__file__).parent.parent.parent / 'results' / 'qwen_results' / 'qwen_feedback_results.json')
+final_analysis_path = str(Path(__file__).parent.parent.parent / 'results' / 'final_analysis.json')
 
 # Logging Configuration
 logger = setup_logger()
@@ -55,8 +57,32 @@ def feedback_call(mode, language):
     else:
         logger.error("Failed to generate Qwen feedback output.")
 
+def generate_final_report():
+    final_report_data = load_json_data(final_analysis_path)
+    if not final_report_data:
+        logger.error("No final report data loaded. Aborting feedback call.")
+        return None
+    
+    system_prompt_ = qwen_final_report_system_prompt
+    user_prompt_ = qwen_final_report_user_prompt
+
+    messages = prepare_messages(system_prompt_, user_prompt_, additional_data=final_report_data)
+    logger.info("Qwen final report execution started.")
+
+    response = call_huggingface_chat(model, messages)
+    logger.info("Qwen final report execution completed.")
+
+    if response:
+        logger.info("Generated Qwen final report output.")
+        return response
+    else:
+        logger.error("Failed to generate Qwen final report output.")
+
+
 if __name__ == "__main__":
     code = "def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\nif nums[i] + nums[j] == target:\n                return [j, i]\n    return []"
     
-    initial_call(mode="mode_1", code_=code, language="Python")
-    feedback_call(mode="mode_1", language="Python")
+    #initial_call(mode="mode_1", code_=code, language="Python")
+    #feedback_call(mode="mode_1", language="Python")
+    response =generate_final_report()
+    print(response)

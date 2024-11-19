@@ -1,10 +1,11 @@
 from pathlib import Path
-import json
-from LLMs.qwen.qwen_generate import initial_call as qwen_initial_call, feedback_call as qwen_feedback_call, qwen_initial_path, qwen_feedback_path
+from LLMs.qwen.qwen_generate import initial_call as qwen_initial_call, feedback_call as qwen_feedback_call, qwen_initial_path, generate_final_report
 from LLMs.llama.llama_generate import initial_call as llama_initial_call, llama_initial_path
 from LLMs.phi.phi_generate import initial_call as phi_initial_call, phi_initial_path
-from LLMs.dafny_generator.dafny_generate import generate_dafny_code, dafny_path
+from LLMs.dafny_generator.dafny_generate import generate_dafny_code
 from logs import setup_global_logger
+
+final_analysis_path = Path(__file__).parent.parent / 'results' / 'final_analysis.json'
 
 # Setup global logger
 logger = setup_global_logger()
@@ -33,6 +34,7 @@ class LLMManager:
         self.llm_initial_generators = llm_initial_generators
         self.llm_feedback_generators = llm_feedback_generators
         self.dafny_lang = dafny_lang
+        self.generate_final_report = generate_final_report
 
     def generate_initial_code(self, code_input, mode="mode_1", language="Python"):
         if mode not in modes:
@@ -71,12 +73,12 @@ class LLMManager:
             except Exception as e:
                 logger.error(f"Error generating Dafny code: {e}")
         
-    def finalize_output(self, path_):
-        with open(path_, 'r') as file:
-            feedback_data = json.load(file)
-        return feedback_data
-        
-
+    def finalize_output(self):
+        try:
+            self.generate_final_report()
+            logger.info("Global: Final report generated successfully.")
+        except Exception as e:
+            logger.error(f"Global: Error generating final report: {e}")
 
 if __name__ == "__main__":
     llm_manager = LLMManager()

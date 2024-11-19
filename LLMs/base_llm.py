@@ -107,6 +107,26 @@ correct code. Ensure that the Dafny code includes contracts such as precondition
 invariants to verify the correctness of the program. Provide only valid Dafny code without explanations.
 """
 
+qwen_final_report_system_prompt = """
+You are a helpful and detail-oriented code analysis assistant. You will take in a JSON file containing evaluation 
+results from various code analysis tools (such as static analysis, Valgrind, formal verification, and RankMe) and 
+generate the following:
+1. A concise summary of the evaluation results for each included tool.
+2. A final evaluation score summary, highlighting key strengths and weaknesses.
+3. Actionable tips on how the code can be improved, including specific steps and examples.
+
+Your output should be clear, organized, and constructive to help improve code quality and performance effectively.
+"""
+
+qwen_final_report_user_prompt = """
+Given the following evaluation results JSON file, summarize the evaluation and provide actionable tips on how to 
+improve the code quality and score. Include:
+1. A summary of analysis results for each included tool (e.g., static analysis, Valgrind, formal verification, 
+RankMe).
+2. Highlights of key issues or strengths.
+3. Specific suggestions to fix issues or improve the code, with examples where applicable.
+"""
+
 def load_json_data(json_path):
     """Loads additional data from a JSON file."""
     try:

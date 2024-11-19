@@ -1,7 +1,7 @@
 {
     "mode": "mode_2",
     "model": "llama",
-    "generated_code": "```c++\n#include <iostream>\nint main() {\n    std::cout << \"Hello, World!\";\n    return 0;\n}\n```",
+    "generated_code": "```cpp\n#include <iostream>\nint main() {\n    std::cout << \"Hello, World!\";\n    return 0;\n}\n```",
     "language": "C++",
     "dafny_text": ""
 }

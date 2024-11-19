@@ -15,7 +15,7 @@ validation.
 3. The final output will be returned to the frontend API.
 """
 
-from flask import Flask, request, jsonify
+from flask import Blueprint, request, jsonify
 import json
 from pathlib import Path
 import requests
@@ -23,22 +23,21 @@ from app.llm_manager import LLMManager
 from logs import setup_global_logger
 from app.parse_json import save_combined_json
 
-app = Flask(__name__)
+app_routes = Blueprint("app_routes", __name__) 
 llm_manager = LLMManager()
 
-# URL of Backend 2's API
-BACKEND_2_API_URL = "http://backend2.example.com/analyze" 
+BACKEND_2_API_URL = "http://127.0.0.1:5000/analyze" 
 
-combined_file_path = Path(__file__).parent.parent / 'results' / 'intermediate' / 'combined_analysis.json'
+combined_file_path = str(Path(__file__).parent.parent / 'results' / 'intermediate' / 'combined_analysis.json')
 
-inital_paths = {
-    "mode_1": ["phi", "qwen"],
-    "mode_2": ["llama", "qwen"]
+initial_paths = {
+    "mode_1": ["qwen", "llama"],
+    "mode_2": ["qwen", "llama"],
 }
 
 logger = setup_global_logger()
 
-@app.route('/generate_output', methods=['POST'])
+@app_routes.route('/generate_output', methods=['POST'])
 def generate_output():
     try:
         # Parse the input data
@@ -56,43 +55,53 @@ def generate_output():
         llm_manager.generate_gpt_dafny_code(language=language_, code_input=code_)
 
         # Step 2: Call Backend 2's API for initial analysis
-        for model_name in inital_paths[mode_]:
+        for model_name in initial_paths[mode_]:
             path = Path(__file__).parent.parent / 'results' / f"{model_name}_results" / f"{model_name}_initial_results.json"
-            analysis_response = requests.post(BACKEND_2_API_URL, json = path)
-            if analysis_response.status_code != 200:
-                return jsonify({"error": "Error communicating with Backend 2","details": analysis_response.text}), 500
             
+            with open(path, 'r') as file:
+                model_data = json.load(file)
+            
+            analysis_response = requests.post(BACKEND_2_API_URL, json=model_data)
+            
+            if analysis_response.status_code != 200:
+                return jsonify({"error": "Error communicating with Backend 2", "details": analysis_response.text}), 500
+            
+            # Save the analysis response
             storage = Path(__file__).parent.parent / 'results' / "intermediate" / f"{model_name}_analysis.json"
             models_analysis_path.append(storage)
             
             with open(storage, 'w') as file:
-                json.dump(analysis_response, file, indent=4)
-            logger.info(f"Analysis response from eva_backend saved to {storage}")
+                json.dump(analysis_response.json(), file, indent=4)
+            
+            logger.info(f"Analysis response from Backend 2 saved to {storage}")
         
-        save_combined_json(models_analysis_path[0], models_analysis_path[1], combined_file_path)
+        # Combine analysis results
+        save_combined_json(file1_path=models_analysis_path[0], file2_path=models_analysis_path[1], output_path=combined_file_path)
         
         # Step 3: Run the feedback loop to enhance the output
-        llm_manager.generate_feedback_code(mode=mode_, language=language_)
+        llm_manager.generate_feedback_code(chosen_mode=mode_, language=language_)
 
         # Step 4: Send feedback output back to Backend 2 for further analysis
         feedback_path = Path(__file__).parent.parent / 'results' / "qwen_results" / "qwen_feedback_results.json"
-        feedback_analysis_response = requests.post(BACKEND_2_API_URL, json=feedback_path)
+        with open(feedback_path, 'r') as file:
+            feedback_data = json.load(file)
+
+        feedback_analysis_response = requests.post(BACKEND_2_API_URL, json=feedback_data)
         if feedback_analysis_response.status_code != 200:
             return jsonify({"error": "Error communicating with Backend 2 for feedback analysis", "details": feedback_analysis_response.text}), 500
         
+        # Save final analysis results
         final_path = Path(__file__).parent.parent / 'results' / "final_analysis.json"
-        
         with open(final_path, 'w') as file:
-            json.dump(feedback_analysis_response, file, indent=4)
-        logger.info(f"Final analysis response from eva_backend saved to {final_path}")
+            json.dump(feedback_analysis_response.json(), file, indent=4)
+        logger.info(f"Final analysis response from Backend 2 saved to {final_path}")
         
         # Step 5: Wrap up the final output with summaries and validations
-        final_output = llm_manager.finalize_output(final_path)
+        final_output = llm_manager.finalize_output(path_=final_path)
 
         # Return the final output to the frontend API
         return jsonify({"final_output": final_output}), 200
 
     except Exception as e:
+        logger.error(f"Error occurred: {e}")
         return jsonify({"error": "An unexpected error occurred", "details": str(e)}), 500
-
-    

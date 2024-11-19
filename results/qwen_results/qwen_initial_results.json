@@ -1,7 +1,7 @@
 {
-    "mode": "mode_1",
+    "mode": "mode_2",
     "model": "qwen",
-    "generated_code": "```python\ndef fibonacci(n):\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        return fibonacci(n - 1) + fibonacci(n - 2)\n```",
-    "language": "Python",
+    "generated_code": "```cpp\n#include <iostream>\nint main() { std::cout << \"Hello, World!\" << std::endl; return 0; }\n```",
+    "language": "C++",
     "dafny_text": ""
 }

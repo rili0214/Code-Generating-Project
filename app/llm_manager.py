@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 from LLMs.qwen.qwen_generate import initial_call as qwen_initial_call, feedback_call as qwen_feedback_call, qwen_initial_path, qwen_feedback_path
 from LLMs.llama.llama_generate import initial_call as llama_initial_call, llama_initial_path
 from LLMs.phi.phi_generate import initial_call as phi_initial_call, phi_initial_path
@@ -11,7 +12,8 @@ logger = setup_global_logger()
 # Define modes with model sequences
 modes = {
     "mode_1": ["qwen2.5-coder-32b-inst", "llama-3.2-3b-inst"],
-    "mode_2": ["phi-3-mini-128k-inst", "qwen2.5-coder-32b-inst"]
+    #"mode_2": ["phi-3-mini-128k-inst", "qwen2.5-coder-32b-inst"]
+    "mode_2": ["qwen2.5-coder-32b-inst", "llama-3.2-3b-inst"]
 }
 
 # Model-to-function mappings
@@ -70,7 +72,10 @@ class LLMManager:
                 logger.error(f"Error generating Dafny code: {e}")
         
     def finalize_output(self, path_):
-        return path_
+        with open(path_, 'r') as file:
+            feedback_data = json.load(file)
+        return feedback_data
+        
 
 
 if __name__ == "__main__":

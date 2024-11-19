@@ -1,0 +1,42 @@
+{
+    "clang_tidy": {
+        "command": "clang-tidy temp/code_files/temp_code_8e69ecba-6779-43dc-8eb1-ef01176d1d79.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
+        "errors": [],
+        "file": "temp/code_files/temp_code_8e69ecba-6779-43dc-8eb1-ef01176d1d79.cpp",
+        "return_code": 0,
+        "status": "success",
+        "warnings": []
+    },
+    "dafny": {
+        "verification_status": "no code provided"
+    },
+    "evaluation_score": {
+        "dynamic_analysis_score": 10,
+        "final_score": 3.316227766016838,
+        "formal_verification_score": 0,
+        "rankme_score": 3.16227766016838,
+        "stsatic_analysis_score": 0
+    },
+    "generated_code": "#include <iostream>\nint main() { std::cout << \"Hello, World!\" << std::endl; return 0; }",
+    "model": "qwen",
+    "valgrind": {
+        "error_count": {
+            "definitely_lost": 0,
+            "indirectly_lost": 0,
+            "invalid_read_errors": 0,
+            "invalid_write_errors": 0,
+            "possibly_lost": 0,
+            "still_reachable": 0,
+            "uninitialized_value_errors": 0
+        },
+        "memory_issues": {
+            "definitely_lost": [],
+            "indirectly_lost": [],
+            "invalid_read_errors": [],
+            "invalid_write_errors": [],
+            "possibly_lost": [],
+            "still_reachable": [],
+            "uninitialized_value_errors": []
+        }
+    }
+}

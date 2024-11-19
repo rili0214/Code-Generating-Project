@@ -1,7 +1,7 @@
 {
-    "mode": "mode_1",
+    "mode": "mode_2",
     "model": "llama",
-    "generated_code": "```python\ndef fibonacci(n):\n    \"\"\"\n    Calculate the nth Fibonacci number.\n\n    Args:\n        n (int): The position of the Fibonacci number to calculate.\n\n    Returns:\n        int: The nth Fibonacci number.\n\n    Raises:\n        ValueError: If n is a negative integer.\n    \"\"\"\n    if not isinstance(n, int) or n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    if n <= 1:\n        return n\n    return fibonacci(n - 1) + fibonacci(n - 2)\n```",
-    "language": "Python",
+    "generated_code": "```c++\n#include <iostream>\nint main() {\n    std::cout << \"Hello, World!\";\n    return 0;\n}\n```",
+    "language": "C++",
     "dafny_text": ""
 }

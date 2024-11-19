@@ -10,7 +10,7 @@ openai.api_base = AZURE_OPENAI_ENDPOINT
 openai.api_type = "azure"
 openai.api_version = AZURE_API_VERSION
 
-dafny_path = Path(__file__).parent.parent / 'results' / 'openai_results' / 'dafny_output.txt'
+dafny_path = str(Path(__file__).parent.parent / 'results' / 'openai_results' / 'dafny_output.txt')
 
 def generate_dafny_code(code_input):
     """

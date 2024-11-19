@@ -1,0 +1,16 @@
+{
+    "clang_tidy": {
+        "command": "clang-tidy temp/code_files/temp_code_6ad00207-c456-4ffa-a7b6-ea1ae4c393ca.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
+        "errors": [],
+        "file": "temp/code_files/temp_code_6ad00207-c456-4ffa-a7b6-ea1ae4c393ca.cpp",
+        "return_code": 0,
+        "status": "success",
+        "warnings": []
+    },
+    "evaluation_score": {
+        "final_score": 0,
+        "stsatic_analysis": 0
+    },
+    "generated_code": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\" << std::endl;\n    return 0;\n}",
+    "model": "qwen"
+}

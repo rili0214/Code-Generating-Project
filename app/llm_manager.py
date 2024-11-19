@@ -84,4 +84,4 @@ if __name__ == "__main__":
     llm_manager = LLMManager()
     code = "def fibonacci(n):\n    if n <= 0:\n        return n\n    return fibonacci(n - 1) + fibonacci(n - 2)"
     llm_manager.generate_initial_code(code, mode="mode_1", language="Python")
-    #llm_manager.generate_feedback_code(chosen_mode="mode_1", language="Python")
+    llm_manager.generate_feedback_code(chosen_mode="mode_1", language="Python")

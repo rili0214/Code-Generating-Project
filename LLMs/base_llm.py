@@ -7,13 +7,13 @@ from logs import setup_logger
 logger = setup_logger()
 
 # Configuration Constants
-API_TOKEN_qwen = "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" 
-API_TOKEN_llama = "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"
-API_TOKEN_phi = "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"
-AZURE_OPENAI_API_KEY = "your_azure_openai_api_key"  
-AZURE_OPENAI_ENDPOINT = "your_azure_openai_endpoint" 
-AZURE_OPENAI_DEPLOYMENT = "gpt-4"  
-AZURE_API_VERSION = "2023-06-01-preview" 
+API_TOKEN_qwen = "" 
+API_TOKEN_llama = ""
+API_TOKEN_phi = ""
+AZURE_OPENAI_API_KEY = ""  
+AZURE_OPENAI_ENDPOINT = "" 
+AZURE_OPENAI_DEPLOYMENT = ""  
+AZURE_API_VERSION = "" 
 
 client = InferenceClient(api_key=API_TOKEN_qwen)
 
@@ -158,6 +158,7 @@ def prepare_messages(system_prompt, user_prompt, code_snippet=None, additional_d
     return messages
 
 def call_huggingface_chat(model_name, messages):
+    """Call the Hugging Face API to generate code."""
     if model_name == "Qwen/Qwen2.5-Coder-32B-Instruct":
         stream = client.chat.completions.create(
             model = model_name,
@@ -178,7 +179,6 @@ def call_huggingface_chat(model_name, messages):
             if 'choices' in chunk and 'delta' in chunk['choices'][0]:
                 content = chunk['choices'][0]['delta'].get('content', '')
                 complete_response += content
-                #print(content, end="", flush=True)
             else:
                 logger.warning(f"Unexpected chunk format: {chunk}")
         

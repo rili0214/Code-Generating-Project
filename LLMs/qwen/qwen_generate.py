@@ -1,6 +1,5 @@
 from huggingface_hub import InferenceClient
 from pathlib import Path
-import json
 from LLMs.base_llm import API_TOKEN_qwen, qwen_system_prompt_initial, qwen_system_prompt_feedback, qwen_user_prompt_initial, qwen_user_prompt_feedback, qwen_final_report_system_prompt, qwen_final_report_user_prompt, load_json_data, prepare_messages, call_huggingface_chat, save_response_to_json
 from logs import setup_logger
 
@@ -34,7 +33,6 @@ def initial_call(mode, code_, language):
     else:
         logger.error("Failed to generate Qwen initial output.")
 
-# Feedback Generation
 def feedback_call(mode, language):
     """Feedback call with additional JSON data."""
     system_prompt_ = qwen_system_prompt_feedback

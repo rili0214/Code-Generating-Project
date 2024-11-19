@@ -28,7 +28,6 @@ def generate_dafny_code(code_input):
     user_prompt = dafny_user_prompt
     
     try:
-        # Constructing the complete prompt
         prompt_parts = []
         if system_prompt:
             prompt_parts.append(f"System: {system_prompt}")
@@ -37,7 +36,6 @@ def generate_dafny_code(code_input):
         prompt_parts.append(f"Code Input:\n{code_input}")
         full_prompt = "\n\n".join(prompt_parts)
 
-        # API request
         logger.info("Sending request to Azure OpenAI API.")
         response = openai.Completion.create(
             engine=AZURE_OPENAI_DEPLOYMENT,
@@ -60,7 +58,6 @@ def generate_dafny_code(code_input):
 
 
 if __name__ == "__main__":
-    # Example input code
     example_code = """
     def fibonacci(n):
         if n < 0:

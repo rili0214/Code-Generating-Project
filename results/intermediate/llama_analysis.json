@@ -1,8 +1,8 @@
 {
     "clang_tidy": {
-        "command": "clang-tidy temp/code_files/temp_code_12d88abe-7b51-45bc-9642-753611cd4a03.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
+        "command": "clang-tidy temp/code_files/temp_code_f678a240-840d-4d3f-b436-d1368913d278.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
         "errors": [],
-        "file": "temp/code_files/temp_code_12d88abe-7b51-45bc-9642-753611cd4a03.cpp",
+        "file": "temp/code_files/temp_code_f678a240-840d-4d3f-b436-d1368913d278.cpp",
         "return_code": 0,
         "status": "success",
         "warnings": []

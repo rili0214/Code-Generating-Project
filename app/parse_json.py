@@ -1,6 +1,14 @@
 import json
 
 def save_intermediate_results(model_name, analysis_result, phase):
+        """
+        Saves intermediate analysis results to a JSON file.
+
+        Parameters:
+            model_name (str): Name of the model.
+            analysis_result (dict): Analysis results to be saved.
+            phase (str): Phase of the analysis (e.g., "initial" or "feedback").
+        """
         filename = f"results/intermediate/{model_name}_{phase}_analysis.json"
         with open(filename, 'w') as f:
             json.dump(analysis_result, f)
@@ -17,18 +25,14 @@ def save_combined_json(file1_path, file2_path, output_path):
     Returns:
         dict: The combined JSON object.
     """
-    # Ensure paths are strings
     file1_path, file2_path, output_path = map(str, [file1_path, file2_path, output_path])
 
-    # Load the first JSON file
     with open(file1_path, 'r') as f1:
         result1 = json.load(f1)
-        
-    # Load the second JSON file
+
     with open(file2_path, 'r') as f2:
         result2 = json.load(f2)
-        
-    # Combine the JSON objects
+
     if isinstance(result1, dict) and isinstance(result2, dict):
         combined_json = {}
         combined_json["model 1"] = result1
@@ -37,8 +41,7 @@ def save_combined_json(file1_path, file2_path, output_path):
         combined_json = result1 + result2
     else:
         raise ValueError("Unsupported JSON structures: both files must have the same root type.")
-        
-    # Save the combined JSON to the output path
+ 
     with open(output_path, 'w') as f:
         json.dump(combined_json, f, indent=4)
 

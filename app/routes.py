@@ -28,7 +28,7 @@ llm_manager = LLMManager()
 
 BACKEND_2_API_URL = "http://127.0.0.1:5000/analyze" 
 
-combined_file_path = str(Path(__file__).parent.parent / 'results' / 'intermediate' / 'combined_analysis.json')
+combined_file_path = Path(__file__).parent.parent / 'results' / 'intermediate' / 'combined_analysis.json'
 
 initial_paths = {
     "mode_1": ["qwen", "llama"],

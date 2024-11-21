@@ -21,7 +21,8 @@ from LLMs.base_llm import (
     load_json_data, 
     prepare_messages, 
     call_huggingface_chat, 
-    save_response_to_json)
+    save_response_to_json
+)
 from logs import setup_logger
 
 # File to load the combined analysis which used for feedback generation
@@ -130,12 +131,3 @@ def generate_final_report():
         return response
     else:
         logger.error("Failed to generate Qwen final report output.")
-
-
-if __name__ == "__main__":
-    code = "def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\nif nums[i] + nums[j] == target:\n                return [j, i]\n    return []"
-    
-    #initial_call(mode="mode_1", code_=code, language="Python")
-    #feedback_call(mode="mode_1", language="Python")
-    response =generate_final_report()
-    print(response)

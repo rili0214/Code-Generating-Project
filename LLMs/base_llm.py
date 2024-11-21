@@ -16,9 +16,9 @@ from logs import setup_logger
 logger = setup_logger()
 
 # Configuration Constants
-API_TOKEN_qwen = "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"
-API_TOKEN_llama = "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"
-API_TOKEN_phi = "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"
+API_TOKEN_qwen = ""
+API_TOKEN_llama = ""
+API_TOKEN_phi = ""
 AZURE_OPENAI_API_KEY = ""  
 AZURE_OPENAI_ENDPOINT = ""
 AZURE_OPENAI_DEPLOYMENT = ""  

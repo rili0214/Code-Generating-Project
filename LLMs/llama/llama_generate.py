@@ -58,8 +58,3 @@ def initial_call(mode, code_, language):
         logger.info("Generated LLaMa output saved to " + llama_initial_path)
     else:
         logger.error("Failed to generate LLaMa output.")
-
-
-if __name__ == "__main__":
-    code = "def twosum(nums, target):\n    nums.sort()\n    for i in range(len(nums)):\n        for j in range(i + 1, len(nums)):\nif nums[i] + nums[j] == target:\n                return [j, i]\n    return []"
-    initial_call(mode="mode_1", code_=code, language="Python")

@@ -59,10 +59,10 @@ def generate_dafny_code(code_input):
 
         logger.info("Sending request to Azure OpenAI API.")
         response = openai.Completion.create(
-            engine=AZURE_OPENAI_DEPLOYMENT,
-            prompt=full_prompt,
-            max_tokens=300,  
-            temperature=0.7 
+            engine = AZURE_OPENAI_DEPLOYMENT,
+            prompt = full_prompt,
+            max_tokens = 300,  
+            temperature = 0.5 
         )
         generated_text = response.choices[0].text.strip()
 
@@ -76,20 +76,3 @@ def generate_dafny_code(code_input):
     except Exception as e:
         logger.error(f"Error during Dafny code generation: {e}")
         raise
-
-
-if __name__ == "__main__":
-    example_code = """
-    def fibonacci(n):
-        if n < 0:
-            return n
-        return fibonacci(n - 1) + fibonacci(n - 2)
-    """
-
-    logger.info("Starting Dafny code generation...")
-    try:
-        dafny_code = generate_dafny_code(example_code)
-        print("\nGenerated Dafny Code:\n")
-        print(dafny_code)
-    except Exception as e:
-        logger.error("Failed to generate Dafny code.")

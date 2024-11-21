@@ -66,19 +66,3 @@ def save_combined_json(file1_path, file2_path, output_path):
         json.dump(combined_json, f, indent = 4)
 
     return combined_json
-
-
-if __name__ == "__main__":
-     file1_path = "results/intermediate/llama_analysis.json"
-     with open(file1_path, 'r') as f:
-        result1 = json.load(f)
-     print(result1)
-     file2_path = "results/intermediate/qwen_analysis.json"
-     with open(file2_path, 'r') as f:
-        result2 = json.load(f)
-     print(result2)
-     output_path = "results/intermediate/combined_analysis.json"
-     save_combined_json(file1_path, file2_path, output_path)
-     with open(output_path, 'r') as f:
-        result3 = json.load(f)
-     print(result3)

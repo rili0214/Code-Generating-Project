@@ -39,7 +39,7 @@ app_routes = Blueprint("app_routes", __name__)
 llm_manager = LLMManager()                          # Initialize LLMManager
 
 # Backend 2(Evaluation and Checking backend) API URL
-BACKEND_2_API_URL = "http://127.0.0.1:5000/analyze"     
+BACKEND_2_API_URL = ""     
 
 # Path to the combined analysis file which used for feedback generation
 combined_file_path = Path(__file__).parent.parent / 'results' / 'intermediate' / 'combined_analysis.json'

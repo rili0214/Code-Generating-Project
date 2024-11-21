@@ -1,8 +1,8 @@
 {
     "clang_tidy": {
-        "command": "clang-tidy temp/code_files/temp_code_f6354065-6e8d-46eb-a76d-818f617de715.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
+        "command": "clang-tidy temp/code_files/temp_code_6c9cd1e7-2b02-4ab4-ad29-7ad29b890618.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
         "errors": [],
-        "file": "temp/code_files/temp_code_f6354065-6e8d-46eb-a76d-818f617de715.cpp",
+        "file": "temp/code_files/temp_code_6c9cd1e7-2b02-4ab4-ad29-7ad29b890618.cpp",
         "return_code": 0,
         "status": "success",
         "warnings": []
@@ -13,12 +13,12 @@
     "evaluation_score": {
         "Note": "-1 indicates current method is not available",
         "dynamic_analysis_score": 10,
-        "final_score": 9.2,
+        "final_score": 9.282842712474618,
         "formal_verification_score": -1,
-        "rankme_score": 2.0000000000000004,
+        "rankme_score": 2.828427124746189,
         "stsatic_analysis_score": 10
     },
-    "generated_code": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\";\n    return 0;\n}",
+    "generated_code": "#include <iostream>\n#include <string>\n\nint main() {\n    std::cout << \"Hello, World!\" << std::endl;\n    return 0;\n}",
     "model": "llama",
     "valgrind": {
         "error_count": {

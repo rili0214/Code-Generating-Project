@@ -1,167 +1,35 @@
-
-2024-11-19 17:05:33,260 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2024-11-19 20:15:44,880 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:8000
  * Running on http://172.29.42.196:8000
-2024-11-19 17:05:33,261 - INFO - [33mPress CTRL+C to quit[0m
-2024-11-19 17:06:24,631 - INFO - Messages prepared successfully.
-2024-11-19 17:06:24,632 - INFO - Qwen initial execution started.
-2024-11-19 17:06:25,703 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:06:25,714 - INFO - Qwen initial execution completed.
-2024-11-19 17:06:25,724 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 17:06:25,725 - INFO - Generated Qwen initial output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 17:06:25,725 - INFO - Messages prepared successfully.
-2024-11-19 17:06:25,726 - INFO - LLaMa execution started.
-2024-11-19 17:06:26,351 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:06:26,355 - INFO - LLaMa execution completed.
-2024-11-19 17:06:26,447 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
-2024-11-19 17:06:26,455 - INFO - Generated LLaMa output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/LLMs/results/llama_results/llama_initial_results.json
-2024-11-19 17:06:29,751 - INFO - 127.0.0.1 - - [19/Nov/2024 17:06:29] "[35m[1mPOST /generate_output HTTP/1.1[0m" 500 -
-2024-11-19 17:07:36,267 - INFO - Messages prepared successfully.
-2024-11-19 17:07:36,268 - INFO - Qwen initial execution started.
-2024-11-19 17:07:36,423 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:07:36,430 - INFO - Qwen initial execution completed.
-2024-11-19 17:07:36,488 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 17:07:36,493 - INFO - Generated Qwen initial output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 17:07:36,494 - INFO - Messages prepared successfully.
-2024-11-19 17:07:36,494 - INFO - LLaMa execution started.
-2024-11-19 17:07:36,524 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:07:36,525 - INFO - LLaMa execution completed.
-2024-11-19 17:07:36,556 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
-2024-11-19 17:07:36,557 - INFO - Generated LLaMa output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/LLMs/results/llama_results/llama_initial_results.json
-2024-11-19 17:07:39,796 - INFO - 127.0.0.1 - - [19/Nov/2024 17:07:39] "[35m[1mPOST /generate_output HTTP/1.1[0m" 500 -
-2024-11-19 17:09:19,520 - INFO - Messages prepared successfully.
-2024-11-19 17:09:19,521 - INFO - Qwen initial execution started.
-2024-11-19 17:09:19,548 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:09:19,549 - INFO - Qwen initial execution completed.
-2024-11-19 17:09:19,559 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 17:09:19,559 - INFO - Generated Qwen initial output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 17:09:19,560 - INFO - Messages prepared successfully.
-2024-11-19 17:09:19,560 - INFO - LLaMa execution started.
-2024-11-19 17:09:19,590 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:09:19,591 - INFO - LLaMa execution completed.
-2024-11-19 17:09:19,610 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
-2024-11-19 17:09:19,611 - INFO - Generated LLaMa output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/LLMs/results/llama_results/llama_initial_results.json
-2024-11-19 17:09:22,759 - INFO - Analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/qwen_analysis.json
-2024-11-19 17:09:26,400 - INFO - Analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/llama_analysis.json
-2024-11-19 17:09:26,514 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/combined_analysis.json
-2024-11-19 17:09:26,519 - INFO - Messages prepared successfully.
-2024-11-19 17:09:26,520 - INFO - Qwen feedback execution started.
-2024-11-19 17:09:31,306 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:09:31,307 - INFO - Qwen feedback execution completed.
-2024-11-19 17:09:31,347 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
-2024-11-19 17:09:31,348 - INFO - Generated Qwen feedback output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
-2024-11-19 17:09:34,573 - INFO - Final analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/final_analysis.json
-2024-11-19 17:09:34,584 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/final_analysis.json
-2024-11-19 17:09:34,584 - INFO - Messages prepared successfully.
-2024-11-19 17:09:34,585 - INFO - Qwen final report execution started.
-2024-11-19 17:10:00,726 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:10:00,727 - INFO - Qwen final report execution completed.
-2024-11-19 17:10:00,728 - INFO - Generated Qwen final report output.
-2024-11-19 17:10:00,729 - INFO - Global: Final report generated successfully.
-2024-11-19 17:10:00,730 - INFO - 127.0.0.1 - - [19/Nov/2024 17:10:00] "POST /generate_output HTTP/1.1" 200 -
-2024-11-19 17:27:00,568 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:8000
- * Running on http://172.29.42.196:8000
-2024-11-19 17:27:00,568 - INFO - [33mPress CTRL+C to quit[0m
-2024-11-19 17:27:05,706 - INFO - Messages prepared successfully.
-2024-11-19 17:27:05,707 - INFO - Qwen initial execution started.
-2024-11-19 17:27:05,876 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:27:05,882 - INFO - Qwen initial execution completed.
-2024-11-19 17:27:05,976 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 17:27:05,978 - INFO - Generated Qwen initial output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 17:27:05,991 - INFO - Messages prepared successfully.
-2024-11-19 17:27:05,992 - INFO - LLaMa execution started.
-2024-11-19 17:27:06,025 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:27:06,031 - INFO - LLaMa execution completed.
-2024-11-19 17:27:06,046 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
-2024-11-19 17:27:06,047 - INFO - Generated LLaMa output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/LLMs/results/llama_results/llama_initial_results.json
-2024-11-19 17:27:08,976 - INFO - Analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/qwen_analysis.json
-2024-11-19 17:27:11,754 - INFO - Analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/llama_analysis.json
-2024-11-19 17:27:11,783 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/combined_analysis.json
-2024-11-19 17:27:11,783 - INFO - Messages prepared successfully.
-2024-11-19 17:27:11,783 - INFO - Qwen feedback execution started.
-2024-11-19 17:27:16,522 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:27:16,522 - INFO - Qwen feedback execution completed.
-2024-11-19 17:27:16,537 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
-2024-11-19 17:27:16,541 - INFO - Generated Qwen feedback output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
-2024-11-19 17:27:21,349 - INFO - Final analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/final_analysis.json
-2024-11-19 17:27:21,377 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/final_analysis.json
-2024-11-19 17:27:21,377 - INFO - Messages prepared successfully.
-2024-11-19 17:27:21,379 - INFO - Qwen final report execution started.
-2024-11-19 17:27:44,529 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:27:44,529 - INFO - Qwen final report execution completed.
-2024-11-19 17:27:44,530 - INFO - Generated Qwen final report output.
-2024-11-19 17:27:44,531 - INFO - Global: Final report generated successfully.
-2024-11-19 17:27:44,532 - INFO - 127.0.0.1 - - [19/Nov/2024 17:27:44] "POST /generate_output HTTP/1.1" 200 -
-2024-11-19 17:44:40,338 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:8000
- * Running on http://172.29.42.196:8000
-2024-11-19 17:44:40,338 - INFO - [33mPress CTRL+C to quit[0m
-2024-11-19 17:44:46,265 - INFO - Messages prepared successfully.
-2024-11-19 17:44:46,266 - INFO - Qwen initial execution started.
-2024-11-19 17:44:46,502 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:44:46,519 - INFO - Qwen initial execution completed.
-2024-11-19 17:44:46,581 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 17:44:46,582 - INFO - Generated Qwen initial output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 17:44:46,583 - INFO - Messages prepared successfully.
-2024-11-19 17:44:46,583 - INFO - LLaMa execution started.
-2024-11-19 17:44:46,612 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:44:46,613 - INFO - LLaMa execution completed.
-2024-11-19 17:44:46,674 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
-2024-11-19 17:44:46,675 - INFO - Generated LLaMa output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/LLMs/results/llama_results/llama_initial_results.json
-2024-11-19 17:44:49,927 - INFO - Analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/qwen_analysis.json
-2024-11-19 17:44:54,130 - INFO - Analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/llama_analysis.json
-2024-11-19 17:44:54,303 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/combined_analysis.json
-2024-11-19 17:44:54,303 - INFO - Messages prepared successfully.
-2024-11-19 17:44:54,306 - INFO - Qwen feedback execution started.
-2024-11-19 17:44:59,760 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:44:59,762 - INFO - Qwen feedback execution completed.
-2024-11-19 17:44:59,768 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
-2024-11-19 17:44:59,769 - INFO - Generated Qwen feedback output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
-2024-11-19 17:45:01,917 - INFO - Final analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/final_analysis.json
-2024-11-19 17:45:01,939 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/final_analysis.json
-2024-11-19 17:45:01,940 - INFO - Messages prepared successfully.
-2024-11-19 17:45:01,940 - INFO - Qwen final report execution started.
-2024-11-19 17:45:25,771 - INFO - Completed Hugging Face API call with response.
-2024-11-19 17:45:25,772 - INFO - Qwen final report execution completed.
-2024-11-19 17:45:25,773 - INFO - Generated Qwen final report output.
-2024-11-19 17:45:25,774 - INFO - Global: Final report generated successfully.
-2024-11-19 17:45:25,776 - INFO - 127.0.0.1 - - [19/Nov/2024 17:45:25] "POST /generate_output HTTP/1.1" 200 -
-2024-11-19 18:36:31,041 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:8000
- * Running on http://172.29.42.196:8000
-2024-11-19 18:36:31,042 - INFO - [33mPress CTRL+C to quit[0m
-2024-11-19 18:37:34,908 - INFO - Messages prepared successfully.
-2024-11-19 18:37:34,909 - INFO - Qwen initial execution started.
-2024-11-19 18:37:35,904 - INFO - Completed Hugging Face API call with response.
-2024-11-19 18:37:35,905 - INFO - Qwen initial execution completed.
-2024-11-19 18:37:35,910 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 18:37:35,911 - INFO - Generated Qwen initial output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
-2024-11-19 18:37:35,911 - INFO - Messages prepared successfully.
-2024-11-19 18:37:35,911 - INFO - LLaMa execution started.
-2024-11-19 18:37:36,511 - INFO - Completed Hugging Face API call with response.
-2024-11-19 18:37:36,512 - INFO - LLaMa execution completed.
-2024-11-19 18:37:36,521 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
-2024-11-19 18:37:36,521 - INFO - Generated LLaMa output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/LLMs/results/llama_results/llama_initial_results.json
-2024-11-19 18:37:39,565 - INFO - Analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/qwen_analysis.json
-2024-11-19 18:37:42,130 - INFO - Analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/llama_analysis.json
-2024-11-19 18:37:42,153 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/combined_analysis.json
-2024-11-19 18:37:42,154 - INFO - Messages prepared successfully.
-2024-11-19 18:37:42,154 - INFO - Qwen feedback execution started.
-2024-11-19 18:37:45,500 - INFO - Completed Hugging Face API call with response.
-2024-11-19 18:37:45,501 - INFO - Qwen feedback execution completed.
-2024-11-19 18:37:45,506 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
-2024-11-19 18:37:45,507 - INFO - Generated Qwen feedback output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
-2024-11-19 18:37:48,208 - INFO - Final analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/final_analysis.json
-2024-11-19 18:37:48,223 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/final_analysis.json
-2024-11-19 18:37:48,223 - INFO - Messages prepared successfully.
-2024-11-19 18:37:48,223 - INFO - Qwen final report execution started.
-2024-11-19 18:38:12,905 - INFO - Completed Hugging Face API call with response.
-2024-11-19 18:38:12,906 - INFO - Qwen final report execution completed.
-2024-11-19 18:38:12,906 - INFO - Generated Qwen final report output.
-2024-11-19 18:38:12,907 - INFO - Global: Final report generated successfully.
-2024-11-19 18:38:12,908 - INFO - 127.0.0.1 - - [19/Nov/2024 18:38:12] "POST /generate_output HTTP/1.1" 200 -
+2024-11-19 20:15:44,881 - INFO - [33mPress CTRL+C to quit[0m
+2024-11-19 20:15:52,309 - INFO - Messages prepared successfully.
+2024-11-19 20:15:52,310 - INFO - Qwen initial execution started.
+2024-11-19 20:15:52,495 - INFO - Completed Hugging Face API call with response.
+2024-11-19 20:15:52,497 - INFO - Qwen initial execution completed.
+2024-11-19 20:15:52,504 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
+2024-11-19 20:15:52,504 - INFO - Generated Qwen initial output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_initial_results.json
+2024-11-19 20:15:52,504 - INFO - Messages prepared successfully.
+2024-11-19 20:15:52,504 - INFO - LLaMa execution started.
+2024-11-19 20:15:52,531 - INFO - Completed Hugging Face API call with response.
+2024-11-19 20:15:52,539 - INFO - LLaMa execution completed.
+2024-11-19 20:15:52,564 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/llama_results/llama_initial_results.json
+2024-11-19 20:15:52,565 - INFO - Generated LLaMa output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/LLMs/results/llama_results/llama_initial_results.json
+2024-11-19 20:15:55,770 - INFO - Analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/qwen_analysis.json
+2024-11-19 20:15:59,022 - INFO - Analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/llama_analysis.json
+2024-11-19 20:15:59,059 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/intermediate/combined_analysis.json
+2024-11-19 20:15:59,060 - INFO - Messages prepared successfully.
+2024-11-19 20:15:59,060 - INFO - Qwen feedback execution started.
+2024-11-19 20:16:03,987 - INFO - Completed Hugging Face API call with response.
+2024-11-19 20:16:03,990 - INFO - Qwen feedback execution completed.
+2024-11-19 20:16:04,018 - INFO - Response saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
+2024-11-19 20:16:04,020 - INFO - Generated Qwen feedback output saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/qwen_results/qwen_feedback_results.json
+2024-11-19 20:16:07,208 - INFO - Final analysis response from Backend 2 saved to /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/final_analysis.json
+2024-11-19 20:16:07,223 - INFO - Loaded data from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/final_analysis.json
+2024-11-19 20:16:07,223 - INFO - Messages prepared successfully.
+2024-11-19 20:16:07,223 - INFO - Qwen final report execution started.
+2024-11-19 20:16:30,269 - INFO - Completed Hugging Face API call with response.
+2024-11-19 20:16:30,270 - INFO - Qwen final report execution completed.
+2024-11-19 20:16:30,271 - INFO - Generated Qwen final report output.
+2024-11-19 20:16:30,272 - INFO - Global: Final report generated successfully.
+2024-11-19 20:16:30,282 - INFO - 127.0.0.1 - - [19/Nov/2024 20:16:30] "POST /generate_output HTTP/1.1" 200 -

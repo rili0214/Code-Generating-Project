@@ -9,8 +9,8 @@ Structure:
 Here is the structure of current evaluation backend 1:
 
 ├── main.py                                 # Entry point to initialize server and endpoints
-├── requirements.txt                        # Dependencies for the LLMs, API interactions, and other processing
-├── config.py                               # Configuration for LLM selection, API settings, and feedback loop limits
+├── requirements.txt                        # Dependencies for the LLMs, API interactions, and other processing                 (Not yet avalibale)
+├── config.py                               # Configuration for LLM selection, API settings, and feedback loop limits           (Not yet avalibale)
 ├── app/                                    # Application directory
 │   ├── __init__.py                         # Initializes app as a package
 │   ├── routes.py                           # API endpoints for frontend and the other backend server communication

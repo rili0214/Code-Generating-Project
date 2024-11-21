@@ -1,8 +1,8 @@
 {
     "clang_tidy": {
-        "command": "clang-tidy temp/code_files/temp_code_ff35a01a-c9ea-484e-8928-0590e34e5be1.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
+        "command": "clang-tidy temp/code_files/temp_code_9b4bb704-d63a-46cf-8977-d104b5474f33.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
         "errors": [],
-        "file": "temp/code_files/temp_code_ff35a01a-c9ea-484e-8928-0590e34e5be1.cpp",
+        "file": "temp/code_files/temp_code_9b4bb704-d63a-46cf-8977-d104b5474f33.cpp",
         "return_code": 0,
         "status": "success",
         "warnings": []
@@ -11,13 +11,14 @@
         "verification_status": "no code provided"
     },
     "evaluation_score": {
+        "Note": "-1 indicates current method is not available",
         "dynamic_analysis_score": 10,
-        "final_score": 3.2,
-        "formal_verification_score": 0,
-        "rankme_score": 2.0000000000000004,
-        "stsatic_analysis_score": 0
+        "final_score": 9.2,
+        "formal_verification_score": -1,
+        "rankme_score": 2.0,
+        "stsatic_analysis_score": 10
     },
-    "generated_code": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, World!\";\n    return 0;\n}",
+    "generated_code": "#include <iostream>\nint main() { \n    std::cout << \"Hello, World!\";\n    return 0; \n}",
     "model": "qwen",
     "valgrind": {
         "error_count": {
@@ -37,6 +38,7 @@
             "possibly_lost": [],
             "still_reachable": [],
             "uninitialized_value_errors": []
-        }
+        },
+        "status": "success"
     }
 }

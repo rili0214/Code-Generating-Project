@@ -7,13 +7,13 @@ from logs import setup_logger
 logger = setup_logger()
 
 # Configuration Constants
-API_TOKEN_qwen = "" 
-API_TOKEN_llama = ""
-API_TOKEN_phi = ""
+API_TOKEN_qwen = "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"
+API_TOKEN_llama = "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"
+API_TOKEN_phi = "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"
 AZURE_OPENAI_API_KEY = ""  
-AZURE_OPENAI_ENDPOINT = "" 
+AZURE_OPENAI_ENDPOINT = ""
 AZURE_OPENAI_DEPLOYMENT = ""  
-AZURE_API_VERSION = "" 
+AZURE_API_VERSION = ""
 
 client = InferenceClient(api_key=API_TOKEN_qwen)
 

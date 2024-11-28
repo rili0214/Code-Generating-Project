@@ -94,6 +94,7 @@ class LLMManager:
                 initial_generated_code = initial_generate_function(mode = mode, code_ = code_input, language = language)
                 if initial_generated_code:
                     logger.info(f"Global: Code generated with {model_name} in {mode}")
+                    return initial_generated_code
             except Exception as e:
                 logger.error(f"Global: Error generating code with {model_name} in {mode}: {e}")
 

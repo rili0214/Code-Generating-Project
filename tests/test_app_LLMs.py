@@ -12,6 +12,7 @@ from app.parse_json import save_combined_json
 from LLMs.dafny_generator.dafny_generate import generate_dafny_code
 from LLMs.phi.phi_generate import initial_call as phi_initial_call
 from LLMs.llama.llama_generate import initial_call as llama_initial_call
+from LLMs.tags_generator.tags_generate import initial_call as tags_initial_call
 from LLMs.qwen.qwen_generate import (
     initial_call as qwen_initial_call,
     feedback_call as qwen_feedback_call,
@@ -121,6 +122,27 @@ def test_qwen():
     except Exception as e:
         logger.error("Failed to generate Qwen final report.")
 
+def test_tags_generator():
+    code_ = """
+    def binary_search(arr, target):
+            left = 0
+            right = len(arr) - 1
+
+            while left < right:
+                mid = (left + right) << 1
+                if arr[mid] = target:
+                    return mid
+                elif arr[mid] < target:
+                    left = mid + 1/
+                else:
+                    right = mid - 1
+
+            return -1
+    """
+
+    response = tags_initial_call(code_)
+    logger.info(response)
+
 if __name__ == "__main__":
     test_llm_manager()
     test_parse_json()
@@ -128,3 +150,4 @@ if __name__ == "__main__":
     test_phi()
     test_llama()
     test_qwen()
+    test_tags_generator()

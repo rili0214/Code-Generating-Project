@@ -19,12 +19,46 @@ logger = setup_logger()
 API_TOKEN_qwen = ""
 API_TOKEN_llama = ""
 API_TOKEN_phi = ""
+API_TOKEN_tags = ""
 AZURE_OPENAI_API_KEY = ""  
 AZURE_OPENAI_ENDPOINT = ""
 AZURE_OPENAI_DEPLOYMENT = ""  
 AZURE_API_VERSION = ""
 
-client = InferenceClient(api_key = API_TOKEN_qwen)
+tags_system_prompt = """
+Identify the bugs in the given code by categorizing them into the following categories:  
+- Functional bugs  
+- Usability bugs  
+- Security bugs  
+- Syntax errors  
+- Compatibility bugs  
+- Logical bugs  
+- Performance bugs  
+- Unit-level bugs  
+- Integration bugs  
+- Out-of-bound bugs  
+- Functional errors  
+- Security errors  
+- Calculation errors  
+- Communication errors  
+- Logic errors  
+- Workflow bugs  
+- Bohrbugs  
+- Data bugs  
+- Error handling defects  
+- Performance faults  
+
+**Response Format:**  
+- If only one tag is identified, respond with:  
+  ```tag1```  
+- If multiple tags are identified, respond with:  
+  ```tag1, tag2, tag3, ...```  
+Do **not** include any explanation or commentary, only return the tags.
+"""
+
+tags_user_prompt = """
+Remember only return the tags. Here is the code to analyze for bugs:  
+"""
 
 # System prompt for Phi and LLaMa
 system_prompt = """
@@ -199,7 +233,7 @@ def prepare_messages(system_prompt, user_prompt, code_snippet = None, additional
     logger.info("Messages prepared successfully.")
     return messages
 
-def call_huggingface_chat(model_name, messages):
+def call_huggingface_chat(model_name, messages, client):
     """
     Call the Hugging Face API to generate code.
 

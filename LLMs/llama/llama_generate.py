@@ -50,7 +50,7 @@ def initial_call(mode, code_, language):
     messages = prepare_messages(system_prompt_, user_prompt_, code_snippet = code_input_)
     logger.info("LLaMa execution started.")
 
-    response = call_huggingface_chat(model, messages)
+    response = call_huggingface_chat(model, messages, client)
     logger.info("LLaMa execution completed.")
     
     if response:

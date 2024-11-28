@@ -33,3 +33,64 @@
 2024-11-19 20:16:30,271 - INFO - Generated Qwen final report output.
 2024-11-19 20:16:30,272 - INFO - Global: Final report generated successfully.
 2024-11-19 20:16:30,282 - INFO - 127.0.0.1 - - [19/Nov/2024 20:16:30] "POST /generate_output HTTP/1.1" 200 -
+2024-11-26 21:35:58,506 - INFO - Test cases initialized.
+2024-11-26 21:37:24,339 - INFO - Test cases initialized.
+2024-11-26 22:15:12,824 - INFO - Test cases initialized.
+2024-11-26 22:27:54,224 - INFO - Test cases initialized.
+2024-11-26 22:27:54,298 - ERROR - Failed to initialize database: table inputs already exists
+2024-11-26 23:04:08,543 - INFO - Test cases initialized.
+2024-11-26 23:04:08,614 - ERROR - Failed to initialize database: table inputs already exists
+2024-11-26 23:18:39,544 - INFO - Test cases initialized.
+2024-11-26 23:18:39,667 - ERROR - Failed to initialize database: table inputs already exists
+2024-11-26 23:22:57,384 - INFO - Test cases initialized.
+2024-11-26 23:22:57,714 - ERROR - Failed to initialize database: table inputs already exists
+2024-11-26 23:23:53,976 - ERROR - Failed to initialize database: table inputs already exists
+2024-11-26 23:27:51,256 - INFO - Test cases initialized.
+2024-11-26 23:27:51,837 - ERROR - Failed to initialize database: table inputs already exists
+2024-11-26 23:28:42,859 - INFO - Test cases initialized.
+2024-11-26 23:29:29,746 - INFO - Test cases initialized.
+2024-11-26 23:29:30,559 - INFO - Database initialized successfully from /mnt/c/Users/taox0/OneDrive/Documents/GitHub/CGDP_DB/pipeline_schema.sql
+2024-11-26 23:34:00,614 - INFO - Test cases initialized.
+2024-11-26 23:34:00,737 - ERROR - Failed to initialize database: table inputs already exists
+2024-11-27 08:32:19,643 - INFO - Messages prepared successfully.
+2024-11-27 08:32:19,644 - INFO - Tags generation execution started.
+2024-11-27 08:34:53,352 - INFO - Messages prepared successfully.
+2024-11-27 08:34:53,352 - INFO - Tags generation execution started.
+2024-11-27 08:45:53,714 - INFO - Messages prepared successfully.
+2024-11-27 08:45:53,715 - INFO - Tags generation execution started.
+2024-11-27 09:19:06,989 - INFO - Messages prepared successfully.
+2024-11-27 09:19:06,990 - INFO - Tags generation execution started.
+2024-11-27 09:19:41,093 - INFO - Messages prepared successfully.
+2024-11-27 09:19:41,119 - INFO - Tags generation execution started.
+2024-11-27 09:20:33,933 - INFO - Messages prepared successfully.
+2024-11-27 09:20:33,934 - INFO - Tags generation execution started.
+2024-11-27 09:37:09,256 - INFO - Messages prepared successfully.
+2024-11-27 09:37:09,256 - INFO - Tags generation execution started.
+2024-11-27 10:16:32,785 - INFO - Messages prepared successfully.
+2024-11-27 10:16:33,051 - INFO - Completed Hugging Face API call with response.
+2024-11-27 10:16:33,078 - INFO - Completed Hugging Face API call with response.
+2024-11-27 10:16:33,105 - INFO - Completed Hugging Face API call with response.
+2024-11-27 10:16:33,133 - INFO - Completed Hugging Face API call with response.
+2024-11-27 10:16:33,160 - INFO - Completed Hugging Face API call with response.
+2024-11-27 10:16:33,187 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:00:21,138 - INFO - Messages prepared successfully.
+2024-11-27 12:02:27,308 - INFO - Messages prepared successfully.
+2024-11-27 12:02:27,611 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:02:27,635 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:02:27,659 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:02:27,683 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:02:27,707 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:02:27,731 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:02:27,756 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:02:27,780 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:02:27,804 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:06:02,491 - INFO - Messages prepared successfully.
+2024-11-27 12:06:02,625 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:22:26,839 - INFO - Messages prepared successfully.
+2024-11-27 12:23:47,910 - INFO - Messages prepared successfully.
+2024-11-27 12:25:49,716 - INFO - Messages prepared successfully.
+2024-11-27 12:28:06,547 - INFO - Messages prepared successfully.
+2024-11-27 12:28:06,548 - INFO - Tags generation execution started.
+2024-11-27 12:28:06,714 - INFO - Completed Hugging Face API call with response.
+2024-11-27 12:28:06,716 - INFO - Tags generation execution completed.
+2024-11-27 12:28:06,718 - INFO - Generated tags are syntax errors, logical bugs, calculation errors

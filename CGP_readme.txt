@@ -44,12 +44,15 @@ Here is the structure of current evaluation backend 1:
 │   │   ├── qwen_feedback_results.json      # Feedback generated outputs from Qwen
 │   └── final_analysis.json                 # Final analysis report of the feedback output
 │   └── final_report.json                   # Final report including evaluation, pros&cons of code, and tips for improvements
+├── database/                               # Directory to connect and operate the database
+│   └── queries.py                          # Helper files that operates the database
 ├── logs/                                   # Directory for logging and error handling
 │   ├── __init__.py                         
 │   └── logs.txt                            # Log file for global execution
 │   └── app.logging                         # Log file for local execution
 ├── tests/                                  # Directory for tests
 │   ├── __init__.py                         # Driver for testing
-│   └── test_cases.py                       # Unit and integration tests
+│   └── test_app_LLMs.py                    # Unit and integration tests for app and LLMs
+│   └── test_database.py                    # Unit and integration tests for database
 └── temp/                                   # Temporary files directory
     └── code_files/                         # Subdirectory for temporary code files

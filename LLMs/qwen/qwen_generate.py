@@ -65,7 +65,7 @@ def initial_call(mode, code_, language):
     messages = prepare_messages(system_prompt_, user_prompt_, code_snippet = code_)
     logger.info("Qwen initial execution started.")
 
-    response = call_huggingface_chat(model, messages)
+    response = call_huggingface_chat(model, messages, client)
     logger.info("Qwen initial execution completed.")
 
     if response:
@@ -96,7 +96,7 @@ def feedback_call(mode, language):
     messages = prepare_messages(system_prompt_, user_prompt_, additional_data = additional_data_)
     logger.info("Qwen feedback execution started.")
 
-    response = call_huggingface_chat(model, messages)
+    response = call_huggingface_chat(model, messages, client)
     logger.info("Qwen feedback execution completed.")
 
     if response:
@@ -123,7 +123,7 @@ def generate_final_report():
     messages = prepare_messages(system_prompt_, user_prompt_, additional_data = final_report_data)
     logger.info("Qwen final report execution started.")
 
-    response = call_huggingface_chat(model, messages)
+    response = call_huggingface_chat(model, messages, client)
     logger.info("Qwen final report execution completed.")
 
     if response:

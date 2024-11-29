@@ -181,6 +181,11 @@ def generate_output():
         final_opt = {}
         final_opt["final_output"] = final_output
 
+        # Save the final output to the database
+        final_output_id = insert_final_output(input_id = input_id, 
+                                              report_text = final_output)
+        final_opt["final_output_id in the datbase is"] = final_output_id
+
         return jsonify(final_opt), 200
 
     except Exception as e:

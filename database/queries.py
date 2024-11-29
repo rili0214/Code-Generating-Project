@@ -125,15 +125,13 @@ def insert_evaluation_results(input_id,
     return evaluation_id
 
 # Insert into Final Output Table
-def insert_final_output(input_id, feedback_code, evaluation_summary, improvement_tips):
+def insert_final_output(input_id, report_text):
     """
     Insert final output into Final Output Table
 
     Args:
         input_id (int): The ID of the input.
-        feedback_code (str): The feedback code.
-        evaluation_summary (str): The evaluation summary.
-        improvement_tips (str): The improvement tips.
+        report_text (str): The report text.
 
     Returns:
         int: The ID of the inserted final output.
@@ -142,10 +140,9 @@ def insert_final_output(input_id, feedback_code, evaluation_summary, improvement
     cursor = connection.cursor()
     timestamp = datetime.now().isoformat()
     cursor.execute("""
-        INSERT INTO final_output (input_id, timestamp, feedback_code, evaluation_summary, 
-                   improvement_tips)
-        VALUES (?, ?, ?, ?, ?)
-    """, (input_id, timestamp, feedback_code, evaluation_summary, improvement_tips))
+        INSERT INTO final_output (input_id, timestamp, report_text)
+        VALUES (?, ?, ?)
+    """, (input_id, timestamp, report_text))
     final_output_id = cursor.lastrowid
     connection.commit()
     connection.close()

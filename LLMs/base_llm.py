@@ -25,28 +25,29 @@ AZURE_OPENAI_ENDPOINT = ""
 AZURE_OPENAI_DEPLOYMENT = ""  
 AZURE_API_VERSION = ""
 
+# System prompt for tags generation
 tags_system_prompt = """
 Identify the bugs in the given code by categorizing them into the following categories:  
-- Functional bugs  
-- Usability bugs  
-- Security bugs  
-- Syntax errors  
-- Compatibility bugs  
-- Logical bugs  
-- Performance bugs  
-- Unit-level bugs  
-- Integration bugs  
-- Out-of-bound bugs  
-- Functional errors  
-- Security errors  
-- Calculation errors  
-- Communication errors  
-- Logic errors  
-- Workflow bugs  
+- Functional Bugs  
+- Usability Bugs  
+- Security Bugs  
+- Syntax Errors  
+- Compatibility Bugs  
+- Logical Bugs  
+- Performance Bugs  
+- Unit-Level Bugs  
+- Integration Bugs  
+- Out-of-Bound Bugs  
+- Functional Errors  
+- Security Errors  
+- Calculation Errors  
+- Communication Errors  
+- Logic Errors  
+- Workflow Bugs  
 - Bohrbugs  
-- Data bugs  
-- Error handling defects  
-- Performance faults  
+- Data Bugs  
+- Error Handling Defects  
+- Performance Faults  
 
 **Response Format:**  
 - If only one tag is identified, respond with:  
@@ -56,6 +57,7 @@ Identify the bugs in the given code by categorizing them into the following cate
 Do **not** include any explanation or commentary, only return the tags.
 """
 
+# User prompt for tags generation
 tags_user_prompt = """
 Remember only return the tags. Here is the code to analyze for bugs:  
 """

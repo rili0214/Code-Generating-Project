@@ -12,10 +12,12 @@ from LLMs.qwen.qwen_generate import (
     initial_call as qwen_initial_call, 
     feedback_call as qwen_feedback_call, 
     qwen_initial_path, 
-    generate_final_report)
+    generate_final_report
+)
 from LLMs.llama.llama_generate import initial_call as llama_initial_call, llama_initial_path
 from LLMs.phi.phi_generate import initial_call as phi_initial_call, phi_initial_path
 from LLMs.dafny_generator.dafny_generate import generate_dafny_code
+from LLMs.tags_generator.tags_generate import initial_call as genenrate_tags
 from logs import setup_global_logger
 
 # The final analysis file which is used for final output
@@ -68,7 +70,7 @@ class LLMManager:
         self.dafny_lang = dafny_lang
         self.generate_final_report = generate_final_report
 
-    def generate_initial_code(self, code_input, mode="mode_1", language="Python"):
+    def generate_initial_code(self, code_input, mode = "mode_1", language = "Python"):
         """
         Generates initial code using the specified mode and language.
         
@@ -98,7 +100,7 @@ class LLMManager:
             except Exception as e:
                 logger.error(f"Global: Error generating code with {model_name} in {mode}: {e}")
 
-    def generate_feedback_code(self, chosen_mode="mode_1", language="Python"):
+    def generate_feedback_code(self, chosen_mode = "mode_1", language = "Python"):
         """
         Generates feedback code using the specified mode and language.
         
@@ -120,7 +122,7 @@ class LLMManager:
         except Exception as e:
             logger.error(f"Global: Error in feedback generation with {model_name} in {chosen_mode}: {e}")
 
-    def generate_gpt_dafny_code(self, language, code_input, mode="mode_1"):
+    def generate_gpt_dafny_code(self, language, code_input, mode = "mode_1"):
         """
         Generates Dafny code using the OpenAI API.
         
@@ -147,7 +149,24 @@ class LLMManager:
 
             except Exception as e:
                 logger.error(f"Error generating Dafny code: {e}")
+    
+    def generate_tags(self, code_input):
+        """
+        Generates tags using the OpenAI API.
         
+        paras:
+            code_input (str): The input code to generate tags for.
+            mode (str, optional): The mode to use for tag generation. Default is "mode_1".
+            
+        raises:
+            Exception: If an error occurs during tag generation.
+        """
+        try:
+            genenrate_tags(code_input)
+            logger.info("Global: Successfully generated bug tags for the code.")
+        except Exception as e:
+            logger.error(f"Global: Error generating tags: {e}")
+
     def finalize_output(self):
         """
         Finalizes the output by generating the final report.

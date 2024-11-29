@@ -8,6 +8,7 @@
 #############################################################################################################################
 
 import json
+from database.bug_types import bug_data
 
 def save_intermediate_results(model_name, analysis_result, phase):
         """
@@ -66,3 +67,49 @@ def save_combined_json(file1_path, file2_path, output_path):
         json.dump(combined_json, f, indent = 4)
 
     return combined_json
+
+def process_json_for_database(json_path):
+    """
+    Processes a JSON file and returns the data to be stored in the database.
+        
+    paras:
+        json_path (str): The path to the JSON file.
+            
+    returns:
+        tuple: A tuple containing the generated code, static analysis, dynamic analysis, formal verification, and final scores.
+        
+    """
+    with open(json_path, 'r') as file:
+        data = json.load(file)
+
+    static_analysis, dynamic_analysis, formal_verification, final_scores = "", "", "", ""
+
+    if "clang_tidy" in data:
+        static_analysis = data["clang_tidy"]
+    elif "sonarqube" in data:
+        static_analysis = data["sonarqube"]
+    elif "python static analysis" in data:
+        static_analysis = data["python static analysis"]
+    elif "valgrind" in data:
+        dynamic_analysis = data["valgrind"]
+    elif "dafny" in data:
+        formal_verification = data["dafny"]
+    elif "evaluation score" in data:
+        final_scores = data["evaluation_score"]
+
+    return static_analysis, dynamic_analysis, formal_verification, final_scores
+
+def generate_bug_report(selected_bugs):
+    result = {}
+    for bug_type in selected_bugs:
+        if bug_type in bug_data:
+            result[bug_type] = bug_data[bug_type]
+        else:
+            result[bug_type] = "Bug type not found."
+
+    # Export to a JSON file
+    json_filename = "bug_report.json"
+    with open(json_filename, "w") as json_file:
+        json.dump(result, json_file, indent=4)
+    
+    return json_filename

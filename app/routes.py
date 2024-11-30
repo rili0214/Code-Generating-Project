@@ -27,7 +27,7 @@ validation.
 database.
 """
 
-from flask import Blueprint, request, jsonify # type: ignore
+from flask import Blueprint, request, jsonify, Response
 import json
 from pathlib import Path
 import requests
@@ -177,16 +177,10 @@ def generate_output():
         final_output_path = Path(__file__).parent.parent / 'results' / "final_output.txt"
         save_response_to_txt(final_output, final_output_path)
 
-        # Return the final output to the frontend API
-        final_opt = {}
-        final_opt["final_output"] = final_output
-
         # Save the final output to the database
-        final_output_id = insert_final_output(input_id = input_id, 
-                                              report_text = final_output)
-        final_opt["final_output_id in the datbase is"] = final_output_id
+        final_output_id = insert_final_output(input_id = input_id, report_text = final_output)
 
-        return jsonify(final_opt), 200
+        return Response(final_output, mimetype='text/plain', status=200)
 
     except Exception as e:
         logger.error(f"Error occurred: {e}")

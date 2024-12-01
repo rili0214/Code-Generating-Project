@@ -20,10 +20,7 @@ API_TOKEN_qwen = ""
 API_TOKEN_llama = ""
 API_TOKEN_phi = ""
 API_TOKEN_tags = ""
-AZURE_OPENAI_API_KEY = ""  
-AZURE_OPENAI_ENDPOINT = ""
-AZURE_OPENAI_DEPLOYMENT = ""  
-AZURE_API_VERSION = ""
+API_TOKEN_dafny = ""
 
 # System prompt for tags generation
 tags_system_prompt = """
@@ -48,12 +45,13 @@ Identify the bugs in the given code by categorizing them into the following cate
 - Data Bugs  
 - Error Handling Defects  
 - Performance Faults  
+- No Bugs Found
 
 **Response Format:**  
 - If only one tag is identified, respond with:  
-  ```tag1```  
+  tag1
 - If multiple tags are identified, respond with:  
-  ```tag1, tag2, tag3, ...```  
+  tag1, tag2, tag3, ...  
 Do **not** include any explanation or commentary, only return the tags.
 """
 
@@ -253,7 +251,7 @@ def call_huggingface_chat(model_name, messages, client):
         stream = client.chat.completions.create(
             model = model_name,
             messages = messages,
-            max_tokens = 1000,
+            max_tokens = 1500,
             stream = True
         )
     else:

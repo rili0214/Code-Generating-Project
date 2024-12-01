@@ -4,75 +4,51 @@
 # Date: 11/20/2024                                                                                                          #
 # Version: 1.0.1                                                                                                            #
 # License: [MIT License]                                                                                                    #
-# Description: This program use Azure OpenAI API(GPT-4-Turbo) to generate Dafny code.                                       #                                                                                                 
+# Description: This program use Qwen to generate Dafny code.                                       #                                                                                                 
 #############################################################################################################################
 
-import openai
 from pathlib import Path
+from huggingface_hub import InferenceClient
 from LLMs.base_llm import (
-    AZURE_OPENAI_API_KEY, 
-    AZURE_OPENAI_ENDPOINT, 
-    AZURE_OPENAI_DEPLOYMENT, 
-    AZURE_API_VERSION, 
+    API_TOKEN_dafny, 
     dafny_system_prompt, 
     dafny_user_prompt, 
-    save_response_to_txt)
+    prepare_messages, 
+    call_huggingface_chat, 
+    save_response_to_txt
+)
 from logs import setup_logger
 
 # Setup logging
 logger = setup_logger()
 
-openai.api_key = AZURE_OPENAI_API_KEY
-openai.api_base = AZURE_OPENAI_ENDPOINT
-openai.api_type = "azure"
-openai.api_version = AZURE_API_VERSION
+client = InferenceClient(api_key = API_TOKEN_dafny)
+
+model = "Qwen/Qwen2.5-Coder-32B-Instruct"
 
 # Set the path to save the generated Dafny code
 dafny_path = str(Path(__file__).parent.parent / 'results' / 'openai_results' / 'dafny_output.txt')
 
 def generate_dafny_code(code_input):
-    """
-    Generate Dafny code for formal verification using Azure OpenAI API.
-
-    params:
-        code_input (str): Source code for which Dafny code is generated.
-        system_prompt (str, optional): System-level instructions for the model.
-        user_prompt (str, optional): User-level instructions for the model.
-
-    returns:
-        str: Generated Dafny code.
-
-    raises:
-        Exception: If an error occurs during Dafny code generation.
-    """
-    system_prompt = dafny_system_prompt
-    user_prompt = dafny_user_prompt
+    """ 
+    Calls the qwen model to generate Dafny code for the given code. 
     
-    try:
-        prompt_parts = []
-        if system_prompt:
-            prompt_parts.append(f"System: {system_prompt}")
-        if user_prompt:
-            prompt_parts.append(f"User: {user_prompt}")
-        prompt_parts.append(f"Code Input:\n{code_input}")
-        full_prompt = "\n\n".join(prompt_parts)
+    Args: code_input (str): The code to generate Dafny code for.
+        
+    Returns: str: The generated Dafny code.
+    """ 
+    system_prompt_ = dafny_system_prompt 
+    user_prompt_ = dafny_user_prompt 
+    code_input_ = code_input 
 
-        logger.info("Sending request to Azure OpenAI API.")
-        response = openai.Completion.create(
-            engine = AZURE_OPENAI_DEPLOYMENT,
-            prompt = full_prompt,
-            max_tokens = 300,  
-            temperature = 0.5 
-        )
-        generated_text = response.choices[0].text.strip()
+    messages = prepare_messages(system_prompt_, user_prompt_, code_snippet = code_input_) 
+    logger.info("Tags generation execution started.") 
 
-        if response:
-            save_response_to_txt(response, dafny_path)
-            return response
-        logger.info("Successfully generated Dafny code from OpenAI.")
-
-        return generated_text
-    
-    except Exception as e:
-        logger.error(f"Error during Dafny code generation: {e}")
-        raise
+    response = call_huggingface_chat(model, messages, client) 
+    logger.info("Tags generation execution completed.") 
+    if response:
+        save_response_to_txt(response, dafny_path)
+        logger.info("Generated Dafny code saved to " + dafny_path)
+        return response
+    else: 
+        logger.error("Failed to generate LLaMa output.")

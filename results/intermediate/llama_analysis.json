@@ -1,44 +1,70 @@
 {
-    "clang_tidy": {
-        "command": "clang-tidy temp/code_files/temp_code_6c9cd1e7-2b02-4ab4-ad29-7ad29b890618.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
-        "errors": [],
-        "file": "temp/code_files/temp_code_6c9cd1e7-2b02-4ab4-ad29-7ad29b890618.cpp",
-        "return_code": 0,
-        "status": "success",
-        "warnings": []
-    },
     "dafny": {
         "verification_status": "no code provided"
     },
     "evaluation_score": {
         "Note": "-1 indicates current method is not available",
-        "dynamic_analysis_score": 10,
-        "final_score": 9.282842712474618,
+        "dynamic_analysis_score": -1,
+        "final_score": 5.596086245168381,
         "formal_verification_score": -1,
-        "rankme_score": 2.828427124746189,
-        "stsatic_analysis_score": 10
+        "rankme_score": 2.647097892508576,
+        "stsatic_analysis_score": 6.333333333333333
     },
-    "generated_code": "#include <iostream>\n#include <string>\n\nint main() {\n    std::cout << \"Hello, World!\" << std::endl;\n    return 0;\n}",
+    "generated_code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello, World!\")\n}",
     "model": "llama",
-    "valgrind": {
-        "error_count": {
-            "definitely_lost": 0,
-            "indirectly_lost": 0,
-            "invalid_read_errors": 0,
-            "invalid_write_errors": 0,
-            "possibly_lost": 0,
-            "still_reachable": 0,
-            "uninitialized_value_errors": 0
-        },
-        "memory_issues": {
-            "definitely_lost": [],
-            "indirectly_lost": [],
-            "invalid_read_errors": [],
-            "invalid_write_errors": [],
-            "possibly_lost": [],
-            "still_reachable": [],
-            "uninitialized_value_errors": []
-        },
-        "status": "success"
+    "sonarqube": {
+        "components": [
+            {
+                "key": "static-debugging",
+                "name": "Static Analysis Sonarqube",
+                "project": "static-debugging",
+                "qualifier": "TRK"
+            }
+        ],
+        "measures": [
+            {
+                "bestValue": false,
+                "metric": "security_rating",
+                "value": "5.0"
+            },
+            {
+                "metric": "alert_status",
+                "value": "ERROR"
+            },
+            {
+                "bestValue": true,
+                "metric": "code_smells",
+                "value": "0"
+            },
+            {
+                "bestValue": true,
+                "metric": "duplicated_lines_density",
+                "value": "0.0"
+            },
+            {
+                "metric": "files",
+                "value": "2"
+            },
+            {
+                "bestValue": true,
+                "metric": "bugs",
+                "value": "0"
+            },
+            {
+                "bestValue": true,
+                "metric": "reliability_rating",
+                "value": "1.0"
+            },
+            {
+                "bestValue": true,
+                "metric": "duplicated_blocks",
+                "value": "0"
+            },
+            {
+                "bestValue": false,
+                "metric": "vulnerabilities",
+                "value": "1"
+            }
+        ]
     }
 }

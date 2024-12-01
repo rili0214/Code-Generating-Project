@@ -27,8 +27,10 @@ Here is the structure of current evaluation backend 1:
 │   │   ├── phi_generate.py                 # Driver for phi model generation
 │   ├── qwen/                               # Subdirectory for Qwen2.5-Coder-32B-Instruct
 │   │   ├── qwen_generate.py                # Initial, feedback, and final generation 
-│   └── dafny_generator/                    # Directory for Dafny code generation using GPT-4-Turbo
-│       ├── dafny_generate.py               # Generation of Dafny code using Azure OpenAI API
+│   └── dafny_generator/                    # Directory for Dafny code generation using Qwen2.5-Coder-32B-Instruct
+│   │   ├── dafny_generate.py               # Generation of Dafny code using Qwen model
+│   └── tags_generator/                     # Directory for bug type generation using Qwen2.5-Coder-32B-Instruct
+│       ├── tags_generate.py                # Generation of bug types using Qwen model to insert into the database
 ├── results/                                # Directory to save results
 │   └── intermediate/                       # Directory for intermediate results from each feedback loop iteration
 │   │   ├── phi_analysis.json               # Analysis report on Phi's code from checking phase
@@ -46,6 +48,7 @@ Here is the structure of current evaluation backend 1:
 │   └── final_report.json                   # Final report including evaluation, pros&cons of code, and tips for improvements
 ├── database/                               # Directory to connect and operate the database
 │   └── queries.py                          # Helper files that operates the database
+│   └── bug_types.py                        # A json format data structure that contains most common 20 bugs for user's information
 ├── logs/                                   # Directory for logging and error handling
 │   ├── __init__.py                         
 │   └── logs.txt                            # Log file for global execution

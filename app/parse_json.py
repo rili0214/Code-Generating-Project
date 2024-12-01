@@ -71,35 +71,39 @@ def save_combined_json(file1_path, file2_path, output_path):
 def process_json_for_database(json_path):
     """
     Processes a JSON file and returns the data to be stored in the database.
-        
+
     paras:
-        json_path (str): The path to the JSON file.
-            
+        json_path (str): Path to the JSON file.
+
     returns:
-        tuple: A tuple containing the generated code, static analysis, dynamic analysis, formal verification, and final scores.
-        
+        tuple: A tuple containing the static analysis, dynamic analysis, formal verification, and final scores.
     """
     with open(json_path, 'r') as file:
         data = json.load(file)
 
-    static_analysis, dynamic_analysis, formal_verification, final_scores = "", "", "", ""
+    static_analysis = data.get("clang_tidy") or data.get("sonarqube") or data.get("python static analysis")
+    dynamic_analysis = data.get("valgrind")
+    formal_verification = data.get("dafny")
+    final_scores = data.get("evaluation_score")
 
-    if "clang_tidy" in data:
-        static_analysis = data["clang_tidy"]
-    elif "sonarqube" in data:
-        static_analysis = data["sonarqube"]
-    elif "python static analysis" in data:
-        static_analysis = data["python static analysis"]
-    elif "valgrind" in data:
-        dynamic_analysis = data["valgrind"]
-    elif "dafny" in data:
-        formal_verification = data["dafny"]
-    elif "evaluation score" in data:
-        final_scores = data["evaluation_score"]
+    # Convert each analysis to JSON string if it's not None
+    static_analysis = json.dumps(static_analysis) if static_analysis else None
+    dynamic_analysis = json.dumps(dynamic_analysis) if dynamic_analysis else None
+    formal_verification = json.dumps(formal_verification) if formal_verification else None
+    final_scores = json.dumps(final_scores) if final_scores else None
 
     return static_analysis, dynamic_analysis, formal_verification, final_scores
 
 def generate_bug_report(selected_bugs):
+    """
+    Generates a bug report based on the selected bugs.
+
+    paras:
+        selected_bugs (list): List of selected bugs.
+
+    returns:
+        str: Path to the generated bug report JSON file.
+    """
     result = {}
     for bug_type in selected_bugs:
         if bug_type in bug_data:
@@ -107,9 +111,8 @@ def generate_bug_report(selected_bugs):
         else:
             result[bug_type] = "Bug type not found."
 
-    # Export to a JSON file
-    json_filename = "bug_report.json"
-    with open(json_filename, "w") as json_file:
-        json.dump(result, json_file, indent=4)
-    
-    return json_filename
+    return result
+
+if __name__ == "__main__":
+    result = generate_bug_report(["No Bugs Found"])
+    print(result)

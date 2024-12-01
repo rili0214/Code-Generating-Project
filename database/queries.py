@@ -88,12 +88,7 @@ def insert_generated_code(input_id, model_name, dafny_code, generated_code):
     logger.info(f"Generated code {generated_code_id} inserted successfully")
     return generated_code_id
 
-def insert_evaluation_results(input_id, 
-                              generated_code_id, 
-                              static_analysis_results, 
-                              dynamic_analysis_results, 
-                              formal_verification_results, 
-                              final_scores):
+def insert_evaluation_results(input_id, generated_code_id, static_analysis_results, dynamic_analysis_results, formal_verification_results, final_scores):
     """
     Insert evaluation results into Evaluation Results Table
 
@@ -108,21 +103,27 @@ def insert_evaluation_results(input_id,
     Returns:
         int: The ID of the inserted evaluation results.
     """
-    connection = sqlite3.connect(DB_FILE)
-    cursor = connection.cursor()
-    timestamp = datetime.now().isoformat()
-    cursor.execute("""
-        INSERT INTO evaluation_results (input_id, generated_code_id, timestamp, 
-                   static_analysis_results, dynamic_analysis_results, 
-                   formal_verification_results, final_scores)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    """, (input_id, generated_code_id, timestamp, static_analysis_results, 
-          dynamic_analysis_results, formal_verification_results, 
-          final_scores))
-    evaluation_id = cursor.lastrowid
-    connection.commit()
-    connection.close()
-    return evaluation_id
+    try:
+        connection = sqlite3.connect(DB_FILE)
+        cursor = connection.cursor()
+        cursor.execute("""
+            INSERT INTO evaluation_results (
+                input_id, 
+                generated_code_id, 
+                timestamp, 
+                static_analysis_results, 
+                dynamic_analysis_results, 
+                formal_verification_results, 
+                final_scores
+            ) VALUES (?, ?, datetime('now'), ?, ?, ?, ?)""",
+            (input_id, generated_code_id, static_analysis_results, dynamic_analysis_results, formal_verification_results, final_scores))
+        evaluation_id = cursor.lastrowid
+        connection.commit()
+        connection.close()
+        logger.info("Inserted evaluation results successfully.")
+        return evaluation_id
+    except Exception as e:
+        logger.error(f"Error inserting evaluation results: {e}")
 
 # Insert into Final Output Table
 def insert_final_output(input_id, report_text):

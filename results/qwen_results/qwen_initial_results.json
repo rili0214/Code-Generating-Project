@@ -1,7 +1,7 @@
 {
     "mode": "mode_2",
     "model": "qwen",
-    "generated_code": "```cpp\n#include <iostream>\nint main() { std::cout << \"Hello, World!\" << std::endl; return 0; }\n```",
-    "language": "C++",
+    "generated_code": "```go\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello, World!\")\n}\n```",
+    "language": "Go",
     "dafny_text": ""
 }

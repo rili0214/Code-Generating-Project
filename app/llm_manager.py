@@ -162,8 +162,10 @@ class LLMManager:
             Exception: If an error occurs during tag generation.
         """
         try:
-            genenrate_tags(code_input)
-            logger.info("Global: Successfully generated bug tags for the code.")
+            response = genenrate_tags(code_input)
+            if response:
+                logger.info("Global: Successfully generated bug tags for the code.")
+                return response
         except Exception as e:
             logger.error(f"Global: Error generating tags: {e}")
 
@@ -175,7 +177,9 @@ class LLMManager:
             Exception: If an error occurs during final report generation.
         """
         try:
-            self.generate_final_report()
-            logger.info("Global: Final report generated successfully.")
+            response = self.generate_final_report()
+            if response:
+                logger.info("Global: Final report generated successfully.")
+                return response
         except Exception as e:
             logger.error(f"Global: Error generating final report: {e}")

@@ -57,7 +57,7 @@ initialize_database()
 llm_manager = LLMManager()                          
 
 # Backend 2(Evaluation and Checking backend) API URL
-BACKEND_2_API_URL = ""     
+BACKEND_2_API_URL = ""
 
 # Path to the combined analysis file which used for feedback generation
 combined_file_path = Path(__file__).parent.parent / 'results' / 'intermediate' / 'combined_analysis.json'
@@ -95,6 +95,7 @@ def generate_output():
         # Add tags to the input
         tags = llm_manager.generate_tags(code_input = code_)
         add_tags_to_input(input_id = input_id, tags = tags)
+        logger.info(f"Added Tags: {tags}")
 
         # Step 1: Generate initial output with the selected LLMs
         llm_manager.generate_initial_code(code_input = code_, mode = mode_, language = language_)
@@ -173,14 +174,15 @@ def generate_output():
         
         # Step 5: Wrap up the final output with summaries and validations
         final_output = llm_manager.finalize_output()
+        logger.info(f"FFFFFFFinal output: {final_output}")
 
         final_output_path = Path(__file__).parent.parent / 'results' / "final_output.txt"
         save_response_to_txt(final_output, final_output_path)
 
         # Save the final output to the database
-        final_output_id = insert_final_output(input_id = input_id, report_text = final_output)
+        insert_final_output(input_id = input_id, report_text = final_output)
 
-        return Response(final_output, mimetype='text/plain', status=200)
+        return Response(final_output, mimetype = 'text/plain', status = 200)
 
     except Exception as e:
         logger.error(f"Error occurred: {e}")
@@ -194,6 +196,7 @@ def get_similar_code():
         code_ = data['code']
 
         tags_to_search = llm_manager.generate_tags(code_input = code_)
+        
         input_ids = get_ids_by_tags(tags_to_search)
 
         if input_ids:

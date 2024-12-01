@@ -30,23 +30,27 @@ def initial_call(code_):
     """ 
     Calls the qwen model to generate bug tags for the given code. 
     
-    Args: code_ (str): The code to generate bug tags for.
+    Args: 
+        code_ (str): The code to generate bug tags for.
         
-    Returns: list[str]: A list of generated bug tags. 
+    Returns: 
+        list[str]: A list of generated bug tags. 
     """ 
     system_prompt_ = tags_system_prompt 
     user_prompt_ = tags_user_prompt 
     code_input_ = code_ 
 
-    messages = prepare_messages(system_prompt_, user_prompt_, code_snippet = code_input_) 
+    messages = prepare_messages(system_prompt_, user_prompt_, code_snippet=code_input_) 
     logger.info("Tags generation execution started.") 
 
     response = call_huggingface_chat(model, messages, client) 
     logger.info("Tags generation execution completed.") 
 
     if response: 
-        logger.info("Generated tags are " + response) 
-        response = response.split(",") 
-        return response 
+        logger.info("Generated tags are: " + response)
+        # Split by comma and strip extra spaces, returning a list of tags
+        bug_tags = [tag.strip() for tag in response.split(",")]
+        return bug_tags 
     else: 
-        logger.error("Failed to generate LLaMa output.")
+        logger.error("Failed to generate bug tags.")
+        return []

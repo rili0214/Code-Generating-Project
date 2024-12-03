@@ -27,7 +27,7 @@ client = InferenceClient(api_key = API_TOKEN_dafny)
 model = "Qwen/Qwen2.5-Coder-32B-Instruct"
 
 # Set the path to save the generated Dafny code
-dafny_path = str(Path(__file__).parent.parent / 'results' / 'openai_results' / 'dafny_output.txt')
+dafny_path = Path(__file__).parent.parent.parent / 'results' / 'openai_results' / 'dafny_output.txt'
 
 def generate_dafny_code(code_input):
     """ 
@@ -42,13 +42,13 @@ def generate_dafny_code(code_input):
     code_input_ = code_input 
 
     messages = prepare_messages(system_prompt_, user_prompt_, code_snippet = code_input_) 
-    logger.info("Tags generation execution started.") 
+    logger.info("Dafny codes generation execution started.") 
 
     response = call_huggingface_chat(model, messages, client) 
-    logger.info("Tags generation execution completed.") 
+    logger.info("Dafny codes generation execution completed.") 
     if response:
         save_response_to_txt(response, dafny_path)
-        logger.info("Generated Dafny code saved to " + dafny_path)
+        logger.info("Generated Dafny code saved to file.")
         return response
     else: 
         logger.error("Failed to generate LLaMa output.")

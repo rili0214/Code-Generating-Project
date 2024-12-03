@@ -144,7 +144,7 @@ Debug and enhance the provided code using insights from the higher-scored model 
 
 In this response, you may include explanations if needed. However, you must adhere to the format: 
 
-```debugged code```
+```code```
 Explnations  
 """
 

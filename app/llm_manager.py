@@ -18,6 +18,7 @@ from LLMs.llama.llama_generate import initial_call as llama_initial_call, llama_
 from LLMs.phi.phi_generate import initial_call as phi_initial_call, phi_initial_path
 from LLMs.dafny_generator.dafny_generate import generate_dafny_code
 from LLMs.tags_generator.tags_generate import initial_call as genenrate_tags
+from app.parse_json import open_json_file_dafny
 from logs import setup_global_logger
 
 # The final analysis file which is used for final output
@@ -122,30 +123,35 @@ class LLMManager:
         except Exception as e:
             logger.error(f"Global: Error in feedback generation with {model_name} in {chosen_mode}: {e}")
 
-    def generate_gpt_dafny_code(self, language, code_input, mode = "mode_1"):
+    def generate_gpt_dafny_code(self, language, code_input, mode="mode_1"):
         """
         Generates Dafny code using the OpenAI API.
         
-        paras:
+        Args:
             language (str): The programming language for Dafny code generation.
             code_input (str): The input code to generate Dafny code for.
             mode (str, optional): The mode to use for Dafny code generation. Default is "mode_1".
-            
-        returns:
-            str: The generated Dafny code.
-            
-        raises:
+        
+        Raises:
             Exception: If an error occurs during Dafny code generation.
         """
         if language in self.dafny_lang:
             try:
+                # Replace with your Dafny generation logic
                 generated_dafny_code = generate_dafny_code(code_input)
-                logger.info("Successfully generated Dafny code using OpenAI.")
+                logger.info("Global: Successfully generated Dafny code.")
+
+                # Define paths based on mode
                 if mode == "mode_1":
-                    llama_initial_path["dafny_text"] = generated_dafny_code
+                    json_path_1 = llama_initial_path
                 elif mode == "mode_2":
-                    phi_initial_path["dafny_text"] = generated_dafny_code
-                qwen_initial_path["dafny_text"] = generated_dafny_code
+                    # json_path_1 = phi_initial_path
+                    json_path_1 = llama_initial_path
+                
+                json_path_2 = qwen_initial_path
+
+                # Save Dafny code to JSON
+                open_json_file_dafny(json_path_1, json_path_2, generated_dafny_code)
 
             except Exception as e:
                 logger.error(f"Error generating Dafny code: {e}")

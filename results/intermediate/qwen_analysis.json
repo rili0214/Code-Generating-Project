@@ -1,70 +1,22 @@
 {
-    "dafny": {
-        "verification_status": "no code provided"
-    },
     "evaluation_score": {
-        "Note": "-1 indicates current method is not available",
-        "dynamic_analysis_score": -1,
-        "final_score": 5.596086245168382,
-        "formal_verification_score": -1,
-        "rankme_score": 2.647097892508577,
-        "stsatic_analysis_score": 6.333333333333333
+        "final_score": 8.57,
+        "stsatic_analysis": 8.57
     },
-    "generated_code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello, World!\")\n}",
+    "generated_code": "q = int(input())\nsort1 = list(map(int, input().split()))\n\ndef bubblesort(ary):\n    cnt = 0\n    n = len(ary)\n    for i in range(n):\n        for j in range(n-1, i, -1):\n            if ary[j] < ary[j-1]:\n                ary[j-1], ary[j] = ary[j], ary[j-1]\n                cnt += 1\n    return ary, cnt\n\nary, cnt = bubblesort(sort1)\nprint(\" \".join(map(str, ary)))\nprint(cnt)",
     "model": "qwen",
-    "sonarqube": {
-        "components": [
-            {
-                "key": "static-debugging",
-                "name": "Static Analysis Sonarqube",
-                "project": "static-debugging",
-                "qualifier": "TRK"
-            }
-        ],
-        "measures": [
-            {
-                "bestValue": false,
-                "metric": "security_rating",
-                "value": "5.0"
-            },
-            {
-                "bestValue": true,
-                "metric": "duplicated_blocks",
-                "value": "0"
-            },
-            {
-                "bestValue": true,
-                "metric": "code_smells",
-                "value": "0"
-            },
-            {
-                "bestValue": true,
-                "metric": "reliability_rating",
-                "value": "1.0"
-            },
-            {
-                "bestValue": true,
-                "metric": "duplicated_lines_density",
-                "value": "0.0"
-            },
-            {
-                "metric": "alert_status",
-                "value": "ERROR"
-            },
-            {
-                "bestValue": false,
-                "metric": "vulnerabilities",
-                "value": "1"
-            },
-            {
-                "bestValue": true,
-                "metric": "bugs",
-                "value": "0"
-            },
-            {
-                "metric": "files",
-                "value": "2"
-            }
-        ]
-    }
+    "python static analysis": [
+        {
+            "output": "Success: no issues found in 1 source file\n",
+            "tool": "mypy"
+        },
+        {
+            "output": "************* Module temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:16:0: C0304: Final newline missing (missing-final-newline)\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:1:0: C0114: Missing module docstring (missing-module-docstring)\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:1:0: C0103: Module name \"temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365\" doesn't conform to snake_case naming style (invalid-name)\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:4:0: C0116: Missing function or method docstring (missing-function-docstring)\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:4:15: W0621: Redefining name 'ary' from outer scope (line 14) (redefined-outer-name)\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:5:4: W0621: Redefining name 'cnt' from outer scope (line 14) (redefined-outer-name)\n\n-----------------------------------\nYour code has been rated at 5.71/10\n\n",
+            "tool": "pylint"
+        },
+        {
+            "output": "Run started:2024-12-03 05:33:19.959822\n\nTest results:\n\tNo issues identified.\n\nCode scanned:\n\tTotal lines of code: 14\n\tTotal lines skipped (#nosec): 0\n\tTotal potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0\n\nRun metrics:\n\tTotal issues (by severity):\n\t\tUndefined: 0\n\t\tLow: 0\n\t\tMedium: 0\n\t\tHigh: 0\n\tTotal issues (by confidence):\n\t\tUndefined: 0\n\t\tLow: 0\n\t\tMedium: 0\n\t\tHigh: 0\nFiles skipped (0):\n",
+            "tool": "bandit"
+        }
+    ]
 }

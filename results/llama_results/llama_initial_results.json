@@ -1,7 +1,7 @@
 {
-    "mode": "mode_2",
+    "mode": "mode_1",
     "model": "llama",
-    "generated_code": "```go\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello, World!\")\n}\n```",
-    "language": "Go",
+    "generated_code": "```python\nq = int(input())\nsort1 = list(map(int, input().split()))\n\ndef bubblesort(ary):\n    cnt = 0\n    for i in range(q-1):  # fix: avoid index out of range error\n        for j in range(q-1, i, -1):  # fix: keep track of original index\n            if ary[j] < ary[j+1]:  # fix: correct comparison\n                ary[j], ary[j+1] = ary[j+1], ary[j]\n                cnt += 1\n    return (ary, cnt)\n\nary, cnt = bubblesort(sort1.copy())  # fix: avoid modifying the original list\nprint(\" \".join(map(str, ary)))\nprint(cnt)\n```",
+    "language": "Python",
     "dafny_text": ""
 }

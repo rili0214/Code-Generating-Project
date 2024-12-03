@@ -174,7 +174,7 @@ def generate_output():
         
         # Step 5: Wrap up the final output with summaries and validations
         final_output = llm_manager.finalize_output()
-        logger.info(f"FFFFFFFinal output: {final_output}")
+        logger.info(f"Final output: {final_output}")
 
         final_output_path = Path(__file__).parent.parent / 'results' / "final_output.txt"
         save_response_to_txt(final_output, final_output_path)

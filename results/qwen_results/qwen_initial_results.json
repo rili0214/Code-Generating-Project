@@ -1,7 +1,7 @@
 {
-    "mode": "mode_2",
+    "mode": "mode_1",
     "model": "qwen",
-    "generated_code": "```go\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello, World!\")\n}\n```",
-    "language": "Go",
+    "generated_code": "```python\nq = int(input())\nsort1 = list(map(int, input().split()))\n\ndef bubblesort(ary):\n    cnt = 0\n    n = len(ary)\n    for i in range(n):\n        for j in range(n-1, i, -1):\n            if ary[j] < ary[j-1]:\n                ary[j-1], ary[j] = ary[j], ary[j-1]\n                cnt += 1\n    return ary, cnt\n\nary, cnt = bubblesort(sort1)\nprint(\" \".join(map(str, ary)))\nprint(cnt)\n```",
+    "language": "Python",
     "dafny_text": ""
 }

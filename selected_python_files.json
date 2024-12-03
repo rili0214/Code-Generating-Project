@@ -1,0 +1,52 @@
+[
+    {
+        "mode": "mode_1",
+        "code": "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\ndef main():\n\tnum = int(input())\n\tfor i in range(num):\n\t\ttri = [int(x) for x in input().split(\" \")]\n\t\ttri.sort()\n\t\tif tri[2] ** 2 == tri[0] ** 2 + tri[1] ** 2:\n\t\t\tprint(\"YES\")\n\t\telse:\n\t\t\tprint(\"NO\")\n\t\t\t\nif __name__ == '__main__':\n  main()",
+        "language": "Python"
+    },
+    {
+        "mode": "mode_1",
+        "code": "import math\nwhile 1:\n    try:\n        a,b = map(int, input().split())\n        print(math.gcd(a,b), int(a*b/math.gcd(a,b)))\n    except:\n        break\n",
+        "language": "Python"
+    },
+    {
+        "mode": "mode_1",
+        "code": "import math\nn = input()\nm = 100\nfor i in xrange(n):\n    m = m * 1.05\n    m = math.ceil(m)\nprint \"%i\"%(m*1000)",
+        "language": "Python"
+    },
+    {
+        "mode": "mode_1",
+        "code": "n = int(input())\npair = [1, 1]\n\nfor i in range(n - 1):\n    pair[i % 2] = sum(pair)\n\nprint(pair[n % 2])\n\n",
+        "language": "Python"
+    },
+    {
+        "mode": "mode_1",
+        "code": "n = int(input())\nl = [[] for i in range(n)]\nretval=[10**10 for i in range(n)]\n\n\n\nfor i in range(n):\n    _input = [int(j) - 1 for j in input().split(\" \")]\n    u = _input[0]\n    k = _input[1] + 1\n    node = sorted(_input[2::])\n    if u in node:\n        node.remove(u)\n    l[u] = node\n\nretval[0]=0\nfor step in range(n+1):\n    for i ,d in enumerate(retval):\n        if d==step:\n            for node in l[i]:\n                retval[node]=min(retval[node],step+1)\n\nfor i,d in enumerate(retval):\n    if d==10**10:\n        print(i+1,-1)\n    else:\n        print(i+1,d)\n\n",
+        "language": "Python"
+    },
+    {
+        "mode": "mode_1",
+        "code": "# coding:utf-8\n\ndef insertionSort(A, N):\n    for i in range(1, N):\n        v = A[i]\n        j = i - 1\n        while j >= 0 and A[j] > v:\n            A[j + 1] = A[j]\n            j -= 1\n        A[j + 1] = v\n        for i in A:\n            print i,\n        else:\n            print\n\nN = input()\nA = map(int, raw_input().split())\nfor i in A:\n    print i,\nelse:\n    print\ninsertionSort(A,N)",
+        "language": "Python"
+    },
+    {
+        "mode": "mode_1",
+        "code": "#!/usr/bin/python3\n# -*- coding: utf-8 -*-\n\nimport sys\n\ndef gcd(x, y):\n    while y:\n        x, y = y, x % y\n    return x\n\nx, y = map(int, sys.stdin.readline().split())\nprint(gcd(x, y))\n\n",
+        "language": "Python"
+    },
+    {
+        "mode": "mode_1",
+        "code": "import math\nn = int(raw_input())\ncnt = 0\nfor i in range(n):\n    j = 2\n    num = int(raw_input())\n    while j <= math.sqrt(num):\n        if num % j == 0:\n            break\n        j+=1\n    if j > math.sqrt(num):\n        cnt+=1\nprint cnt\n",
+        "language": "Python"
+    },
+    {
+        "mode": "mode_1",
+        "code": "n = int(input())\nr = []\nfor i in range(n):\n    r.append(int(input()))\n\nmin = r[0]\nmax = -10 ** 12\n\nfor j in r[1:]:\n    if j - min > max:\n        max = j - min\n    if min > j:\n        min = j\n\nprint(max)",
+        "language": "Python"
+    },
+    {
+        "mode": "mode_1",
+        "code": "q = int(input())\n\nsort1 = list(map(int, input().split()))\n\ndef bubblesort(ary):\n    cnt = 0\n    for i in range(q):\n        for j in range(q-1, i, -1):\n            if ary[j] < ary[j-1]:\n                ary[j-1], ary[j] = ary[j], ary[j-1]\n                cnt += 1\n    return (ary, cnt)\n\nary, cnt = bubblesort(sort1)\nprint(\" \".join(map(str, ary)))\nprint(cnt)",
+        "language": "Python"
+    }
+]

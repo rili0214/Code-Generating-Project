@@ -113,6 +113,34 @@ def generate_bug_report(selected_bugs):
 
     return result
 
-if __name__ == "__main__":
-    result = generate_bug_report(["No Bugs Found"])
-    print(result)
+def open_json_file_dafny(json_path_1, json_path_2, generated_dafny_code):
+    """
+    Opens a JSON file and returns its contents.
+
+    paras:
+        file_path (str): Path to the JSON file.
+
+    returns:
+        dict: The contents of the JSON file.
+    """
+    # Load the existing supplemental model's JSON data
+    with open(json_path_1, 'r', encoding = 'utf-8') as file:
+        json_data = json.load(file)
+
+    # Update the JSON data with generated Dafny code
+    json_data["dafny_text"] = generated_dafny_code
+
+    # Save the updated JSON back to the file
+    with open(json_path_1, 'w', encoding = 'utf-8') as file:
+        json.dump(json_data, file, indent = 4)
+
+    # Load the existing primary model's JSON data
+    with open(json_path_2, 'r', encoding = 'utf-8') as file:
+        json_data = json.load(file)
+
+    # Update the JSON data with generated Dafny code
+    json_data["dafny_text"] = generated_dafny_code
+
+    # Save the updated JSON back to the file
+    with open(json_path_2, 'w', encoding = 'utf-8') as file:
+        json.dump(json_data, file, indent = 4)

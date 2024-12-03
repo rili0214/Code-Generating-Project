@@ -1,0 +1,52 @@
+[
+    {
+        "mode": "mode_2",
+        "code": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n  for(int i=1;i<10;i++)\n    for(int j=1;j<10;j++)\n      printf(\"%dx%d=%d\\n\",i,j,i*j);\n}",
+        "language": "C++"
+    },
+    {
+        "mode": "mode_1",
+        "code": "#include<iostream>\n#include<math.h>\nusing namespace std;\n\nint main()\n{\n\tint a, b;\n\n\twhile (cin >> a >> b){\n\t\tcout << (int)(log10(a + b) + 1) << endl;\n\t}\n\n\treturn 0;\n}",
+        "language": "C++"
+    },
+    {
+        "mode": "mode_1",
+        "code": "#include <iostream>\nusing namespace std;\n\nint main()\n{\n\tint iN, Temp;\n\tint iNum[3], iTrueFlag[1000];\n\n\tcin >> iN;\n\n\tfor( int i=0; i<iN; i++ ){\n\t\tcin >> iNum[0] >> iNum[1] >> iNum[2];\n\n\t\tfor( int j = 0; j < 3; j++ ){\n\t\t\tfor( int k = j + 1; k < 3; k++ ){\n\t\t\t\tif( iNum[j] > iNum[k] ){\n\t\t\t\t\tTemp    = iNum[j];\n\t\t\t\t\tiNum[j] = iNum[k];\n\t\t\t\t\tiNum[k] = Temp;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tif( (iNum[0] * iNum[0]) + (iNum[1] * iNum[1]) == (iNum[2] * iNum[2]) ) iTrueFlag[i] = 1;\n\t\telse\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   iTrueFlag[i] = 0;\n\n\t}\n\n\tfor( int i=0;i<iN;i++ ){\n\t\tif( iTrueFlag[i] == 1 ) cout << \"YES\" << endl;\n\t\telse\t\t\t\t    cout << \"NO\" << endl;\n\t}\n\n\treturn 0;\n}",
+        "language": "C++"
+    },
+    {
+        "mode": "mode_1",
+        "code": "#include <bits/stdc++.h>\nusing namespace std;\n\n#define INF 1.1e9\n#define LINF 1.1e18\n#define FOR(i,a,b) for (int i=(a);i<(b);++i)\n#define REP(i,n) FOR(i,0,n)\n#define ALL(v) (v).begin(),(v).end()\n#define pb push_back\n#define pf push_front\n#define fi first\n#define se second\n#define BIT(x,n) bitset<n>(x)\n#define PI 3.14159265358979323846\n\ntypedef long long ll;\ntypedef pair<int,ll> P;\ntypedef pair<ll,P> PP;\n\n//-----------------------------------------------------------------------------\n\nint main() {\n\tcin.tie(0);\n\tios::sync_with_stdio(false);\n\n\tint a,b,c,d,e,f;\n\twhile(cin>>a>>b>>c>>d>>e>>f) {\n\t\tdouble y=(double)(c*d-a*f)/(double)(b*d-a*e);\n\t\tdouble x=(c-b*y)/a;\n\t\tprintf(\"%.3f %.3f\\n\",x,y);\n\t}\n\n\treturn 0;\n}\n\n",
+        "language": "C++"
+    },
+    {
+        "mode": "mode_1",
+        "code": "#include <iostream>\n#include <vector>\n\nusing namespace std;\n\n//????\u00b0???\u00ac?????\u00b0\nunsigned int comp_GCD(unsigned int a, unsigned int b){\n\twhile(1){\n\t\tunsigned int r;\n\t\tr = a % b;\n\t\ta = b;\n\t\tb = r;\n\t\tif(b == 0){\n\t\t\treturn a;\n\t\t}\n\t}\n\treturn 0;\n}\n\n//?????????\nint main() {\n\tunsigned int a, b;\n\tvector<unsigned int> result_gcd;\n\tvector<unsigned int> result_lcm;\n\twhile(cin >> a >> b){\n\t\tunsigned int gcd = comp_GCD(a, b);\n\t\tresult_gcd.push_back(gcd);\n\t\tresult_lcm.push_back(a * (b / gcd));\n\t}\n\tfor(unsigned int i = 0; i < result_gcd.size(); i++){\n\t\tcout << result_gcd[i] << \" \" << result_lcm[i] << endl;\n\t}\n\treturn 0;\n}",
+        "language": "C++"
+    },
+    {
+        "mode": "mode_1",
+        "code": "#include<functional>\n#include<algorithm>\n#include<iostream>\n#include<utility>\n#include<string>\n#include<vector>\n#include<cmath>\n#include<stack>\n#include<queue>\n#include<deque>\n#include<map>\n#define rep(i,n) for(int i=0;i<n;i++)\n#define loop(i,x,n) for(int i=x;i<n;i++)\n#define pf push_front\n#define pb push_back\n#define int long long\nusing namespace std;\nconst int INF=1000000007;\nint dx[4]={1,0,-1,0};\nint dy[4]={0,1,0,-1};\n\n\n\nsigned main(){\n  string s;\n  cin>>s;\n  for(int i=s.size()-1;i>=0;i--){\n    cout<<s[i];\n  }\n  cout<<endl;\n  return 0;\n}",
+        "language": "C++"
+    },
+    {
+        "mode": "mode_1",
+        "code": "#include <iostream>\n#include <algorithm>\n#include <string>\n\nint main(void)\n{\n\tint base = 100000;\n\t\n\tint n;\n\tstd::cin >> n;\n\t\n\tfor (int i = 0; i < n; i++) {\n\t\tbase = 1.05 * base;\n    if (base % 1000 != 0) {\n      base = (base / 1000) * 1000 + 1000;\n    }\n    else {\n      base = (base / 1000) * 1000;\n    }\n\t}\n  \n  std::cout << base << std::endl;\n}",
+        "language": "C++"
+    },
+    {
+        "mode": "mode_1",
+        "code": "#include <stdio.h>\n\nint main(void)\n{\n  int n,i,a,b,c,d;\n\n  i = 0;\n  while(i < 50){\n    int ans = 0;\n    scanf(\"%d\", &n);\n    if(!(n > 0 && n <= 50)){\n      break;\n    }\n    if(n <= 36){\n      for(a = 0;a <= 9;a++){\n\tfor(b = 0;b <= 9;b++){\n\t  for(c = 0;c <= 9;c++){\n\t    for(d = 0;d <= 9;d++){\n\t      if((a+b+c+d) == n){\n\t\tans++;\n\t      }\n\t    }\n\t  }\n\t}\n      }\n    }\n    printf(\"%d\\n\", ans);\n    i++;\n  }\n  return 0;\n}",
+        "language": "C++"
+    },
+    {
+        "mode": "mode_1",
+        "code": "#include<cstdio>\n#include<cstring>\n\nconst int N = 1000009;\nint dp[N];\nint isprime[N];\n\nint main()\n{\n    dp[1] = 0;\n    for(int i=2;i<N;i++)\n    {\n        if(!isprime[i])\n            for(int j=2*i;j<N;j+=i)\n                isprime[j] = 1;\n        dp[i] = dp[i-1] + ((isprime[i])?0:1);\n    }\n\n    int y;\n    while(~scanf(\"%d\",&y))\n        printf(\"%d\\n\",dp[y]);\n    return 0;\n}",
+        "language": "C++"
+    },
+    {
+        "mode": "mode_1",
+        "code": "#include <iostream>\n#include <vector>\n#include <functional>\n\nint main()\n{\n    int w;\n    std::cin >> w;\n    std::vector<int> v(w);\n    for(int i = 0; i < w; ++i){\n        v[i] = i+1;\n    }\n    int n;\n    std::cin >> n;\n    for(int i = 0; i < n; ++i){\n        int a, b;\n        char c;\n        std::cin >> a >> c >>  b;\n        std::swap(v[a-1], v[b-1]);\n    }\n    for(int i = 0; i < w; ++i){\n        std::cout << v[i] << std::endl;\n    }\n    return 0;\n}",
+        "language": "C++"
+    }
+]

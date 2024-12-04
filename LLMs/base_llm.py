@@ -167,10 +167,10 @@ RankMe).
 3. Specific suggestions to fix issues or improve the code, with examples where applicable.
 """
 
-# System prompt for Dafny generation using Azure OpenAI
+# System prompt for Dafny generation using Qwen
 dafny_system_prompt = """You are an expert in formal verification and Dafny programming."""
 
-# User prompt for Dafny generation using Azure OpenAI
+# User prompt for Dafny generation using Qwen
 dafny_user_prompt = """
 Convert the following buggy code into correct code first, then generate Dafny for formal verification for the 
 correct code. Ensure that the Dafny code includes contracts such as preconditions, postconditions, and 

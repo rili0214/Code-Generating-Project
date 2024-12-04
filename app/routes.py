@@ -34,6 +34,7 @@ import requests
 from app.llm_manager import LLMManager
 from LLMs.base_llm import save_response_to_txt
 from logs import setup_global_logger
+from app.convet_mkdw_to_html import markdown_to_html
 from app.parse_json import (
     save_combined_json, 
     process_json_for_database,
@@ -61,6 +62,8 @@ BACKEND_2_API_URL = ""
 
 # Path to the combined analysis file which used for feedback generation
 combined_file_path = Path(__file__).parent.parent / 'results' / 'intermediate' / 'combined_analysis.json'
+
+final_output_path = Path(__file__).parent.parent / 'results' / "final_output.txt"
 
 # Define modes with model sequences
 initial_paths = {
@@ -176,13 +179,17 @@ def generate_output():
         final_output = llm_manager.finalize_output()
         logger.info(f"Final output: {final_output}")
 
-        final_output_path = Path(__file__).parent.parent / 'results' / "final_output.txt"
         save_response_to_txt(final_output, final_output_path)
 
         # Save the final output to the database
         insert_final_output(input_id = input_id, report_text = final_output)
+        
+        with open(final_output_path, 'r', encoding='utf-8') as file:
+            markdown_string = file.read()
+        
+        html_content = markdown_to_html(markdown_string)
 
-        return Response(final_output, mimetype = 'text/plain', status = 200)
+        return Response(html_content, mimetype = 'text/html', status = 200)
 
     except Exception as e:
         logger.error(f"Error occurred: {e}")

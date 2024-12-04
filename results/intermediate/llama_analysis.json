@@ -1,16 +1,16 @@
 {
     "clang_tidy": {
-        "command": "clang-tidy temp/code_files/temp_code_b54faeec-4ad3-4004-ac46-4311cc44db28.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
+        "command": "clang-tidy temp/code_files/temp_code_c2cc93f9-0be8-4277-850a-9d899762fab1.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
         "errors": [],
-        "file": "temp/code_files/temp_code_b54faeec-4ad3-4004-ac46-4311cc44db28.cpp",
-        "return_code": 1,
-        "status": "failure",
+        "file": "temp/code_files/temp_code_c2cc93f9-0be8-4277-850a-9d899762fab1.cpp",
+        "return_code": 0,
+        "status": "success",
         "warnings": []
     },
     "evaluation_score": {
         "final_score": 10,
         "stsatic_analysis": 10
     },
-    "generated_code": "c++\n#include <algorithm>\n#include <vector>\n#include <iostream>\n\nusing namespace std;\n\nvector<int> prime;\nvoid prime_set(int n) {\n  n += 100;\n  prime.resize(n);\n  for (int i = 0; i < n; i++) {\n    prime[i] = 1;\n  }\n  prime[0] = prime[1] = 0;\n  for (int i = 0; i * i < n; i++) {\n    if (prime[i]) {\n      for (int j = i * 2; j < n; j += i) {\n        prime[j] = 0;\n      }\n    }\n  }\n}\n\nint solve(int a, int b, int n) {\n  int c = 0;\n  while (c!= n) {\n    if (a < 0) return 0;\n    c += prime[a];\n    a += b;\n  }\n  return a - b;\n}\n\nint main() {\n  prime_set(10000000);\n  int a, b, n;\n  while (cin >> a >> b >> n) {\n    if (a == 0 || b == 0 || n == 0) break;\n    cout << solve(a, b, n) << endl;\n  }\n  return 0;\n}",
+    "generated_code": "#include <iostream>\n#include <string>\n\nint main() {\n    std::cout << \"Hello, World!\" << std::endl;\n    return 0;\n}",
     "model": "llama"
 }

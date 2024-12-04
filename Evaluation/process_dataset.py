@@ -7,7 +7,7 @@ java_dataset_path = "/mnt/c/Users/taox0/Downloads/Project_CodeNet_Java250/Projec
 python_dataset_path = "/mnt/c/Users/taox0/Downloads/Project_CodeNet_Python800/Project_CodeNet_Python800"
 cpp_dataset_path = "/mnt/c/Users/taox0/Downloads/Project_CodeNet_C++1000/Project_CodeNet_C++1000"
 
-current = "C++"
+current = "Java"
 
 if current == "Java":
     dataset_path = java_dataset_path
@@ -24,7 +24,7 @@ json_data_list = []
 
 # Get the first 30 subdirectories
 subdirectories = [d for d in os.listdir(dataset_path) if os.path.isdir(os.path.join(dataset_path, d))]
-subdirectories = sorted(subdirectories)[:20]
+subdirectories = sorted(subdirectories)[30:50]
 
 # Iterate through each subdirectory
 for subdir in subdirectories:
@@ -69,7 +69,7 @@ for subdir in subdirectories:
             
             # Create a JSON object
             json_object = {
-                "mode": "mode_2",
+                "mode": "mode_1",
                 "code": code_content,
                 "language": "Python"
             }
@@ -92,7 +92,7 @@ for subdir in subdirectories:
                 
             # Create a JSON object
             json_object = {
-                "mode": "mode_2",
+                "mode": "mode_1",
                 "code": code_content,
                 "language": "C++"
             }

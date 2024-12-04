@@ -100,4 +100,4 @@ def eval(selected_file):
         logger.error(f"Error occurred: {e}")
 
 if __name__ == "__main__":
-    eval(selected_python_files_path)
+    eval(selected_cpp_files_path)

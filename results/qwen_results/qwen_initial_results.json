@@ -1,7 +1,7 @@
 {
     "mode": "mode_1",
     "model": "qwen",
-    "generated_code": "```python\nq = int(input())\nsort1 = list(map(int, input().split()))\n\ndef bubblesort(ary):\n    cnt = 0\n    n = len(ary)\n    for i in range(n):\n        for j in range(n-1, i, -1):\n            if ary[j] < ary[j-1]:\n                ary[j-1], ary[j] = ary[j], ary[j-1]\n                cnt += 1\n    return ary, cnt\n\nary, cnt = bubblesort(sort1)\nprint(\" \".join(map(str, ary)))\nprint(cnt)\n```",
-    "language": "Python",
+    "generated_code": "```cpp\n#include<algorithm>\n#include<vector>\n#include<iostream>\nusing namespace std;\n\nvector<bool> prime;\n\nvoid prime_set(int n){\n  prime.resize(n + 1, true);\n  prime[0] = prime[1] = false;\n  for(int i = 2; i * i <= n; i++){\n    if(prime[i]){\n      for(int j = i * i; j <= n; j += i){\n        prime[j] = false;\n      }\n    }\n  }\n}\n\nint solve(int a, int b, int n){\n  int count = 0;\n  while(count < n && a < prime.size()){\n    if(prime[a]){\n      count++;\n    }\n    a += b;\n  }\n  return a - b;\n}\n\nint main(){\n  prime_set(10000000);\n  int a, b, n;\n  while(cin >> a >> b >> n && a != 0 && b != 0 && n != 0){\n    cout << solve(a, b, n) << endl;\n  }\n}\n```",
+    "language": "C++",
     "dafny_text": ""
 }

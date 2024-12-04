@@ -1,46 +1,34 @@
 {
     "model 1": {
-        "evaluation_score": {
-            "final_score": 8.57,
-            "stsatic_analysis": 8.57
+        "clang_tidy": {
+            "command": "clang-tidy temp/code_files/temp_code_8a8aec68-e93a-4cf2-9f88-32947063c624.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
+            "errors": [],
+            "file": "temp/code_files/temp_code_8a8aec68-e93a-4cf2-9f88-32947063c624.cpp",
+            "return_code": 0,
+            "status": "success",
+            "warnings": []
         },
-        "generated_code": "q = int(input())\nsort1 = list(map(int, input().split()))\n\ndef bubblesort(ary):\n    cnt = 0\n    n = len(ary)\n    for i in range(n):\n        for j in range(n-1, i, -1):\n            if ary[j] < ary[j-1]:\n                ary[j-1], ary[j] = ary[j], ary[j-1]\n                cnt += 1\n    return ary, cnt\n\nary, cnt = bubblesort(sort1)\nprint(\" \".join(map(str, ary)))\nprint(cnt)",
-        "model": "qwen",
-        "python static analysis": [
-            {
-                "output": "Success: no issues found in 1 source file\n",
-                "tool": "mypy"
-            },
-            {
-                "output": "************* Module temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:16:0: C0304: Final newline missing (missing-final-newline)\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:1:0: C0114: Missing module docstring (missing-module-docstring)\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:1:0: C0103: Module name \"temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365\" doesn't conform to snake_case naming style (invalid-name)\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:4:0: C0116: Missing function or method docstring (missing-function-docstring)\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:4:15: W0621: Redefining name 'ary' from outer scope (line 14) (redefined-outer-name)\ntemp/code_files/temp_code_c188bd2d-2ce1-4f74-9d15-7301387d0365.py:5:4: W0621: Redefining name 'cnt' from outer scope (line 14) (redefined-outer-name)\n\n-----------------------------------\nYour code has been rated at 5.71/10\n\n",
-                "tool": "pylint"
-            },
-            {
-                "output": "Run started:2024-12-03 05:33:19.959822\n\nTest results:\n\tNo issues identified.\n\nCode scanned:\n\tTotal lines of code: 14\n\tTotal lines skipped (#nosec): 0\n\tTotal potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0\n\nRun metrics:\n\tTotal issues (by severity):\n\t\tUndefined: 0\n\t\tLow: 0\n\t\tMedium: 0\n\t\tHigh: 0\n\tTotal issues (by confidence):\n\t\tUndefined: 0\n\t\tLow: 0\n\t\tMedium: 0\n\t\tHigh: 0\nFiles skipped (0):\n",
-                "tool": "bandit"
-            }
-        ]
+        "evaluation_score": {
+            "final_score": 10,
+            "stsatic_analysis": 10
+        },
+        "generated_code": "#include<algorithm>\n#include<vector>\n#include<iostream>\nusing namespace std;\n\nvector<bool> prime;\n\nvoid prime_set(int n){\n  prime.resize(n + 1, true);\n  prime[0] = prime[1] = false;\n  for(int i = 2; i * i <= n; i++){\n    if(prime[i]){\n      for(int j = i * i; j <= n; j += i){\n        prime[j] = false;\n      }\n    }\n  }\n}\n\nint solve(int a, int b, int n){\n  int count = 0;\n  while(count < n && a < prime.size()){\n    if(prime[a]){\n      count++;\n    }\n    a += b;\n  }\n  return a - b;\n}\n\nint main(){\n  prime_set(10000000);\n  int a, b, n;\n  while(cin >> a >> b >> n && a != 0 && b != 0 && n != 0){\n    cout << solve(a, b, n) << endl;\n  }\n}",
+        "model": "qwen"
     },
     "model 2": {
-        "evaluation_score": {
-            "final_score": 8.459999999999999,
-            "stsatic_analysis": 8.459999999999999
+        "clang_tidy": {
+            "command": "clang-tidy temp/code_files/temp_code_b54faeec-4ad3-4004-ac46-4311cc44db28.cpp --checks=*,-clang-diagnostic*-warning -- -Werror",
+            "errors": [],
+            "file": "temp/code_files/temp_code_b54faeec-4ad3-4004-ac46-4311cc44db28.cpp",
+            "return_code": 1,
+            "status": "failure",
+            "warnings": []
         },
-        "generated_code": "q = int(input())\nsort1 = list(map(int, input().split()))\n\ndef bubblesort(ary):\n    cnt = 0\n    for i in range(q-1):  # fix: avoid index out of range error\n        for j in range(q-1, i, -1):  # fix: keep track of original index\n            if ary[j] < ary[j+1]:  # fix: correct comparison\n                ary[j], ary[j+1] = ary[j+1], ary[j]\n                cnt += 1\n    return (ary, cnt)\n\nary, cnt = bubblesort(sort1.copy())  # fix: avoid modifying the original list\nprint(\" \".join(map(str, ary)))\nprint(cnt)",
-        "model": "llama",
-        "python static analysis": [
-            {
-                "output": "Success: no issues found in 1 source file\n",
-                "tool": "mypy"
-            },
-            {
-                "output": "************* Module temp_code_b3c3f39c-6ef1-4255-b64e-f90762f6bf15\ntemp/code_files/temp_code_b3c3f39c-6ef1-4255-b64e-f90762f6bf15.py:15:0: C0304: Final newline missing (missing-final-newline)\ntemp/code_files/temp_code_b3c3f39c-6ef1-4255-b64e-f90762f6bf15.py:1:0: C0114: Missing module docstring (missing-module-docstring)\ntemp/code_files/temp_code_b3c3f39c-6ef1-4255-b64e-f90762f6bf15.py:1:0: C0103: Module name \"temp_code_b3c3f39c-6ef1-4255-b64e-f90762f6bf15\" doesn't conform to snake_case naming style (invalid-name)\ntemp/code_files/temp_code_b3c3f39c-6ef1-4255-b64e-f90762f6bf15.py:4:0: C0116: Missing function or method docstring (missing-function-docstring)\ntemp/code_files/temp_code_b3c3f39c-6ef1-4255-b64e-f90762f6bf15.py:4:15: W0621: Redefining name 'ary' from outer scope (line 13) (redefined-outer-name)\ntemp/code_files/temp_code_b3c3f39c-6ef1-4255-b64e-f90762f6bf15.py:5:4: W0621: Redefining name 'cnt' from outer scope (line 13) (redefined-outer-name)\n\n-----------------------------------\nYour code has been rated at 5.38/10\n\n",
-                "tool": "pylint"
-            },
-            {
-                "output": "Run started:2024-12-03 05:33:22.774318\n\nTest results:\n\tNo issues identified.\n\nCode scanned:\n\tTotal lines of code: 13\n\tTotal lines skipped (#nosec): 0\n\tTotal potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0\n\nRun metrics:\n\tTotal issues (by severity):\n\t\tUndefined: 0\n\t\tLow: 0\n\t\tMedium: 0\n\t\tHigh: 0\n\tTotal issues (by confidence):\n\t\tUndefined: 0\n\t\tLow: 0\n\t\tMedium: 0\n\t\tHigh: 0\nFiles skipped (0):\n",
-                "tool": "bandit"
-            }
-        ]
+        "evaluation_score": {
+            "final_score": 10,
+            "stsatic_analysis": 10
+        },
+        "generated_code": "c++\n#include <algorithm>\n#include <vector>\n#include <iostream>\n\nusing namespace std;\n\nvector<int> prime;\nvoid prime_set(int n) {\n  n += 100;\n  prime.resize(n);\n  for (int i = 0; i < n; i++) {\n    prime[i] = 1;\n  }\n  prime[0] = prime[1] = 0;\n  for (int i = 0; i * i < n; i++) {\n    if (prime[i]) {\n      for (int j = i * 2; j < n; j += i) {\n        prime[j] = 0;\n      }\n    }\n  }\n}\n\nint solve(int a, int b, int n) {\n  int c = 0;\n  while (c!= n) {\n    if (a < 0) return 0;\n    c += prime[a];\n    a += b;\n  }\n  return a - b;\n}\n\nint main() {\n  prime_set(10000000);\n  int a, b, n;\n  while (cin >> a >> b >> n) {\n    if (a == 0 || b == 0 || n == 0) break;\n    cout << solve(a, b, n) << endl;\n  }\n  return 0;\n}",
+        "model": "llama"
     }
 }

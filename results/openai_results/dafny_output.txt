@@ -1,117 +1,57 @@
 ```dafny
+predicate ValidInputPair(i: int, j: int) {
+  i != 0 || j != 0
+}
+
+method ReadInputSequence() returns (l: seq<(int, int)>)
+  ensures forall k :: 0 <= k < |l| ==> ValidInputPair(l[k]0, l[k]1)
+{
+  var l: seq<(int, int)> := [];
+  while true
+    invariant forall k :: 0 <= k < |l| ==> ValidInputPair(l[k]0, l[k]1)
+  {
+    var input := ReadInput();
+    if input.0 == 0 && input.1 == 0 {
+      break;
+    } else {
+      l := l + [input];
+    }
+  }
+  return l;
+}
+
+method ReadInput() returns (i: int, j: int)
+{
+  var line := Console.ReadLine();
+  var parts := line.Split(new char[] { ' ' });
+  i := int.Parse(parts[0]);
+  j := int.Parse(parts[1]);
+}
+
+method PrintSortedPairs(l: seq<(int, int)>) {
+  requires forall k :: 0 <= k < |l| ==> ValidInputPair(l[k]0, l[k]1)
+  {
+    var i: int := 0;
+    while i < |l|
+      invariant 0 <= i <= |l|
+    {
+      var (v1, v2) := l[i];
+      if v1 < v2 {
+        Print(v1, v2);
+      } else {
+        Print(v2, v1);
+      }
+      i := i + 1;
+    }
+  }
+}
+
+method Print(i: int, j: int) {
+  print i; print " "; print j; print "\n";
+}
+
 method Main() {
-    var q: int := int.Parse(Console.ReadLine());
-    var sort1: array<int> := new int[q];
-    var inputLine: string := Console.ReadLine();
-    var inputParts: seq<string> := inputLine.Split(' ');
-    
-    for i := 0 to q - 1 {
-        sort1[i] := int.Parse(inputParts[i]);
-    }
-
-    var result: (array<int>, int) := BubbleSort(sort1);
-    var sortedArray: array<int> := result.0;
-    var swapCount: int := result.1;
-
-    print arrayToString(sortedArray);
-    print "\n";
-    print swapCount;
-}
-
-method BubbleSort(ary: array<int>) returns (result: (array<int>, int))
-    requires ary.Length >= 0
-    ensures result.0 == Sort(ary)
-    ensures result.1 >= 0
-{
-    var cnt: int := 0;
-    var n: int := ary.Length;
-    var sortedArray: array<int> := new int[n];
-    for i := 0 to n - 1 {
-        sortedArray[i] := ary[i];
-    }
-
-    for i := 0 to n - 1 {
-        for j := n - 1 downto i + 1 {
-            if sortedArray[j] < sortedArray[j - 1] {
-                var temp: int := sortedArray[j];
-                sortedArray[j] := sortedArray[j - 1];
-                sortedArray[j - 1] := temp;
-                cnt := cnt + 1;
-            }
-        }
-        invariant cnt >= 0
-        invariant sortedArray[..(i+1)] == Sort(ary[..(i+1)])
-    }
-
-    result := (sortedArray, cnt);
-}
-
-function method Sort(ary: array<int>): seq<int>
-    requires ary.Length >= 0
-{
-    var sorted: seq<int> := Seq.Exec(ary.Length, (b: array<int>) => HeapSort(b));
-    return sorted;
-}
-
-method HeapSort(ary: array<int>)
-    modifies ary
-    ensures ary == old(ary)[..]
-    ensures forall k :: 0 <= k < ary.Length ==> forall j :: 0 <= j < ary.Length && j != k ==> ary[k] <= ary[j]
-{
-    var n: int := ary.Length;
-
-    for i := n / 2 - 1 downto 0 {
-        Heapify(ary, n, i);
-    }
-
-    for i := n - 1 downto 1 {
-        var temp: int := ary[0];
-        ary[0] := ary[i];
-        ary[i] := temp;
-
-        Heapify(ary, i, 0);
-    }
-}
-
-method Heapify(ary: array<int>, n: int, i: int)
-    modifies ary
-    ensures ary == old(ary)[..]
-    ensures forall k :: 0 <= k < n ==> forall j :: 0 <= j < n && j != k ==> ary[k] <= ary[j]
-{
-    var largest: int := i;
-    var left: int := 2 * i + 1;
-    var right: int := 2 * i + 2;
-
-    if left < n && ary[left] > ary[largest] {
-        largest := left;
-    }
-
-    if right < n && ary[right] > ary[largest] {
-        largest := right;
-    }
-
-    if largest != i {
-        var swap: int := ary[i];
-        ary[i] := ary[largest];
-        ary[largest] := swap;
-
-        Heapify(ary, n, largest);
-    }
-}
-
-method print(s: string)
-{
-    Console.Write(s);
-}
-
-method arrayToString(arr: array<int>) returns (s: string)
-{
-    s := "";
-    for i := 0 to arr.Length - 1 {
-        s := s + arr[i].ToString();
-        if i < arr.Length - 1 {
-            s := s + " ";
-        }
-    }
+  var inputSequence := ReadInputSequence();
+  PrintSortedPairs(inputSequence);
 }
 ```

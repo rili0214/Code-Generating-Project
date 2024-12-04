@@ -29,22 +29,19 @@ Identify the bugs in the given code by categorizing them into the following cate
 - Usability Bugs  
 - Security Bugs  
 - Syntax Errors  
+- Calculation Bugs
 - Compatibility Bugs  
 - Logical Bugs  
 - Performance Bugs  
 - Unit-Level Bugs  
 - Integration Bugs  
-- Out-of-Bound Bugs  
-- Functional Errors  
-- Security Errors  
+- Out-of-Bound Bugs    
 - Calculation Errors  
 - Communication Errors  
-- Logic Errors  
 - Workflow Bugs  
 - Bohrbugs  
 - Data Bugs  
 - Error Handling Defects  
-- Performance Faults  
 - No Bugs Found
 
 **Response Format:**  

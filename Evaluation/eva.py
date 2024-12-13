@@ -1,3 +1,12 @@
+#############################################################################################################################
+# Program: Evaluation/eva.py                                                                                                #                 
+# Author: Yuming Xie                                                                                                        #
+# Date: 12/01/2024                                                                                                          #
+# Version: 1.0.3                                                                                                            #
+# License: [MIT License]                                                                                                    #
+# Description: This program contains the evaluation code for the backend.                                                   #                                                                                                 
+#############################################################################################################################
+
 import json
 from pathlib import Path
 import requests
@@ -10,7 +19,7 @@ from app.parse_json import save_combined_json
 llm_manager = LLMManager()
 
 # Backend 2 (Evaluation and Checking backend) API URL
-BACKEND_2_API_URL = ""
+BACKEND_2_API_URL = "http://127.0.0.1:5000/analyze"
 
 # Path to the combined analysis file
 combined_file_path = Path(__file__).parent.parent / 'results' / 'intermediate' / 'combined_analysis.json'
@@ -36,7 +45,7 @@ def eval(selected_file):
             selected_files = json.load(file)
         
         # Randomly pick one Java file for evaluation
-        data = selected_files[9]
+        data = selected_files[19]
         logger.info(f"Selected code for evaluation: {data}")
         
         mode_ = data.get("mode")
@@ -100,4 +109,4 @@ def eval(selected_file):
         logger.error(f"Error occurred: {e}")
 
 if __name__ == "__main__":
-    eval(selected_cpp_files_path)
+    eval(selected_java_files_path)

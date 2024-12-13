@@ -32,8 +32,7 @@ logger = setup_global_logger()
 # mode_2: Primarily qwen2.5-coder-32b-inst, supplementally phi-3-mini-128k-inst
 modes = {
     "mode_1": ["qwen2.5-coder-32b-inst", "llama-3.2-3b-inst"],
-    #"mode_2": ["phi-3-mini-128k-inst", "qwen2.5-coder-32b-inst"]
-    "mode_2": ["qwen2.5-coder-32b-inst", "llama-3.2-3b-inst"]
+    "mode_2": ["phi-3-mini-128k-inst", "qwen2.5-coder-32b-inst"]
 }
 
 # Model-to-function mappings
@@ -145,8 +144,7 @@ class LLMManager:
                 if mode == "mode_1":
                     json_path_1 = llama_initial_path
                 elif mode == "mode_2":
-                    # json_path_1 = phi_initial_path
-                    json_path_1 = llama_initial_path
+                    json_path_1 = phi_initial_path
                 
                 json_path_2 = qwen_initial_path
 

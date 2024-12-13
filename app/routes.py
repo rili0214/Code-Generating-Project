@@ -58,7 +58,7 @@ initialize_database()
 llm_manager = LLMManager()                          
 
 # Backend 2(Evaluation and Checking backend) API URL
-BACKEND_2_API_URL = ""
+BACKEND_2_API_URL = "http://127.0.0.1:5000/analyze"
 
 # Path to the combined analysis file which used for feedback generation
 combined_file_path = Path(__file__).parent.parent / 'results' / 'intermediate' / 'combined_analysis.json'
@@ -68,8 +68,7 @@ final_output_path = Path(__file__).parent.parent / 'results' / "final_output.txt
 # Define modes with model sequences
 initial_paths = {
     "mode_1": ["qwen", "llama"],
-    #"mode_2": ["phi", "qwen"],
-    "mode_2": ["qwen", "llama"],
+    "mode_2": ["phi", "qwen"]
 }
 
 # Setup global logger
@@ -106,6 +105,7 @@ def generate_output():
 
         # Step 2: Call Backend 2's API for initial analysis
         for model_name in initial_paths[mode_]:
+            logger.info(f"Calling Backend 2 for {model_name} analysis...")
             path = Path(__file__).parent.parent / 'results' / f"{model_name}_results" / f"{model_name}_initial_results.json"
             
             with open(path, 'r') as file:

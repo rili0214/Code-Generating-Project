@@ -1,9 +1,6 @@
 Title: 
 Code Generating Project -- Backend Server 1
 
-Note: 
-The backend server was deployed on an Azure VM, but it runs too slow, I am running it on my local repo.
-
 Link to the overall backends workflow pipeline:
 https://docs.google.com/drawings/d/1_L3x8BSyXFxRXm1XaalxutYp5_VynZwe3JpWyMylrLg/edit?usp=sharing
 
@@ -11,14 +8,14 @@ Structure:
 Here is the structure of current evaluation backend 1:
 
 ├── main.py                                 # Entry point to initialize server and endpoints
-├── requirements.txt                        # Dependencies for the LLMs, API interactions, and other processing                 (Not yet avalibale)
-├── config.py                               # Configuration for LLM selection, API settings, and feedback loop limits           (Not yet avalibale)
+├── requirements.txt                        # Dependencies for the LLMs, API interactions, and other processing 
+├── requirements.txt                        # Dependencies for the database
 ├── app/                                    # Application directory
-│   ├── __init__.py                         # Initializes app as a package
 │   ├── routes.py                           # API endpoints for frontend and the other backend server communication
 │   ├── llm_manager.py                      # Core handler for LLM interactions and feedback loops
 │   ├── parse_json.py                       # Helper module to save and load JSON files
 │   └── utils.py                            # Utility functions for formatting
+│   └── convert_mkdw_to_html.py             # HTML Converter from Markdown files
 ├── LLMs/                                   # Directory for LLM handling
 │   ├── base_llm.py                         # Base class for LLM interactions including prompts and helper functions
 │   ├── llama/                              # Subdirectory for Llama-3.2-3B-Instruct
@@ -41,6 +38,8 @@ Here is the structure of current evaluation backend 1:
 │   │   ├── phi_initial_results.json        # Initial generated outputs from Phi
 │   └── llama_results
 │   │   ├── llama_initial_results.json      # Initial generated outputs from LLaMa
+│   └── openai_results
+│   │   ├── dafny_output.txt                # The generated Dafny code
 │   └── qwen_results
 │   │   ├── qwen_initial_results.json       # Initial generated outputs from Qwen
 │   │   ├── qwen_feedback_results.json      # Feedback generated outputs from Qwen
@@ -57,5 +56,13 @@ Here is the structure of current evaluation backend 1:
 │   ├── __init__.py                         # Driver for testing
 │   └── test_app_LLMs.py                    # Unit and integration tests for app and LLMs
 │   └── test_database.py                    # Unit and integration tests for database
-└── temp/                                   # Temporary files directory
-    └── code_files/                         # Subdirectory for temporary code files
+│   └── test_markdown.py                    # Test to convert Markdown files to HTML
+└── Evaluation/                             # For evaluation of backend
+    └── eva.py                              # Evaluation driver 
+    └── process_dataset.py                  # Process dataset for evaluation
+    └── selected_cpp_files.json             # The C++ evaluation dataset
+    └── selected_java_files.json            # The Java evaluation dataset
+    └── selected_python_files.json          # The Python evaluation dataset
+    └── C++ Evaluation Records.docx         # The evaluation records of C++ Dataset
+    └── Java Evaluation Records.docx        # The evaluation records of Java Dataset
+    └── Python Evaluation Records.docx      # The evaluation records of Python Dataset

@@ -7,7 +7,7 @@ Author: Daniel Cho
 from app.convet_mkdw_to_html import markdown_to_html
 
 if __name__ == "__main__":
-    file_path = "/mnt/c/Users/taox0/OneDrive/Documents/GitHub/Code-Generating-Project/results/final_output.txt"
+    file_path = "path to final_output.txt"
     
     try:
         with open(file_path, 'r', encoding='utf-8') as file:

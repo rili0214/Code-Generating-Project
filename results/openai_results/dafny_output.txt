@@ -1,57 +1,47 @@
 ```dafny
-predicate ValidInputPair(i: int, j: int) {
-  i != 0 || j != 0
-}
-
-method ReadInputSequence() returns (l: seq<(int, int)>)
-  ensures forall k :: 0 <= k < |l| ==> ValidInputPair(l[k]0, l[k]1)
-{
-  var l: seq<(int, int)> := [];
-  while true
-    invariant forall k :: 0 <= k < |l| ==> ValidInputPair(l[k]0, l[k]1)
-  {
-    var input := ReadInput();
-    if input.0 == 0 && input.1 == 0 {
-      break;
-    } else {
-      l := l + [input];
-    }
-  }
-  return l;
-}
-
-method ReadInput() returns (i: int, j: int)
-{
-  var line := Console.ReadLine();
-  var parts := line.Split(new char[] { ' ' });
-  i := int.Parse(parts[0]);
-  j := int.Parse(parts[1]);
-}
-
-method PrintSortedPairs(l: seq<(int, int)>) {
-  requires forall k :: 0 <= k < |l| ==> ValidInputPair(l[k]0, l[k]1)
-  {
-    var i: int := 0;
-    while i < |l|
-      invariant 0 <= i <= |l|
-    {
-      var (v1, v2) := l[i];
-      if v1 < v2 {
-        Print(v1, v2);
-      } else {
-        Print(v2, v1);
+class Main {
+  static method Main() {
+    var finished := false;
+    while !finished {
+      try {
+        print("Enter two integers: ");
+        var input := Console.ReadLine();
+        if input == null {
+          finished := true;
+        } else {
+          var parts := input.Split(' ');
+          if parts.Length == 2 {
+            var a := int.Parse(parts[0]);
+            var b := int.Parse(parts[1]);
+            var gcd := GCD(a, b);
+            print"{gcd} {a*b/gcd}\n";
+          } else {
+            finished := true;
+          }
+        }
+      } catch e : System.FormatException {
+        finished := true;
       }
-      i := i + 1;
     }
   }
-}
 
-method Print(i: int, j: int) {
-  print i; print " "; print j; print "\n";
-}
+  predicate ValidInput(a: int, b: int)
+    reads a, b
+    requires a >= 0 && b >= 0
 
-method Main() {
-  var inputSequence := ReadInputSequence();
-  PrintSortedPairs(inputSequence);
+  method GCD(x: int, y: int) returns (result: int)
+    requires x >= 0 && y >= 0
+    ensures result >= 1
+    ensures result <= x && result <= y
+    ensures x % result == 0 && y % result == 0
+    ensures forall z :: (x % z == 0 && y % z == 0) ==> z <= result
+  {
+    decreases x + y
+    if y == 0 {
+      result := x;
+    } else {
+      result := GCD(y, x % y);
+    }
+  }
 }
 ```

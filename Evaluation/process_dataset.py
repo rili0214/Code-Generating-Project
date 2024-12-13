@@ -1,11 +1,19 @@
+#############################################################################################################################
+# Program: Evaluation/process_dataset.py                                                                                    #                 
+# Author: Yuming Xie                                                                                                        #
+# Date: 12/01/2024                                                                                                          #
+# Version: 1.0.3                                                                                                            #
+# License: [MIT License]                                                                                                    #
+# Description: This program contains the code for processing the dataset for evaluation.                                    #                                                                                                 
+#############################################################################################################################
+
 import os
 import random
 import json
 
-# Updated dataset path for Ubuntu
-java_dataset_path = "/mnt/c/Users/taox0/Downloads/Project_CodeNet_Java250/Project_CodeNet_Java250"
-python_dataset_path = "/mnt/c/Users/taox0/Downloads/Project_CodeNet_Python800/Project_CodeNet_Python800"
-cpp_dataset_path = "/mnt/c/Users/taox0/Downloads/Project_CodeNet_C++1000/Project_CodeNet_C++1000"
+java_dataset_path = "path to Project_CodeNet_Java250"
+python_dataset_path = "path to Project_CodeNet_Python800"
+cpp_dataset_path = "path to Project_CodeNet_C++1000"
 
 current = "Java"
 
@@ -22,7 +30,7 @@ elif current == "C++":
 # Result list to store JSON objects
 json_data_list = []
 
-# Get the first 30 subdirectories
+# Get the subdirectories
 subdirectories = [d for d in os.listdir(dataset_path) if os.path.isdir(os.path.join(dataset_path, d))]
 subdirectories = sorted(subdirectories)[30:50]
 
